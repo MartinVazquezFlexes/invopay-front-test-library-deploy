@@ -1,0 +1,29 @@
+<div class="modal" (click)="close.emit()"></div>
+<div class="modal-content">
+  <div class="modal-header">
+    <h4>Filtrar Ventas</h4>
+    <button (click)="close.emit()">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg">
+    </button>
+  </div>
+  <form [formGroup]="filtersModalForm">
+
+  
+  <div class="modal-body">
+    <input type="text" placeholder="Id Producto" formControlName="idProducto">
+    <input type="text" placeholder="Producto" formControlName="producto">
+    <select name="brokerSelect" id="brokers" formControlName="broker">
+      <option value="" disabled selected hidden>Broker</option>
+      <option value="Juan Pérez">Juan Pérez</option>
+      <option value="Sofía Gómez">Sofía Gómez</option>
+      <option value="María Rodríguez">María Rodríguez</option>
+    </select>
+  </div>
+
+  <div class="modal-buttons">
+    <button class="btn-one" (click)="cleanFilters()">Limpiar Filtros</button>
+    <button class="btn-one" (click)="close.emit()">Cerrar</button>
+    <button class="btn-two" (click)="applyFilters()">Aplicar</button>
+  </div>
+  </form>
+</div>

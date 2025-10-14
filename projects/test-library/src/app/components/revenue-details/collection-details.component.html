@@ -1,0 +1,227 @@
+<div class="container">
+  <div class="card-title">
+    <h2 class="title">Detalle Recaudación</h2>
+    <button (click)="back()">Volver</button>
+  </div>
+
+
+  <form [formGroup]="detailedInfoForm">
+  <div class="card">
+    <div class="sections-titles">
+    <!--se ve siempre que se abre la pagina-->
+    <h3 (click)="showTransactionSection()">Transacción</h3>
+    <!--se ven solo cuando la recaudacion esta consolidada-->
+    <h3 *ngIf="isRevenueConsolidated" (click)="showConciliationSection()">Conciliación</h3>
+    <h3 *ngIf="isRevenueConsolidated" (click)="showPolicySection()">Póliza</h3>
+    </div>
+
+    <!--SECCION TRANSACCION-->
+    <div *ngIf="showTransaction">
+
+      <div class="inputs">
+        <div class="card-input">
+            <label for="revenueDate">Fecha Recaudación</label>
+            <input
+              type="text"
+              name="revenueDate"
+              id="revenueDate"
+              formControlName="revenueDate"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="amountRevenue">Monto</label>
+            <input
+              type="text"
+              name="amountRevenue"
+              id="amountRevenue"
+              formControlName="amountRevenue"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="paymentChannel">Canal de Pago</label>
+            <input
+              type="text"
+              name="paymentChannel"
+              id="paymentChannel"
+              formControlName="paymentChannel"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="paymentEntity">Proveedor</label>
+            <input
+              type="text"
+              name="paymentEntity"
+              id="paymentEntity"
+              formControlName="paymentEntity"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="transactionObservations">Observaciones</label>
+            <textarea
+              type="text"
+              name="transactionObservations"
+              id="transactionObservations"
+              formControlName="transactionObservations"
+            ></textarea>
+          </div>
+      </div>
+
+    </div>
+
+
+    <!--SECCION CONCILIACION-->
+    <div *ngIf="showConciliation">
+      <div class="inputs">
+
+          <div class="card-input">
+            <label for="isConsolidated">Consolidada</label>
+            <input
+              type="text"
+              name="isConsolidated"
+              id="isConsolidated"
+              formControlName="isConsolidated"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="productName">Producto</label>
+            <input
+              type="text"
+              name="productName"
+              id="productName"
+              formControlName="productName"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="policyNumber">Póliza</label>
+            <input
+              type="text"
+              name="policyNumber"
+              id="policyNumber"
+              formControlName="policyNumber"
+            />
+          </div>
+
+          
+          <div class="card-input">
+            <label for="amountPolicy">Monto</label>
+            <input
+              type="text"
+              name="amountPolicy"
+              id="amountPolicy"
+              formControlName="amountPolicy"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="brokerName">Broker</label>
+            <input
+              type="text"
+              name="brokerName"
+              id="brokerName"
+              formControlName="brokerName"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="payNumber">Número de Pago</label>
+            <input
+              type="text"
+              name="payNumber"
+              id="payNumber"
+              formControlName="payNumber"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="payAmount">Valor de Pago</label>
+            <input
+              type="text"
+              name="payAmount"
+              id="payAmount"
+              formControlName="payAmount"
+            />
+          </div>
+
+      </div>
+    </div>
+
+
+    <!--SECCION POLIZA-->
+    <div *ngIf="showPolicy"> 
+      <div class="inputs">
+        <div class="card-input">
+            <label for="productNamePolicy">Producto</label>
+            <input
+              type="text"
+              name="productNamePolicy"
+              id="productNamePolicy"
+              formControlName="productNamePolicy"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="policyNumberPol">Número de Póliza</label>
+            <input
+              type="text"
+              name="policyNumberPol"
+              id="policyNumberPol"
+              formControlName="policyNumberPol"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="amountPolPolicy">Monto Poliza</label>
+            <input
+              type="text"
+              name="amountPolPolicy"
+              id="amountPolPolicy"
+              formControlName="amountPolPolicy"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="saleDate">Fecha de Venta</label>
+            <input
+              type="text"
+              name="saleDate"
+              id="saleDate"
+              formControlName="saleDate"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="premiumAmount">Monto de Prima</label>
+            <input
+              type="text"
+              name="premiumAmount"
+              id="premiumAmount"
+              formControlName="premiumAmount"
+            />
+          </div>
+
+
+      </div>
+      <app-table
+        *ngIf="tableData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="tableData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'" 
+        [titlesFile]="titlesFile"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)">
+      </app-table>
+    </div>
+
+  </div>
+  </form>
+</div>
+

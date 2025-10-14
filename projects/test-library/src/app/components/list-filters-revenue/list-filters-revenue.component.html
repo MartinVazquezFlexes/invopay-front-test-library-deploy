@@ -1,0 +1,35 @@
+<div class="modal" (click)="close.emit()"></div>
+<div class="modal-content">
+  <div class="modal-header">
+    <h4>Filtrar Recaudaciones</h4>
+    <button (click)="close.emit()">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg">
+    </button>
+  </div>
+  <form [formGroup]="filtersModalForm">
+
+  
+  <div class="modal-body">
+
+          <select
+            name="inputPayMethod"
+            id="inputPayMethod"
+            formControlName="paymentChannel"
+          >
+            <option value="" disabled selected hidden>Canal de Pago</option>
+            <option value="Todos">Todos</option>
+            <option value="transferencia">Transferencia</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="boleto">Boleto</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="cheque">Cheque</option>
+          </select>
+  </div>
+
+  <div class="modal-buttons">
+    <button class="btn-one" (click)="cleanFilters()">Limpiar Filtros</button>
+    <button class="btn-one" (click)="close.emit()">Cerrar</button>
+    <button class="btn-two" (click)="applyFilters()">Aplicar</button>
+  </div>
+  </form>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card">
+    <h2 class="title">Proveedores</h2>
+  </div>
+
+  <div class="card">
+
+    <div> <!--[actions]="actions"-->
+      <app-table
+        *ngIf="pagedData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="pagedData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'"
+        [titlesFile]="titlesFile"
+        [actionsIf]="actionsIf"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)"
+      >
+      </app-table>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <div class="center">
+      <app-paginator
+        [totalItems]="tableData.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+
+    <div class="number-pages">
+      <select
+        name="selectPages"
+        id="pages"
+        [(ngModel)]="itemsPerPage"
+        (ngModelChange)="onItemsPerPageChange($event)"
+      >
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.closed]="!sidebarOpen">
+    <div class="sidebar-header">
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        <img src="assets/new-styles/icons/navbar/ham-icon.svg" />
+      </button>
+    </div>
+
+    <ul class="menu">
+      <li>
+        <a routerLink="/home" (click)="closeSidebarOnMobile()">
+          <span class="icon"><img src="assets/icons/language.svg" /></span>
+          <span class="text">Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/invopay/sales-list" (click)="closeSidebarOnMobile()">
+          <span class="icon"><img src="assets/icons/sell.svg" /></span>
+          <span class="text">Ventas</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/invopay/revenues-list" (click)="closeSidebarOnMobile()">
+          <span class="icon"><img src="assets/icons/finances-icon.svg" /></span>
+          <span class="text">Recaudaciones</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/invopay/payment-entities" (click)="closeSidebarOnMobile()">
+          <span class="icon"><img src="assets/icons/group_people.svg" /></span>
+          <span class="text">Proveedores</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Overlay para cerrar el menú -->
+  <div
+    class="overlay"
+    [class.active]="sidebarOpen"
+    (click)="toggleSidebar()"
+  ></div>
+
+  <!-- Contenido principal -->
+  <main class="content">
+    <header class="topbar">
+      <!-- Botón hamburguesa en mobile -->
+      <button class="mobile-menu-btn" (click)="toggleSidebar()">
+        <img src="assets/new-styles/icons/navbar/ham-icon.svg" />
+      </button>
+
+      <div class="avlalogo">
+        <img src="assets/new-styles/logoPNG.png" alt="AVLA" />
+      </div>
+
+      <div class="user">
+        <img src="assets/new-styles/icons/settings-icon.svg" class="icon" />
+
+        <div class="user-name">
+          <span class="user-role">User Test</span>
+          <span class="user-name-text">Martin</span>
+        </div>
+
+        <img
+          src="assets/new-styles/icons/navbar/logout.svg"
+          class="icon"
+          (click)="logOut()"
+        />
+      </div>
+    </header>
+
+    <div class="main-section">
+      <div *ngIf="showProfile">
+        <h2>Profile</h2>
+      <p>
+        {{ userProfile | async | json }}
+      </p>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

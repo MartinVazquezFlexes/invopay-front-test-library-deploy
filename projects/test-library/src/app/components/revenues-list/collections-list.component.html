@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="card">
+    <h2 class="title">Recaudaciones</h2>
+  </div>
+
+  <div class="card">
+    <div class="filters">
+      <!--
+      Lista toda la recaudacion del mes actual en formato de tabla. 
+      Se tiene un filtro por:
+      - rango de fecha
+      - canal de pago (transferencia, tarjeta, boleto, efectivo, cheque). 
+      -->
+      <form [formGroup]="filtersForm">
+
+
+        <div class="input-date">
+          <label for="inputDate">Desde</label>
+          <input
+            type="date"
+            formControlName="startDate"
+            [min]="startDateMin"
+            [max]="startDateMax"
+          />
+        </div>
+
+        <div class="input-date">
+          <label for="inputDate">Hasta</label>
+          <input
+            type="date"
+            id="inputDate"
+            formControlName="endDate"
+            [min]="endDateMin"
+            [max]="endDateMax"
+          />
+          <!--<app-ip-date-input></app-ip-date-input>-->
+        </div>
+      </form>
+
+      <!--Sumar los iconos (PREGUNTAR)-->
+      <div class="buttons">
+        <button type="submit" (click)="applyDateFilters()">
+          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+        </button>
+        <button (click)="openModal()">
+          <img src="assets/icons/filter3.svg" width="70%" />
+        </button>
+        <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
+        </app-list-filters-revenue>
+      </div>
+    </div>
+
+    <div>
+      <!--Ver columna actions porque no traduce-->
+      <app-table
+        *ngIf="pagedData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="pagedData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'"
+        [titlesFile]="titlesFile"
+        [actions]="actions"
+        [actionsIf]="actionsIf"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)"
+      >
+      </app-table>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <div class="center">
+      <app-paginator
+        [totalItems]="filteredRevenues.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+
+    <div class="number-pages">
+      <select
+        name="selectPages"
+        id="pages"
+        [(ngModel)]="itemsPerPage"
+        (ngModelChange)="onItemsPerPageChange($event)"
+      >
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+    </div>
+  </div>
+</div>

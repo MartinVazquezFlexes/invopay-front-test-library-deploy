@@ -1,0 +1,168 @@
+<div class="container">
+  <div class="card-title">
+    <h2 class="title">Detalle Venta</h2>
+    <button (click)="back()">Volver</button>
+  </div>
+
+  <form [formGroup]="detailedInfoForm">
+    <div class="row">
+      <!-- Información Detallada -->
+      <div class="card-row">
+        <h3 class="title">Información Detallada</h3>
+        <div class="inputs">
+          <div class="card-input">
+            <label for="fechaVenta">Fecha Venta</label>
+            <input
+              type="text"
+              name="fechaVenta"
+              id="fechaVenta"
+              formControlName="saleDate"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="nombreProducto">Nombre Producto</label>
+            <input
+              type="text"
+              name="nombreProducto"
+              id="nombreProducto"
+              formControlName="productName"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="valorPrima">Valor Prima</label>
+            <input
+              type="text"
+              name="valorPrima"
+              id="valorPrima"
+              formControlName="premiumAmount"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="valorComisionBroker">Valor Comisión Broker</label>
+            <input
+              type="text"
+              name="valorComisionBroker"
+              id="valorComisionBroker"
+              formControlName="brokerCommission"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="numeroPoliza">Número Póliza</label>
+            <input
+              type="text"
+              name="numeroPoliza"
+              id="numeroPoliza"
+              formControlName="policyNumber"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="valorPoliza">Valor Póliza</label>
+            <input
+              type="text"
+              name="valorPoliza"
+              id="valorPoliza"
+              formControlName="policyAmount"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="porcentajeComision">Porcentaje Comisión</label>
+            <input
+              type="text"
+              name="porcentajeComision"
+              id="porcentajeComision"
+              formControlName="commissionPercentage"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Información del Cliente -->
+      <div class="card-row">
+        <h3 class="title">Información Cliente</h3>
+        <div class="inputs">
+          <div class="card-input">
+            <label for="nombreCliente">Nombre Cliente</label>
+            <input
+              type="text"
+              name="nombreCliente"
+              id="nombreCliente"
+              formControlName="customerName"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="telefonoCliente">Teléfono Cliente</label>
+            <input
+              type="text"
+              name="telefonoCliente"
+              id="telefonoCliente"
+              formControlName="customerPhoneNumber"
+            />
+          </div>
+
+          <div class="card-input">
+            <label for="emailCliente">Email Cliente</label>
+            <input
+              type="text"
+              name="emailCliente"
+              id="emailCliente"
+              formControlName="customerEmail"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Tabla de plan de pagos -->
+  <div class="card">
+    <h3 class="title">Plan de Pago de Cuotas</h3>
+    <div>
+      <app-table
+        *ngIf="pagedData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="pagedData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'"
+        [titlesFile]="titlesFile"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)"
+      >
+      </app-table>
+    </div>
+    
+
+    <div class="pagination">
+    <div class="center">
+      <app-paginator
+        [totalItems]="tableData.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+
+    <div class="number-pages">
+      <select
+        name="selectPages"
+        id="pages"
+        [(ngModel)]="itemsPerPage"
+        (ngModelChange)="onItemsPerPageChange($event)"
+      >
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">15</option>
+      </select>
+    </div>
+  </div>
+  </div>
+</div>
