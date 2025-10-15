@@ -300,23 +300,27 @@ setTableData(){
   showTransaction = true; //La que empieza siempre por default
   showConciliation = false;
   showPolicy = false;
+  activeSection: string = 'transaction'; //Para remarcar la seccion donde estoy
 
   showTransactionSection(){
     this.showTransaction = true; //Mostrar
     this.showConciliation = false;
     this.showPolicy = false;
+    this.activeSection = 'transaction';
   }
 
   showConciliationSection(){
     this.showTransaction = false;
     this.showConciliation = true; //Mostrar
     this.showPolicy = false;
+    this.activeSection = 'conciliation';
   }
 
   showPolicySection(){
     this.showTransaction = false; 
     this.showConciliation = false; 
     this.showPolicy = true; //Mostrar
+    this.activeSection = 'policy';
   }
 
 

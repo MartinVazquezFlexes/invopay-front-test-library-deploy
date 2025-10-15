@@ -9,10 +9,10 @@
   <div class="card">
     <div class="sections-titles">
     <!--se ve siempre que se abre la pagina-->
-    <h3 (click)="showTransactionSection()">Transacción</h3>
+    <h3 [class.active]="activeSection === 'transaction'" (click)="showTransactionSection()">Transacción</h3>
     <!--se ven solo cuando la recaudacion esta consolidada-->
-    <h3 *ngIf="isRevenueConsolidated" (click)="showConciliationSection()">Conciliación</h3>
-    <h3 *ngIf="isRevenueConsolidated" (click)="showPolicySection()">Póliza</h3>
+    <h3 *ngIf="isRevenueConsolidated" [class.active]="activeSection === 'conciliation'" (click)="showConciliationSection()">Conciliación</h3>
+    <h3 *ngIf="isRevenueConsolidated" [class.active]="activeSection === 'policy'" (click)="showPolicySection()">Póliza</h3>
     </div>
 
     <!--SECCION TRANSACCION-->
