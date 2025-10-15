@@ -3,35 +3,38 @@
   <aside class="sidebar" [class.closed]="!sidebarOpen">
     <div class="sidebar-header">
       <button class="toggle-btn" (click)="toggleSidebar()">
-        <img src="assets/new-styles/icons/navbar/ham-icon.svg" />
+        <img src="assets/new-styles/icons/navbar/ham-icon.svg" alt="Menu" />
       </button>
     </div>
 
     <ul class="menu">
-      <li>
-        <a routerLink="/home" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/language.svg" /></span>
-          <span class="text">Inicio</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/invopay/sales-list" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/sell.svg" /></span>
-          <span class="text">Ventas</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/invopay/revenues-list" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/finances-icon.svg" /></span>
-          <span class="text">Recaudaciones</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/invopay/payment-entities" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/group_people.svg" /></span>
-          <span class="text">Proveedores</span>
-        </a>
-      </li>
+      <!-- Sección Principal -->
+      <li class="menu-section">
+        <li>
+          <a routerLink="/home" routerLinkActive="active" (click)="closeSidebarOnMobile()">
+            <span class="icon"><img src="assets/icons/language.svg" alt="Inicio" /></span>
+            <span class="text">Inicio</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/invopay/sales-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
+            <span class="icon"><img src="assets/icons/sell.svg" alt="Ventas" /></span>
+            <span class="text">Ventas</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/invopay/revenues-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
+            <span class="icon"><img src="assets/icons/finances-icon.svg" alt="Recaudaciones" /></span>
+            <span class="text">Recaudaciones</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/invopay/payment-entities" routerLinkActive="active" (click)="closeSidebarOnMobile()">
+            <span class="icon"><img src="assets/icons/group_people.svg" alt="Proveedores" /></span>
+            <span class="text">Proveedores</span>
+          </a>
+        </li>
+      
     </ul>
   </aside>
 
@@ -47,7 +50,7 @@
     <header class="topbar">
       <!-- Botón hamburguesa en mobile -->
       <button class="mobile-menu-btn" (click)="toggleSidebar()">
-        <img src="assets/new-styles/icons/navbar/ham-icon.svg" />
+        <img src="assets/new-styles/icons/navbar/ham-icon.svg" alt="Menu" />
       </button>
 
       <div class="avlalogo">
@@ -55,7 +58,7 @@
       </div>
 
       <div class="user">
-        <img src="assets/new-styles/icons/settings-icon.svg" class="icon" />
+        <img src="assets/new-styles/icons/settings-icon.svg" class="icon" alt="Configuración" />
 
         <div class="user-name">
           <span class="user-role">User Test</span>
@@ -65,6 +68,7 @@
         <img
           src="assets/new-styles/icons/navbar/logout.svg"
           class="icon"
+          alt="Cerrar sesión"
           (click)="logOut()"
         />
       </div>
@@ -72,10 +76,10 @@
 
     <div class="main-section">
       <div *ngIf="showProfile">
-        <h2>Profile</h2>
+        <!--<h2>Profile</h2>
       <p>
         {{ userProfile | async | json }}
-      </p>
+      </p>-->
       </div>
       <router-outlet></router-outlet>
     </div>

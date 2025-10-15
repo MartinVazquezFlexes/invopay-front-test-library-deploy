@@ -6,58 +6,90 @@
   position: relative;
 
   .sidebar {
-    width: 200px;
+    width: 220px;
     background: #ffffff;
     color: #009ce4;
     transition: width 0.3s;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 
     &.closed {
-      width: 68px;
+      width: 70px;
     }
 
     .sidebar-header {
-      padding: 10px;
-      margin-left: 10px;
-      font-size: 24px;
-      font-weight: bold;
+      padding: 15px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f0f0f0;
     }
 
     .menu {
       list-style: none;
-      padding: 0;
+      padding: 10px 0;
       margin: 0;
+      flex: 1;
+      overflow-y: auto;
 
       li {
         a {
           display: flex;
           align-items: center;
-          padding: 0.75rem 1rem;
+          padding: 12px 10px;
+          margin: 2px 8px;
           color: rgb(0, 0, 0);
           text-decoration: none;
-          
+          transition: all 0.2s ease;
+          position: relative;
+
           &:hover {
-            background: #f5f5f5;
+            background: #f0f7ff;
+            color: #009ce4;
+          }
+
+          &.active {
+            background: #e6f3fb;
+            color: #009ce4;
+            border-left: 3px solid #009ce4;
+            padding-left: 7px;
           }
 
           .icon {
-            margin-left: 15px;
-            margin-right: 25px;
-            font-size: 24px;
-            
+            min-width: 24px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+
             img {
-              width: 24px;
-              height: 24px;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
             }
           }
 
           .text {
             white-space: nowrap;
             color: #009ce4;
+            font-size: 14px;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
+      }
+
+      .menu-section {
+        padding: 8px 0;
+        margin: 8px 0;
+
       }
     }
   }
@@ -93,41 +125,57 @@
 }
 
 .avlalogo img {
-  width: 30%;
+  width: 70%;
   max-width: 120px;
 }
 
 .toggle-btn {
-  background: #ffffff;
-  color: #000000;
-  padding: 10px 20px;
-  border-radius: 15px;
-  border: 0px solid;
+  background: transparent;
+  color: #009ce4;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.toggle-btn:hover {
-  background-color: #F5F5F5;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+    border-color: #009ce4;
+  }
 }
 
 .user {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  gap: 10px;               
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-size: 12px;
 }
 
 .user-name {
   display: flex;
-  flex-direction: column; 
-  align-items: center;       
+  flex-direction: column;
+  align-items: center;
   line-height: 1.2;
 }
 
 .user-role {
   font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.user-name-text {
+  color: #666;
+  font-size: 14px;
 }
 
 .icon {
@@ -136,23 +184,26 @@
   object-fit: contain;
   color: #009ce4;
   cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
-/*oculto el boton de mobile*/
 .mobile-menu-btn {
   display: none;
   background: transparent;
   border: none;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
-  
+
   img {
     width: 24px;
     height: 24px;
   }
 }
 
-/*oculto el overlay para poder usar la pantalla*/
 .overlay {
   display: none;
   position: fixed;
@@ -166,7 +217,7 @@
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
   pointer-events: none;
-  
+
   &.active {
     opacity: 1;
     visibility: visible;
@@ -174,7 +225,6 @@
   }
 }
 
-/*mobile*/
 @media (max-width: 768px) {
   .layout {
     .sidebar {
@@ -187,55 +237,59 @@
       z-index: 999;
       box-shadow: 2px 0 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
-      
+
       &:not(.closed) {
         transform: translateX(0);
       }
-      
+
       .sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding: 15px;
         border-bottom: 1px solid #f0f0f0;
         margin: 0;
       }
+
+      .menu {
+        padding: 10px 0;
+
+        li a {
+          margin: 4px 8px;
+          padding: 10px 12px;
+        }
+      }
     }
-    
+
     .content {
       width: 100%;
       margin-left: 0;
-      
+
       .topbar {
         padding: 10px 15px;
         position: relative;
         z-index: 10;
       }
-      
+
       .main-section {
         padding: 15px;
       }
     }
   }
-  
-  /*overlay solo para mobile*/
+
   .overlay {
     display: block;
   }
-  
-  /*boton para mobile*/
+
   .mobile-menu-btn {
     display: block;
   }
-  
+
   .avlalogo img {
     width: 80px;
   }
-  
+
   .user {
     gap: 8px;
   }
-  
+
   .user-name {
     display: none;
   }
@@ -245,8 +299,12 @@
   .layout .content .main-section {
     padding: 10px;
   }
-  
+
   .avlalogo img {
     width: 60px;
+  }
+
+  .toggle-btn {
+    padding: 6px 10px;
   }
 }
