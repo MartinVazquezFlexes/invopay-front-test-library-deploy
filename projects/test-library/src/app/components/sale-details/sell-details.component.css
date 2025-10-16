@@ -26,7 +26,7 @@ body {
 .card-title {
     background-color: #ffffff;
     border-radius: 15px;
-    width: 90%;
+    width: 100%;
     padding: 20px 40px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -39,7 +39,7 @@ body {
 .card {
     background-color: #ffffff;
     border-radius: 15px;
-    width: 90%;
+    width: 100%;
     padding: 20px 40px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -47,7 +47,7 @@ body {
 }
 
 form {
-    width: 94%;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -55,7 +55,7 @@ form {
 
 .row {
     display: flex;
-    width: 95%;
+    width: 100%;
     justify-content: space-between;
     gap: 20px;
 }
@@ -123,23 +123,21 @@ button:hover {
     background-color: #0362af;
 }
 
-.pagination {
+.pagination{
     display: flex;
-    width: 94%;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
 }
 
 .center {
     margin: 0 auto;
 }
 
-.number-pages select {
+.center select{
     padding: 10px 20px;
     border-radius: 15px;
-    border: 1px solid #dcdcdd;
+    border: 1px solid;
 }
 
 /*tablet*/

@@ -105,10 +105,19 @@
                 ? 'keep-all'
                 : 'inherit'
             "
-            *ngIf="dataField[key] !== true && dataField[key] !== false"
+            *ngIf="dataField[key] !== true && dataField[key] !== false && key !== 'logoUrl'"
           >
             {{ dataField[key] | transformDataTable : key : keyTranslate }}
           </span>
+
+          <img 
+            *ngIf="key === 'logoUrl' && dataField[key]"
+            [src]="dataField[key]"
+            [alt]="dataField.name"
+            width="30px"
+            style="max-height: 50px; object-fit: contain;"
+          />
+
           <span *ngIf="dataField[key] === true || dataField[key] === false">
             <ng-container *ngIf="key === 'isActive' && dataField.contractId">
               {{

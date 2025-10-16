@@ -429,6 +429,7 @@
             border: 0;
             padding: 0.8rem 2.2rem;
             margin-left: auto;
+            cursor: pointer;
 
             @include lg() {
               height: 3rem;

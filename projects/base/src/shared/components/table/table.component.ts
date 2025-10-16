@@ -153,20 +153,22 @@ export class TableComponent implements OnInit, OnChanges {
     }
   }
 
-  sortableFields: String[] = [
-    // 'id',
-    'loadingDate',
-    'creationDate',
-    'dueDate',
-    'reportDate',
-    'paymentDate',
-    'concept',
-    'renditionType',
-    'position',
-    'enterprise',
-    'businessName',
-    'costCenterName',
-  ];
+sortableFields: String[] = [
+  // 'id',
+  'loadingDate',
+  'creationDate',
+  'dueDate',
+  'reportDate',
+  'paymentDate',
+  'concept',
+  'renditionType',
+  'position',
+  'enterprise',
+  'businessName',
+  'costCenterName',
+  'revenueDateDisplay',
+  'saleDate',
+];
 
   isSortable(key: string): boolean {
     // A trick to ignore specific sorts on suppliers and projects tables

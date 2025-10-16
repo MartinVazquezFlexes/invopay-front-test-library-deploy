@@ -6,8 +6,6 @@ body {
     align-items: center;
 }
 
-
-
 .container {
     background: #F5F5F5;
     width: 100%;
@@ -27,13 +25,12 @@ body {
 .card {
     background-color: #ffffff;
     border-radius: 15px;
-    width: 90%;
+    width: 95%;
     max-width: 100%;
     padding: 20px 40px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 
 .filters{
     display: flex;
@@ -46,34 +43,56 @@ form{
 }
 
 .input-date{
-    display: flex;
-    flex-direction: column;
+    position: relative;
     width: 200px;
     margin: 10px;
 }
 
 .input-date label {
-  font-size: 14px;
-  color: #828282;
-  font-weight: 600;
-  margin-bottom: 5px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 12px;
+    color: #999999;
+    font-weight: 500;
+    background: #ffffff;
+    padding: 0 6px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border-radius: 20px;
 }
 
 .input-date input[type="date"] {
-  padding: 10px 12px;
-  border: 1px solid #E0E0E0;
-  border-radius: 10px;
-  font-size: 14px;
-  background-color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+    width: 100%;
+    padding: 12px 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+}
+
+.input-date input[type="date"]:focus {
+    outline: none;
+    border-color: #0071CE;
+    box-shadow: 0 0 0 3px rgba(0, 113, 206, 0.1);
+}
+
+.input-date input[type="date"]:focus + label,
+.input-date input[type="date"]:valid + label {
+    top: -8px;
+    left: 8px;
+    font-size: 11px;
+    color: #6e7174;
+    background: #ffffff;
+    padding: 2px 8px;
 }
 
 .buttons{
     align-items: center;
     text-align: center;
-    display: flex;
-    margin-top: 15px;
-    
+    display: flex; 
 }
 
 button{
@@ -96,7 +115,6 @@ button img {
     display: block;
 }
 
-
 button:hover{
     background-color: #0362af;
     cursor: pointer;
@@ -104,7 +122,7 @@ button:hover{
 
 .pagination{
     display: flex;
-    width: 94%;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
@@ -113,7 +131,7 @@ button:hover{
     margin: 0 auto;
 }
 
-.number-pages select{
+.center select{
     padding: 10px 20px;
     border-radius: 15px;
     border: 1px solid;
@@ -145,6 +163,10 @@ button:hover{
     .input-date {
         width: 100%;
         min-width: 100%;
+    }
+    
+    .input-date label {
+        margin-bottom: 10px;
     }
     
     .input-date input[type="date"] {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProvidersService } from '../../services/providers.service';
 import { PaymentEntity } from '../../models/payment-entities';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-providers',
@@ -8,7 +9,7 @@ import { PaymentEntity } from '../../models/payment-entities';
   styleUrls: ['./providers.component.css'],
 })
 export class ProvidersComponent implements OnInit {
-  constructor(private providerService: ProvidersService) {}
+  constructor(private providerService: ProvidersService, private sanitizer: DomSanitizer) {}
 
   //Encabezados
   propertyOrder = [
@@ -69,7 +70,7 @@ export class ProvidersComponent implements OnInit {
 
         this.tableData = response.content.map((pe: PaymentEntity) => ({
           ...pe,
-          logoUrl: ``, //<img src="${pe.logoUrl}" alt="${pe.name}">
+          logoUrl: 'assets/icons/images.jpg', //PASAR UN ICON DEFAULT//
           isPaymentEntityActive: pe.isActive ? 'Si' : 'No', //mostrar si/no segun isActive
 
         })) as any; //cambiar a any porque deja de ser number

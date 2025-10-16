@@ -138,6 +138,7 @@ export class SellListComponent implements OnInit, OnDestroy {
         //convertir de number a string "ARS 13.000"
         this.tableData = response.content.map((s: sale) => ({
           ...s,
+          saleDateToOrder: s.saleDate,
           amount: `${s.currency} ${Math.round(s.amount).toLocaleString()}`,
           policyAmount: `${s.currency} ${Math.round(
             s.policyAmount
@@ -328,6 +329,40 @@ export class SellListComponent implements OnInit, OnDestroy {
     this.currentPage = 1;
     this.updatePage();
   }
+
+  onSort(event: any) {
+  const sortKey = event.key; //revenueDateDisplay
+  const sortEvent = event.event; //'asc', 'desc' o 'clean'
+
+  //mapear al original
+  const sortFieldMap: { [key: string]: string } = {
+    'saleDate': 'saleDateToOrder'
+  };
+
+  const actualSortField = sortFieldMap[sortKey] || sortKey;
+
+  if (sortEvent === 'clean') {
+    this.filteredSales = [...this.tableData];
+  } else {
+    this.filteredSales.sort((a, b) => {
+      let aValue = (a as any)[actualSortField];
+      let bValue = (b as any)[actualSortField];
+
+      //convertir a fecha para sort
+      if (actualSortField === 'saleDateToOrder') {
+        aValue = new Date(aValue).getTime();
+        bValue = new Date(bValue).getTime();
+      }
+
+      if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
+      if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }
+
+  this.currentPage = 1;
+  this.updatePage();
+}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

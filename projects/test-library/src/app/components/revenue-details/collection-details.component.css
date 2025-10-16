@@ -26,7 +26,6 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 30px;
-  border-bottom: 1px solid #0071CE;
   margin-bottom: 10px;
 }
 
@@ -44,15 +43,16 @@ body {
 
 .sections-titles h3.active {
   color: #0071CE;
-  background: #E9ECEF;
+  background: #f0f7ff;
   padding: 8px 16px;
   margin: 0;
+ border-bottom: 2px solid #0071CE;
 }
 
 .card-title {
     background-color: #ffffff;
     border-radius: 15px;
-    width: 90%;
+    width: 100%;
     padding: 20px 40px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -65,7 +65,7 @@ body {
 .card {
     background-color: #ffffff;
     border-radius: 15px;
-    width: 90%;
+    width: 100%;
     padding: 20px 40px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);

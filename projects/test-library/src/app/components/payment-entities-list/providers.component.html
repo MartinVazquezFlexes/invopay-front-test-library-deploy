@@ -21,20 +21,9 @@
       >
       </app-table>
     </div>
-  </div>
-
-  <div class="pagination">
+      <div class="pagination">
+        
     <div class="center">
-      <app-paginator
-        [totalItems]="tableData.length"
-        [itemsPerPage]="itemsPerPage"
-        [currentPages]="currentPage"
-        (pageChange)="onPageChange($event)"
-      >
-      </app-paginator>
-    </div>
-
-    <div class="number-pages">
       <select
         name="selectPages"
         id="pages"
@@ -47,5 +36,18 @@
         <option value="25">25</option>
       </select>
     </div>
+    <div>
+      <app-paginator
+        [totalItems]="tableData.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+
   </div>
+  </div>
+
+
 </div>

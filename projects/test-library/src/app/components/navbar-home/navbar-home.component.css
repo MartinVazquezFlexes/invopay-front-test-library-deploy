@@ -8,7 +8,7 @@
   .sidebar {
     width: 220px;
     background: #ffffff;
-    color: #009ce4;
+    color: #0071CE;
     transition: width 0.3s;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -17,7 +17,7 @@
     flex-direction: column;
 
     &.closed {
-      width: 70px;
+      width: 60px;
     }
 
     .sidebar-header {
@@ -40,7 +40,7 @@
           display: flex;
           align-items: center;
           padding: 12px 10px;
-          margin: 2px 8px;
+          /*margin: 2px 8px;*/
           color: rgb(0, 0, 0);
           text-decoration: none;
           transition: all 0.2s ease;
@@ -48,13 +48,13 @@
 
           &:hover {
             background: #f0f7ff;
-            color: #009ce4;
+            color: #f5f5f5;
           }
 
           &.active {
             background: #e6f3fb;
-            color: #009ce4;
-            border-left: 3px solid #009ce4;
+            color: #d6e8f7;
+            border-left: 3px solid #0071CE;
             padding-left: 7px;
           }
 
@@ -65,7 +65,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
+            margin-right: 25px;
             flex-shrink: 0;
 
             img {
@@ -77,7 +77,7 @@
 
           .text {
             white-space: nowrap;
-            color: #009ce4;
+            color: #0071CE;
             font-size: 14px;
             font-weight: 500;
             overflow: hidden;
@@ -86,11 +86,6 @@
         }
       }
 
-      .menu-section {
-        padding: 8px 0;
-        margin: 8px 0;
-
-      }
     }
   }
 
@@ -115,7 +110,6 @@
     }
 
     .main-section {
-      padding: 30px;
       overflow: auto;
       flex: 1;
       box-sizing: border-box;
@@ -252,7 +246,6 @@
         padding: 10px 0;
 
         li a {
-          margin: 4px 8px;
           padding: 10px 12px;
         }
       }

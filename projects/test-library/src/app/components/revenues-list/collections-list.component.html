@@ -15,24 +15,27 @@
 
 
         <div class="input-date">
-          <label for="inputDate">Desde</label>
+          
           <input
             type="date"
+            id="desde"
             formControlName="startDate"
             [min]="startDateMin"
             [max]="startDateMax"
           />
+          <label for="desde">Desde</label>
         </div>
 
         <div class="input-date">
-          <label for="inputDate">Hasta</label>
+          
           <input
             type="date"
-            id="inputDate"
+            id="hasta"
             formControlName="endDate"
             [min]="endDateMin"
             [max]="endDateMax"
           />
+          <label for="hasta">Hasta</label>
           <!--<app-ip-date-input></app-ip-date-input>-->
         </div>
       </form>
@@ -63,25 +66,15 @@
         [actionsIf]="actionsIf"
         [initTable]="initTable"
         [scroll]="scroll"
+        (sort)="onSort($event)"
         (action)="onAction($event)"
         (selectedItemsChange)="onSelectedItemsChange($event)"
       >
       </app-table>
     </div>
-  </div>
-
-  <div class="pagination">
+      <div class="pagination">
+        
     <div class="center">
-      <app-paginator
-        [totalItems]="filteredRevenues.length"
-        [itemsPerPage]="itemsPerPage"
-        [currentPages]="currentPage"
-        (pageChange)="onPageChange($event)"
-      >
-      </app-paginator>
-    </div>
-
-    <div class="number-pages">
       <select
         name="selectPages"
         id="pages"
@@ -95,5 +88,18 @@
         <option value="50">50</option>
       </select>
     </div>
+    <div>
+      <app-paginator
+        [totalItems]="filteredRevenues.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+
   </div>
+  </div>
+
+
 </div>

@@ -353,4 +353,39 @@ onItemsPerPageChange(newValue: any) {
   
   return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
+
+onSort(event: any) {
+  const sortKey = event.key; //revenueDateDisplay
+  const sortEvent = event.event; //'asc', 'desc' o 'clean'
+
+  //mapear al original
+  const sortFieldMap: { [key: string]: string } = {
+    'revenueDateDisplay': 'revenueDate'
+  };
+
+  const actualSortField = sortFieldMap[sortKey] || sortKey;
+
+  if (sortEvent === 'clean') {
+    this.filteredRevenues = [...this.tableData];
+  } else {
+    this.filteredRevenues.sort((a, b) => {
+      let aValue = (a as any)[actualSortField];
+      let bValue = (b as any)[actualSortField];
+
+      //convertir a fecha para sort
+      if (actualSortField === 'revenueDate') {
+        aValue = new Date(aValue).getTime();
+        bValue = new Date(bValue).getTime();
+      }
+
+      if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
+      if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }
+
+  this.currentPage = 1;
+  this.updatePage();
+}
+
 }
