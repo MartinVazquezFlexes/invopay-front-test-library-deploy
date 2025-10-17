@@ -342,7 +342,7 @@ export class SellListComponent implements OnInit, OnDestroy {
   const actualSortField = sortFieldMap[sortKey] || sortKey;
 
   if (sortEvent === 'clean') {
-    this.filteredSales = [...this.tableData];
+    this.applyFilters();
   } else {
     this.filteredSales.sort((a, b) => {
       let aValue = (a as any)[actualSortField];

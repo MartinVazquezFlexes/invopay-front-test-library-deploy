@@ -366,7 +366,7 @@ onSort(event: any) {
   const actualSortField = sortFieldMap[sortKey] || sortKey;
 
   if (sortEvent === 'clean') {
-    this.filteredRevenues = [...this.tableData];
+    this.applyFilters();
   } else {
     this.filteredRevenues.sort((a, b) => {
       let aValue = (a as any)[actualSortField];
