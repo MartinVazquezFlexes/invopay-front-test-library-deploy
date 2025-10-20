@@ -4,8 +4,8 @@
   </div>
 
   <div class="card">
-
-    <div> <!--[actions]="actions"-->
+    <div class="table-view">
+      <!--[actions]="actions"-->
       <app-table
         *ngIf="pagedData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -21,33 +21,66 @@
       >
       </app-table>
     </div>
-      <div class="pagination">
-        
-    <div class="center">
-      <select
-        name="selectPages"
-        id="pages"
-        [(ngModel)]="itemsPerPage"
-        (ngModelChange)="onItemsPerPageChange($event)"
-      >
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-      </select>
+
+    <!--Mostrar si es mobile-->
+    <!--Hacer card la info para mobile-->
+    <div class="card-view" *ngFor="let item of pagedData">
+      <div class="card-header">
+        <span class="card-id">#{{ item.id }}</span>
+        <div class="menu-container">
+          <img src="assets/icons/images.jpg" [alt]="item.name" width="10%" />
+        </div>
+      </div>
+
+      <div class="card-row">
+        <label>Nombre</label>
+        <span class="card-amount">{{ item.name }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Canales de Pago</label>
+        <div class="payment-channels-container">
+          <span class="payment-channel-span" *ngFor="let channel of item.paymentChannels">
+            {{ channel }}
+          </span>
+        </div>
+      </div>
+
+      <div class="card-row">
+        <label>Activo</label>
+        <span *ngIf="item.isActive">Si</span>
+        <span *ngIf="!item.isActive">No</span>
+      </div>
+
+      <div class="card-row">
+        <label>Descripción</label>
+        <span>{{ item.description }}</span>
+      </div>
     </div>
-    <div>
-      <app-paginator
-        [totalItems]="tableData.length"
-        [itemsPerPage]="itemsPerPage"
-        [currentPages]="currentPage"
-        (pageChange)="onPageChange($event)"
-      >
-      </app-paginator>
+
+    <div class="pagination">
+      <div class="center">
+        <select
+          name="selectPages"
+          id="pages"
+          [(ngModel)]="itemsPerPage"
+          (ngModelChange)="onItemsPerPageChange($event)"
+        >
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+        </select>
+      </div>
+      <div>
+        <app-paginator
+          [totalItems]="tableData.length"
+          [itemsPerPage]="itemsPerPage"
+          [currentPages]="currentPage"
+          (pageChange)="onPageChange($event)"
+        >
+        </app-paginator>
+      </div>
     </div>
-
   </div>
-  </div>
-
-
 </div>

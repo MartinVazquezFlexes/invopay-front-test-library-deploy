@@ -12,10 +12,7 @@
       - canal de pago (transferencia, tarjeta, boleto, efectivo, cheque). 
       -->
       <form [formGroup]="filtersForm">
-
-
         <div class="input-date">
-          
           <input
             type="date"
             id="desde"
@@ -27,7 +24,6 @@
         </div>
 
         <div class="input-date">
-          
           <input
             type="date"
             id="hasta"
@@ -47,7 +43,7 @@
           size="small"
           (clicked)="applyDateFilters()"
         >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
         </app-ip-button-modal>
 
         <app-ip-button-modal
@@ -62,7 +58,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="table-view">
       <!--Ver columna actions porque no traduce-->
       <app-table
         *ngIf="pagedData.length > 0"
@@ -81,23 +77,84 @@
       >
       </app-table>
     </div>
-      <div class="pagination">
-        
-    <div class="center">
-      <select
-        name="selectPages"
-        id="pages"
-        class="selectCenter"
-        [(ngModel)]="itemsPerPage"
-        (ngModelChange)="onItemsPerPageChange($event)"
-      >
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-        <option value="50">50</option>
-      </select>
+
+    <!--Mostrar si es mobile-->
+    <!--Hacer card la info para mobile-->
+    <div class="card-view" *ngFor="let item of pagedData">
+      <div class="card-header">
+        <span class="card-id">#{{ item.id }}</span>
+        <div class="menu-container">
+          <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
+          <div class="menu-dropdown" *ngIf="openMenuId === item.id">
+            <button (click)="toDetails(item.id)">Detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-row">
+        <label>Fecha de venta</label>
+        <span class="card-date">{{
+          item.revenueDate | date : "dd/MM/yyyy"
+        }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Recaudado</label>
+        <span class="card-amount">{{ item.revenueAmount }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Proveedor</label>
+        <span>{{ item.paymentProvider }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Canal de Pago</label>
+        <span>{{ item.paymentChannel }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Consolidada</label>
+        <span>{{ item.isConsolidated }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Número Poliza</label>
+        <span>{{ item.policyNumber }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Producto</label>
+        <span>{{ item.productName }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Prima</label>
+        <span class="card-amount">{{ item.premiumAmount }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Broker</label>
+        <span>{{ item.brokerName }}</span>
+      </div>
     </div>
+
+    <div class="pagination">
+      <div class="center">
+        <select
+          name="selectPages"
+          id="pages"
+          class="selectCenter"
+          [(ngModel)]="itemsPerPage"
+          (ngModelChange)="onItemsPerPageChange($event)"
+        >
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
       <app-paginator
         [totalItems]="filteredRevenues.length"
         [itemsPerPage]="itemsPerPage"
@@ -105,8 +162,6 @@
         (pageChange)="onPageChange($event)"
       >
       </app-paginator>
+    </div>
   </div>
-  </div>
-
-
 </div>

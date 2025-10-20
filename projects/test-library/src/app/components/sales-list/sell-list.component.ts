@@ -206,6 +206,18 @@ export class SellListComponent implements OnInit, OnDestroy {
     });
   }
 
+  openMenuId: number | null = null;
+
+  toggleMenu(id: number) {
+    this.openMenuId = this.openMenuId === id ? null : id;
+  }
+
+  toDetails(id:number){
+    this.router.navigate(['/invopay/sale-details'], {
+      state: { data: id }, //objetoId seleccionado para mostrar en el detalle
+    });
+  }
+
   //Si seleccionamos items
   onSelectedItemsChange(items: any[]) {
     console.log('Items seleccionados:', items);

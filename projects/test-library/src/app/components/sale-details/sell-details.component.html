@@ -123,7 +123,7 @@
   <!-- Tabla de plan de pagos -->
   <div class="card">
     <h3 class="title">Plan de Pago de Cuotas</h3>
-    <div>
+    <div class="table-view">
       <app-table
         *ngIf="tableData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -139,5 +139,45 @@
       >
       </app-table>
     </div>
+    
+    <!--Mostrar si es mobile-->
+    <!--Hacer card la info para mobile-->
+    <div class="card-view" *ngFor="let item of tableData">
+      <div class="card-header">
+        <span class="card-id">N°{{ item.installmentNumber }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Valor</label>
+        <span class="card-amount">{{ item.amount }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Fecha Vencimiento</label>
+        <span>{{ item.dueDate | date: "dd/MM/yyyy" }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Estado</label>
+        <span>{{ item.isPaid }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Comisión</label>
+        <span>{{ item.commission }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Valor Comisión</label>
+        <span class="card-amount">{{ item.commissionAmount }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Fecha de Pago</label>
+        <span>{{ item.payedDate | date: "dd/MM/yyyy" }}</span>
+      </div>
+     
+    </div>
+
   </div>
 </div>

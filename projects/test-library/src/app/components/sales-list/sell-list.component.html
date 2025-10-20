@@ -56,7 +56,8 @@
       </div>
     </div>
 
-    <div>
+    <!--Mostrar si no es mobile-->
+    <div class="table-view">
       <!--Ver columna actions porque no traduce-->
       <app-table
         *ngIf="pagedData.length > 0"
@@ -75,6 +76,50 @@
       >
       </app-table>
     </div>
+
+    <!--Mostrar si es mobile-->
+    <!--Hacer card la info para mobile-->
+  <div class="card-view" *ngFor="let item of pagedData">
+  <div class="card-header">
+    <span class="card-id">#{{ item.id }}</span>
+    <div class="menu-container">
+      <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
+      <div class="menu-dropdown" *ngIf="openMenuId === item.id">
+        <button (click)="toDetails(item.id)">Detalle</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-row">
+    <label>Fecha de venta</label>
+    <span class="card-date">{{ item.saleDate | date: 'dd/MM/yyyy' }}</span>
+  </div>
+
+  <div class="card-row">
+    <label>Producto</label>
+    <span>{{ item.productName }}</span>
+  </div>
+
+  <div class="card-row">
+    <label>Broker</label>
+    <span>{{ item.brokerName }}</span>
+  </div>
+
+  <div class="card-row">
+    <label>Cliente</label>
+    <span>{{ item.customerName }}</span>
+  </div>
+
+  <div class="card-row">
+    <label>Poliza</label>
+    <span class="card-amount">{{ item.policyAmount }}</span>
+  </div>
+
+  <div class="card-row">
+    <label>Prima</label>
+    <span class="card-amount">{{ item.premiumAmount }}</span>
+  </div>
+</div>
 
     <div class="pagination">
       <div class="center">

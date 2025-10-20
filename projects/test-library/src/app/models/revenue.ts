@@ -6,7 +6,7 @@ export interface revenueDetails {
   paymentProvider: string;
   paymentChannel: string;
   isConsolidated: boolean;
-  policyNunber: string;
+  policyNumber: string;
   productName: string;
   premiumAmount: number;
   brokerName: string;

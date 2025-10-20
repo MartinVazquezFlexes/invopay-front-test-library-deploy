@@ -150,6 +150,15 @@ button:hover {
     border: 1px solid;
 }
 
+/*mostrar tabla, ocultar cards*/
+.table-view {
+  display: block;
+}
+
+.card-view {
+  display: none;
+}
+
 /*tablet*/
 @media (max-width: 768px) {
     .card-title,
@@ -175,7 +184,73 @@ button:hover {
 }
 
 /*mobile*/
-@media (max-width: 480px) {
+@media (max-width: 492px) {
+
+    .table-view {
+    display: none;
+  }
+
+  .card-view {
+    display: block;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #0071ce;
+  }
+
+  .card-id {
+    color: #0071ce;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .menu-container {
+    text-align: end;
+  }
+
+
+
+  .card-row-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .card-row-mobile label {
+    color: rgb(132, 129, 138);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .card-row-mobile span {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .card-date {
+    color: #666;
+    font-size: 13px;
+  }
+
+  .card-amount {
+    color: #0071ce;
+    font-weight: 600;
+  }
+
     .container {
         padding: 10px;
     }

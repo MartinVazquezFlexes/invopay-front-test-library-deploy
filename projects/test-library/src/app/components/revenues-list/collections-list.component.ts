@@ -187,6 +187,18 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     });
   }
 
+  openMenuId: number | null = null;
+
+  toggleMenu(id: number) {
+    this.openMenuId = this.openMenuId === id ? null : id;
+  }
+
+  toDetails(id:number){
+    this.router.navigate(['/invopay/revenue-details'], {
+      state: { data: id }, //objeto seleccionado para mostrar en el detalle
+    });
+  }
+
   //Si seleccionamos items
   onSelectedItemsChange(items: any[]) {
     console.log('Items seleccionados:', items);
@@ -212,7 +224,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
           //if isConsolidated = false entonces "-" 
           premiumAmount: s.isConsolidated ? `${s.currency} ${Math.round(
             s.premiumAmount,
-          ).toLocaleString()}` : ''
+          ).toLocaleString()}` : '-'
         })) as any; //cambiar a any porque deja de ser number
 
         this.filteredRevenues = this.tableData; //Lista que voy a filtrar

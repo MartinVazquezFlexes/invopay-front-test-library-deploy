@@ -204,6 +204,8 @@
           </div>
 
       </div>
+      <h3 class="title">Plan de Pago de Cuotas</h3>
+      <div class="table-view">
       <app-table
         *ngIf="tableData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -216,6 +218,27 @@
         (action)="onAction($event)"
         (selectedItemsChange)="onSelectedItemsChange($event)">
       </app-table>
+      </div>
+
+    <!--Mostrar si es mobile-->
+    <!--Hacer card la info para mobile-->
+    <div class="card-view" *ngFor="let item of tableData">
+      <div class="card-header">
+        <span class="card-id">N°{{ item.installmentNumber }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Fecha Vencimiento</label>
+        <span>{{ item.dueDate | date: "dd/MM/yyyy" }}</span>
+      </div>
+
+      <div class="card-row-mobile">
+        <label>Valor</label>
+        <span class="card-amount">{{ item.amount }}</span>
+      </div>
+     
+    </div>
+
     </div>
 
   </div>

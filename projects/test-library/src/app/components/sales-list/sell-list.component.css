@@ -1,101 +1,109 @@
 body {
-    background: #F5F5F5;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: #f5f5f5;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    background: #F5F5F5;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    box-sizing: border-box; 
+  background: #f5f5f5;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.title{
-    color: #0071CE;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.title {
+  color: #0071ce;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    width: 95%;
-    max-width: 100%;
-    padding: 20px 40px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 100%;
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.filters{
-    display: flex;
-    justify-content: flex-end;
+.filters {
+  display: flex;
+  justify-content: flex-end;
 }
 
-form{
-    display: flex;
-    flex-wrap: wrap; 
+form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.input-date{
-    position: relative;
-    width: 200px;
-    margin: 10px;
+.input-date {
+  position: relative;
+  width: 200px;
+  margin: 10px;
 }
 
 .input-date label {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 12px;
-    color: #999999;
-    font-weight: 500;
-    background: #ffffff;
-    padding: 0 6px;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    border-radius: 20px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 12px;
+  color: #999999;
+  font-weight: 500;
+  background: #ffffff;
+  padding: 0 6px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
 .input-date input[type="date"] {
-    width: 100%;
-    padding: 12px 12px;
-    border: 1px solid #E0E0E0;
-    border-radius: 10px;
-    font-size: 14px;
-    background-color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  box-sizing: border-box;
 }
 
 .input-date input[type="date"]:focus {
-    outline: none;
-    border-color: #0071CE;
-    box-shadow: 0 0 0 3px rgba(0, 113, 206, 0.1);
+  outline: none;
+  border-color: #0071ce;
+  box-shadow: 0 0 0 3px rgba(0, 113, 206, 0.1);
 }
 
 .input-date input[type="date"]:focus + label,
 .input-date input[type="date"]:valid + label {
-    top: -8px;
-    left: 8px;
-    font-size: 11px;
-    color: #6e7174;
-    background: #ffffff;
-    padding: 2px 8px;
+  top: -8px;
+  left: 8px;
+  font-size: 11px;
+  color: #6e7174;
+  background: #ffffff;
+  padding: 2px 8px;
 }
 
-.buttons{
-    align-items: center;
-    text-align: center;
-    display: flex; 
-    gap: 5px;
+.buttons {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  gap: 5px;
 }
 
+/*mostrar tabla, ocultar cards*/
+.table-view {
+  display: block;
+}
+
+.card-view {
+  display: none;
+}
 
 .pagination {
   display: flex;
@@ -118,9 +126,9 @@ form{
   padding: 8px 12px;
   border-radius: 15px;
   border: 1px solid;
+  height: 40px;
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 
 app-paginator {
@@ -128,62 +136,178 @@ app-paginator {
   align-items: center;
 }
 
-/*mobile*/
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .card {
-        padding: 15px;
-        border-radius: 10px;
-        width: 100%;
-    }
-    
-    .title {
-        text-align: center;
-        width: 100%;
-    }
-    
-    form {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-    }
-    
-    .input-date {
-        width: 100%;
-        min-width: 100%;
-    }
-    
-    .input-date label {
-        margin-bottom: 10px;
-    }
-    
-    .input-date input[type="date"] {
-        font-size: 16px;
-        padding: 14px 12px;
-    }
-    
-    .buttons {
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: 10px;
-    }
-    
-    button {
-        width: auto;
-        min-width: 48px;
-        min-height: 48px;
-        padding: 12px 16px;
-    }
-    
-    .number-pages select {
-        width: 100%;
-    }
-    
-    .pagination {
-        flex-direction: column;
-        width: 100%;
-    }
+/*ocultar tabla, mostrar cards*/
+@media (max-width: 768px) {
+  .table-view {
+    display: none;
+  }
+
+  .card-view {
+    display: block;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #0071ce;
+  }
+
+  .card-id {
+    color: #0071ce;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .menu-container {
+    position: relative;
+  }
+
+  .menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #000000;
+    line-height: 1;
+  }
+
+  .menu-button:hover {
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 120px;
+    z-index: 10;
+    margin-top: 4px;
+  }
+
+  .menu-dropdown button {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(132, 129, 138);
+  }
+
+  .menu-dropdown button:hover {
+    background: #f5f5f5;
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .card-row label {
+    color: rgb(132, 129, 138);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .card-row span {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .card-date {
+    color: #666;
+    font-size: 13px;
+  }
+
+  .card-amount {
+    color: #0071ce;
+    font-weight: 600;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .title {
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-date {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .input-date label {
+    margin-bottom: 10px;
+  }
+
+  .input-date input[type="date"] {
+    font-size: 16px;
+    padding: 14px 12px;
+  }
+
+  .filters {
+  flex-direction: column;
+  align-items: stretch !important;
+  gap: 10px;
+}
+
+.buttons {
+  justify-content: center !important;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  order: 2;
+}
+
+form {
+  order: 1;
+  width: 100%;
+}
+
+  button {
+    width: auto;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .center {
+    width: 100%;
+  }
+
+  .selectCenter {
+    width: 100%;
+  }
 }
