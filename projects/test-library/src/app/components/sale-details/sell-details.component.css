@@ -21,7 +21,12 @@ body {
 .title {
     color: #0071CE;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 5px;
+}
+
+.subtitle{
+    color: #0071CE;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 15px;
 }
 
 .card-title {
