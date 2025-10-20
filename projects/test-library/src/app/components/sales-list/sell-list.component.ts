@@ -256,24 +256,47 @@ export class SellListComponent implements OnInit, OnDestroy {
     this.filtersService.setFilters(filtros);
   }
 
+
   applyFilters(filters?: Filtros) {
     const appliedFilters: Filtros = filters ?? this.filtersService.getFilters();
-    //console.log('Filtros:', appliedFilters);
+
+    //parsear fechas correctamente
+    const parseDate = (dateValue: string | Date | null | undefined): Date | null => {
+      if (!dateValue) return null;
+
+      let date: Date;
+
+      if (dateValue instanceof Date) {
+        date = new Date(dateValue);
+      } else {
+        //Es un string
+        const dateStr = dateValue.toString().trim();
+        
+        //Si tiene T (formato ISO), extraer solo la parte YYYY-MM-DD
+        if (dateStr.includes('T')) {
+          //"2025-09-23T00:00:00" -> "2025-09-23"
+          const datePart = dateStr.split('T')[0];
+          const [year, month, day] = datePart.split('-').map(Number);
+          date = new Date(year, month - 1, day);
+        } else {
+          //Formato YYYY-MM-DD
+          const [year, month, day] = dateStr.split('-').map(Number);
+          date = new Date(year, month - 1, day);
+        }
+      }
+
+      //Normalizar a medianoche
+      date.setHours(0, 0, 0, 0);
+      return date;
+    };
 
     this.filteredSales = this.tableData.filter((sale) => {
-      //acomodo todas las fechas a "yyyy/mm/dd"
-      const saleDate = new Date(sale.saleDate);
-      saleDate.setHours(0, 0, 0, 0);
+      const saleDate = parseDate(sale.saleDate);
+      const start = parseDate(appliedFilters.startDateFilter);
+      const end = parseDate(appliedFilters.endDateFilter);
 
-      const start = appliedFilters.startDateFilter
-        ? new Date(appliedFilters.startDateFilter)
-        : null;
-      start?.setHours(0, 0, 0, 0);
-
-      const end = appliedFilters.endDateFilter
-        ? new Date(appliedFilters.endDateFilter)
-        : null;
-      end?.setHours(0, 0, 0, 0);
+      //Si no pudo parsear la fecha de venta, excluir
+      if (!saleDate) return false;
 
       const productoOk =
         !appliedFilters.productFilter ||
@@ -297,8 +320,8 @@ export class SellListComponent implements OnInit, OnDestroy {
       return desdeOk && hastaOk && productoOk && brokerOk && idOk;
     });
 
-    this.currentPage = 1; //cargo la pagina 1 al filtrar
-    this.updatePage(); //actualizo los items de la pagina 1
+    this.currentPage = 1;
+    this.updatePage();
   }
 
   //Paginador

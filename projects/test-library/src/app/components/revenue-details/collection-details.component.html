@@ -4,7 +4,6 @@
     <button (click)="back()">Volver</button>
   </div>
 
-
   <form [formGroup]="detailedInfoForm">
   <div class="card">
     <div class="sections-titles">
@@ -21,52 +20,51 @@
       <div class="inputs">
         <div class="card-input">
             <label for="revenueDate">Fecha Recaudación</label>
-            <input
+            <app-ip-input
+              inputId="revenueDate"
+              [control]="getControl('revenueDate')"
+              label=""
               type="text"
-              name="revenueDate"
-              id="revenueDate"
-              formControlName="revenueDate"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="amountRevenue">Monto</label>
-            <input
+            <app-ip-input
+              inputId="amountRevenue"
+              [control]="getControl('amountRevenue')"
+              label=""
               type="text"
-              name="amountRevenue"
-              id="amountRevenue"
-              formControlName="amountRevenue"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="paymentChannel">Canal de Pago</label>
-            <input
+            <app-ip-input
+              inputId="paymentChannel"
+              [control]="getControl('paymentChannel')"
+              label=""
               type="text"
-              name="paymentChannel"
-              id="paymentChannel"
-              formControlName="paymentChannel"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="paymentEntity">Proveedor</label>
-            <input
+            <app-ip-input
+              inputId="paymentEntity"
+              [control]="getControl('paymentEntity')"
+              label=""
               type="text"
-              name="paymentEntity"
-              id="paymentEntity"
-              formControlName="paymentEntity"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="transactionObservations">Observaciones</label>
-            <textarea
-              type="text"
-              name="transactionObservations"
-              id="transactionObservations"
-              formControlName="transactionObservations"
-            ></textarea>
+            <app-ip-text-area-input
+              inputId="transactionObservations"
+              [control]="getControl('transactionObservations')"
+              label=""
+            ></app-ip-text-area-input>
           </div>
       </div>
 
@@ -79,73 +77,73 @@
 
           <div class="card-input">
             <label for="isConsolidated">Consolidada</label>
-            <input
+            <app-ip-input
+              inputId="isConsolidated"
+              [control]="getControl('isConsolidated')"
+              label=""
               type="text"
-              name="isConsolidated"
-              id="isConsolidated"
-              formControlName="isConsolidated"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="productName">Producto</label>
-            <input
+            <app-ip-input
+              inputId="productName"
+              [control]="getControl('productName')"
+              label=""
               type="text"
-              name="productName"
-              id="productName"
-              formControlName="productName"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="policyNumber">Póliza</label>
-            <input
+            <app-ip-input
+              inputId="policyNumber"
+              [control]="getControl('policyNumber')"
+              label=""
               type="text"
-              name="policyNumber"
-              id="policyNumber"
-              formControlName="policyNumber"
-            />
+            ></app-ip-input>
           </div>
 
           
           <div class="card-input">
             <label for="amountPolicy">Monto</label>
-            <input
+            <app-ip-input
+              inputId="amountPolicy"
+              [control]="getControl('amountPolicy')"
+              label=""
               type="text"
-              name="amountPolicy"
-              id="amountPolicy"
-              formControlName="amountPolicy"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="brokerName">Broker</label>
-            <input
+            <app-ip-input
+              inputId="brokerName"
+              [control]="getControl('brokerName')"
+              label=""
               type="text"
-              name="brokerName"
-              id="brokerName"
-              formControlName="brokerName"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="payNumber">Número de Pago</label>
-            <input
+            <app-ip-input
+              inputId="payNumber"
+              [control]="getControl('payNumber')"
+              label=""
               type="text"
-              name="payNumber"
-              id="payNumber"
-              formControlName="payNumber"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="payAmount">Valor de Pago</label>
-            <input
+            <app-ip-input
+              inputId="payAmount"
+              [control]="getControl('payAmount')"
+              label=""
               type="text"
-              name="payAmount"
-              id="payAmount"
-              formControlName="payAmount"
-            />
+            ></app-ip-input>
           </div>
 
       </div>
@@ -157,54 +155,53 @@
       <div class="inputs">
         <div class="card-input">
             <label for="productNamePolicy">Producto</label>
-            <input
+            <app-ip-input
+              inputId="productNamePolicy"
+              [control]="getControl('productNamePolicy')"
+              label=""
               type="text"
-              name="productNamePolicy"
-              id="productNamePolicy"
-              formControlName="productNamePolicy"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="policyNumberPol">Número de Póliza</label>
-            <input
+            <app-ip-input
+              inputId="policyNumberPol"
+              [control]="getControl('policyNumberPol')"
+              label=""
               type="text"
-              name="policyNumberPol"
-              id="policyNumberPol"
-              formControlName="policyNumberPol"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="amountPolPolicy">Monto Poliza</label>
-            <input
+            <app-ip-input
+              inputId="amountPolPolicy"
+              [control]="getControl('amountPolPolicy')"
+              label=""
               type="text"
-              name="amountPolPolicy"
-              id="amountPolPolicy"
-              formControlName="amountPolPolicy"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="saleDate">Fecha de Venta</label>
-            <input
+            <app-ip-input
+              inputId="saleDate"
+              [control]="getControl('saleDate')"
+              label=""
               type="text"
-              name="saleDate"
-              id="saleDate"
-              formControlName="saleDate"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="premiumAmount">Monto de Prima</label>
-            <input
+            <app-ip-input
+              inputId="premiumAmount"
+              [control]="getControl('premiumAmount')"
+              label=""
               type="text"
-              name="premiumAmount"
-              id="premiumAmount"
-              formControlName="premiumAmount"
-            />
+            ></app-ip-input>
           </div>
-
 
       </div>
       <app-table
@@ -224,4 +221,3 @@
   </div>
   </form>
 </div>
-

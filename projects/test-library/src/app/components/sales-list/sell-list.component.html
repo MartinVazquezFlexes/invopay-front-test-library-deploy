@@ -11,32 +11,46 @@
       -->
       <form [formGroup]="filtersForm">
         <div class="input-date">
-          
-          <input type="date" id="desde" formControlName="startDate" [min]="startDateMin" [max]="startDateMax"/>
+          <input
+            type="date"
+            id="desde"
+            formControlName="startDate"
+            [min]="startDateMin"
+            [max]="startDateMax"
+          />
           <label for="desde">Desde</label>
         </div>
 
         <div class="input-date">
-          
           <input
             type="date"
             id="hasta"
             formControlName="endDate"
-            [min]="endDateMin" [max]="endDateMax"
+            [min]="endDateMin"
+            [max]="endDateMax"
           />
           <label for="hasta">Hasta</label>
           <!--<app-ip-date-input></app-ip-date-input>-->
         </div>
-
       </form>
 
       <div class="buttons">
-        <button type="submit" (click)="applyDateFilters()">
-          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
-        </button>
-        <button (click)="openModal()">
-          <img src="assets/icons/filter3.svg"/>
-        </button>
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="applyDateFilters()"
+        >
+        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+        </app-ip-button-modal>
+
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="openModal()"
+        >
+          <img src="assets/icons/filter3.svg" />
+        </app-ip-button-modal>
+
         <app-list-filters *ngIf="showModal" (close)="closeModal()">
         </app-list-filters>
       </div>
@@ -62,33 +76,31 @@
       </app-table>
     </div>
 
-    
-  <div class="pagination">
-    <div class="center">
-      <select 
-        name="selectPages"
-        id="pages"
-        [(ngModel)]="itemsPerPage"
-        (ngModelChange)="onItemsPerPageChange($event)"
-      >
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-      </select>
-    </div>
+    <div class="pagination">
+      <div class="center">
+        <select
+          name="selectPages"
+          id="pages"
+          class="selectCenter"
+          [(ngModel)]="itemsPerPage"
+          (ngModelChange)="onItemsPerPageChange($event)"
+        >
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+        </select>
+      </div>
 
-    <div >
-      <app-paginator
-        [totalItems]="filteredSales.length"
-        [itemsPerPage]="itemsPerPage"
-        [currentPages]="currentPage"
-        (pageChange)="onPageChange($event)"
-      >
-      </app-paginator>
+      
+        <app-paginator
+          [totalItems]="filteredSales.length"
+          [itemsPerPage]="itemsPerPage"
+          [currentPages]="currentPage"
+          (pageChange)="onPageChange($event)"
+        >
+        </app-paginator>
+      
     </div>
   </div>
-
-  </div>
-
 </div>

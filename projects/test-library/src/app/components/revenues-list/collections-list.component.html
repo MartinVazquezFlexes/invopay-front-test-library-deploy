@@ -42,12 +42,21 @@
 
       <!--Sumar los iconos (PREGUNTAR)-->
       <div class="buttons">
-        <button type="submit" (click)="applyDateFilters()">
-          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
-        </button>
-        <button (click)="openModal()">
-          <img src="assets/icons/filter3.svg" width="70%" />
-        </button>
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="applyDateFilters()"
+        >
+        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+        </app-ip-button-modal>
+
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="openModal()"
+        >
+          <img src="assets/icons/filter3.svg" />
+        </app-ip-button-modal>
         <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
         </app-list-filters-revenue>
       </div>
@@ -78,6 +87,7 @@
       <select
         name="selectPages"
         id="pages"
+        class="selectCenter"
         [(ngModel)]="itemsPerPage"
         (ngModelChange)="onItemsPerPageChange($event)"
       >
@@ -88,7 +98,6 @@
         <option value="50">50</option>
       </select>
     </div>
-    <div>
       <app-paginator
         [totalItems]="filteredRevenues.length"
         [itemsPerPage]="itemsPerPage"
@@ -96,8 +105,6 @@
         (pageChange)="onPageChange($event)"
       >
       </app-paginator>
-    </div>
-
   </div>
   </div>
 

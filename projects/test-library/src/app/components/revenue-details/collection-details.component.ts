@@ -168,6 +168,12 @@ tableData: detailRevenueTable[] = [];
     this.getRevenueToShow(data);
   }
 
+    // getter para acceder a cualquier control
+  getControl(controlName: string): FormControl {
+    return this.detailedInfoForm.get(controlName) as FormControl;
+  }
+
+
   getRevenueToShow(id: number){
     this.revenueService.getRevenuesById(id).subscribe({
       next: (response) => {

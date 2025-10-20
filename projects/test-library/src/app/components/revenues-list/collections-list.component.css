@@ -93,48 +93,38 @@ form{
     align-items: center;
     text-align: center;
     display: flex; 
+    gap: 5px;
 }
 
-button{
-    background: #0071CE;
-    color: #ffffff;
-    margin: 5px;
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: 1px solid;
-    cursor: pointer;
-    display: flex;
-    min-width: 48px;
-    min-height: 48px;
-    transition: background-color 0.3s ease;
-}
-
-button img {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-button:hover{
-    background-color: #0362af;
-    cursor: pointer;
-}
-
-.pagination{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+.pagination {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 50px;
 }
 
 .center {
-    margin: 0 auto;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
 }
 
-.center select{
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: 1px solid;
+.selectCenter {
+  padding: 8px 12px;
+  border-radius: 15px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+app-paginator {
+  display: flex;
+  align-items: center;
 }
 /*mobile*/
 @media (max-width: 480px) {

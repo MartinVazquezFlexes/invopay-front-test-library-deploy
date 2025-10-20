@@ -272,7 +272,7 @@ export class SellDetailsComponent implements OnInit {
       commissionAmount: formattedCommissionAmount,
       payedDate: isPaid ? installment.dueDate.split('T')[0] : '',}; 
   });
-  this.updatePage();
+  
   //console.log('Datos de la tabla:', this.tableData);
   }
 
@@ -282,30 +282,6 @@ export class SellDetailsComponent implements OnInit {
     state: { keepFilters: true } 
   });
   }
-
-
-  //Paginacion
-    pagedData: detailSaleTable[] = [];
-    currentPage = 1;
-    itemsPerPage = 5;
-  
-    onPageChange(page: number) {
-      this.currentPage = page;
-      this.updatePage();
-    }
-  
-    updatePage() {
-      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      const endIndex = startIndex + this.itemsPerPage;
-  
-      this.pagedData = this.tableData.slice(startIndex, endIndex);
-    }
-  
-    onItemsPerPageChange(newValue: number) {
-      this.itemsPerPage = newValue;
-      this.currentPage = 1;
-      this.updatePage();
-    }
 
     onSort(event: any) {
   const sortKey = event.key; //revenueDateDisplay
@@ -336,9 +312,6 @@ export class SellDetailsComponent implements OnInit {
       return 0;
     });
   }
-
-  this.currentPage = 1;
-  this.updatePage();
 }
 
 }

@@ -12,72 +12,72 @@
         <div class="inputs">
           <div class="card-input">
             <label for="fechaVenta">Fecha Venta</label>
-            <input
+            <app-ip-input
+              inputId="fechaVenta"
+              [control]="getControl('saleDate')"
+              label=""
               type="text"
-              name="fechaVenta"
-              id="fechaVenta"
-              formControlName="saleDate"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="nombreProducto">Nombre Producto</label>
-            <input
+            <app-ip-input
+              inputId="nombreProducto"
+              [control]="getControl('productName')"
+              label=""
               type="text"
-              name="nombreProducto"
-              id="nombreProducto"
-              formControlName="productName"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="valorPrima">Valor Prima</label>
-            <input
+            <app-ip-input
+              inputId="valorPrima"
+              [control]="getControl('premiumAmount')"
+              label=""
               type="text"
-              name="valorPrima"
-              id="valorPrima"
-              formControlName="premiumAmount"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="valorComisionBroker">Valor Comisión Broker</label>
-            <input
+            <app-ip-input
+              inputId="valorComisionBroker"
+              [control]="getControl('brokerCommission')"
+              label=""
               type="text"
-              name="valorComisionBroker"
-              id="valorComisionBroker"
-              formControlName="brokerCommission"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="numeroPoliza">Número Póliza</label>
-            <input
+            <app-ip-input
+              inputId="numeroPoliza"
+              [control]="getControl('policyNumber')"
+              label=""
               type="text"
-              name="numeroPoliza"
-              id="numeroPoliza"
-              formControlName="policyNumber"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="valorPoliza">Valor Póliza</label>
-            <input
+            <app-ip-input
+              inputId="valorPoliza"
+              [control]="getControl('policyAmount')"
+              label=""
               type="text"
-              name="valorPoliza"
-              id="valorPoliza"
-              formControlName="policyAmount"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="porcentajeComision">Porcentaje Comisión</label>
-            <input
+            <app-ip-input
+              inputId="porcentajeComision"
+              [control]="getControl('commissionPercentage')"
+              label=""
               type="text"
-              name="porcentajeComision"
-              id="porcentajeComision"
-              formControlName="commissionPercentage"
-            />
+            ></app-ip-input>
           </div>
         </div>
       </div>
@@ -88,32 +88,32 @@
         <div class="inputs">
           <div class="card-input">
             <label for="nombreCliente">Nombre</label>
-            <input
+            <app-ip-input
+              inputId="nombreCliente"
+              [control]="getControl('customerName')"
+              label=""
               type="text"
-              name="nombreCliente"
-              id="nombreCliente"
-              formControlName="customerName"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="telefonoCliente">Teléfono</label>
-            <input
+            <app-ip-input
+              inputId="telefonoCliente"
+              [control]="getControl('customerPhoneNumber')"
+              label=""
               type="text"
-              name="telefonoCliente"
-              id="telefonoCliente"
-              formControlName="customerPhoneNumber"
-            />
+            ></app-ip-input>
           </div>
 
           <div class="card-input">
             <label for="emailCliente">Email</label>
-            <input
+            <app-ip-input
+              inputId="emailCliente"
+              [control]="getControl('customerEmail')"
+              label=""
               type="text"
-              name="emailCliente"
-              id="emailCliente"
-              formControlName="customerEmail"
-            />
+            ></app-ip-input>
           </div>
         </div>
       </div>
@@ -125,9 +125,9 @@
     <h3 class="title">Plan de Pago de Cuotas</h3>
     <div>
       <app-table
-        *ngIf="pagedData.length > 0"
+        *ngIf="tableData.length > 0"
         [propertyOrder]="propertyOrder"
-        [data]="pagedData"
+        [data]="tableData"
         [keyTranslate]="keyTranslate"
         [tableStyle]="'invopay'"
         [titlesFile]="titlesFile"
@@ -139,33 +139,5 @@
       >
       </app-table>
     </div>
-    
-
-    <div class="pagination">
-
-      
-    <div class="center">
-      <select
-        name="selectPages"
-        id="pages"
-        [(ngModel)]="itemsPerPage"
-        (ngModelChange)="onItemsPerPageChange($event)"
-      >
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">15</option>
-      </select>
-    </div>
-    <div>
-      <app-paginator
-        [totalItems]="tableData.length"
-        [itemsPerPage]="itemsPerPage"
-        [currentPages]="currentPage"
-        (pageChange)="onPageChange($event)"
-      >
-      </app-paginator>
-    </div>
-
-  </div>
   </div>
 </div>

@@ -34,6 +34,7 @@ body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 5px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .sections-titles h3:hover{
@@ -46,7 +47,7 @@ body {
   background: #f0f7ff;
   padding: 8px 16px;
   margin: 0;
- border-bottom: 2px solid #0071CE;
+  border-bottom: 2px solid #0071CE;
 }
 
 .card-title {
@@ -75,69 +76,64 @@ body {
     overflow-y: auto;
 }
 
-.card-input {
-  position: relative;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.card-input input {
-  width: 100%;
-  padding: 10px 5px 10px 5px;
-  border: 2px solid #dcdcdd;
-  border-radius: 16px;
-  outline: none;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.card-input input:focus {
-    border-color: #0071CE;
-}
-
 form {
   width: 100%; 
   display: flex;
   margin-bottom: 20px;
 }
 
-.card-input label { 
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background: #ffffff;
-  color: black;
-  padding: 0 5px;
-  font-size: 14px;
-}
-
-.card-input textarea{
-  width: 100%;
-  padding: 10px 5px 10px 5px;
-  border: 2px solid #dcdcdd;
-  border-radius: 16px;
-  outline: none;
-  font-size: 14px;
-  resize: none;
-  min-height: 80px;
-  box-sizing: border-box;
-}
-
-.inputs{
+.inputs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
+    width: 100%;
+}
+
+.card-input {
+    position: relative;
+    margin: 0;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* textarea ocupa dos columnas */
-.card-input:has(textarea) {
+.card-input label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #ffffff;
+    color: black;
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.card-input app-ip-input {
+    width: 100% !important;
+    display: block !important;
+}
+
+.card-input app-ip-input input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/*para forzar el tamaño de inputs y textarea*/
+::ng-deep app-ip-input input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+::ng-deep app-ip-input .ip-input-wrapper {
+    width: 100% !important;
+}
+
+.card-input:has(app-ip-text-area-input) {
   grid-column: span 2;
   width: 100%;
-  max-width: 100%;
+}
+
+::ng-deep app-ip-text-area-input textarea {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button {

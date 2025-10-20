@@ -235,20 +235,44 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
       filters ?? this.filtersService.getFilters();
     //console.log('Filtros:', appliedFilters);
 
+        //parsear fechas correctamente
+    const parseDate = (dateValue: string | Date | null | undefined): Date | null => {
+      if (!dateValue) return null;
+
+      let date: Date;
+
+      if (dateValue instanceof Date) {
+        date = new Date(dateValue);
+      } else {
+        //Es un string
+        const dateStr = dateValue.toString().trim();
+        
+        //Si tiene T (formato ISO), extraer solo la parte YYYY-MM-DD
+        if (dateStr.includes('T')) {
+          //"2025-09-23T00:00:00" -> "2025-09-23"
+          const datePart = dateStr.split('T')[0];
+          const [year, month, day] = datePart.split('-').map(Number);
+          date = new Date(year, month - 1, day);
+        } else {
+          //Formato YYYY-MM-DD
+          const [year, month, day] = dateStr.split('-').map(Number);
+          date = new Date(year, month - 1, day);
+        }
+      }
+
+      //Normalizar a medianoche
+      date.setHours(0, 0, 0, 0);
+      return date;
+    };
+
     this.filteredRevenues = this.tableData.filter((revenue) => {
       //acomodo todas las fechas a "yyyy/mm/dd"
-      const revenueDate = new Date(revenue.revenueDate);
-      revenueDate.setHours(0, 0, 0, 0);
+      const revenueDate = parseDate(revenue.revenueDate);
+      const start = parseDate(appliedFilters.startDateFilter);
+      const end = parseDate(appliedFilters.endDateFilter);
 
-      const start = appliedFilters.startDateFilter
-        ? new Date(appliedFilters.startDateFilter)
-        : null;
-      start?.setHours(0, 0, 0, 0);
-
-      const end = appliedFilters.endDateFilter
-        ? new Date(appliedFilters.endDateFilter)
-        : null;
-      end?.setHours(0, 0, 0, 0);
+      //Si no pudo parsear la fecha de venta, excluir
+      if (!revenueDate) return false;
 
       const paymentChannelOk =
         !appliedFilters.paymentChannelFilter ||

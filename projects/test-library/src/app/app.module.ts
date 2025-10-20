@@ -60,8 +60,9 @@ export function HttpLoaderFactory(http: HttpClient) {
             deps: [HttpClient],
         },
     }),
-    InvopayModule
-  ],
+    InvopayModule,
+    ComponentsModule
+],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
