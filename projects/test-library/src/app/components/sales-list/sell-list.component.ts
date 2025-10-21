@@ -176,14 +176,14 @@ export class SellListComponent implements OnInit, OnDestroy {
   keyTranslate = 'IP.ADMIN_TABLE';
 
   //Titulos
-  titlesFile = new Map<string, string>([
+  /*titlesFile = new Map<string, string>([
     ['saleDate', 'Fecha Venta'],
     ['productName', 'Producto'],
     ['brokerName', 'Broker'],
     ['customerName', 'Cliente'],
     ['policyAmount', 'Poliza'],
     ['premiumAmount', 'Prima'],
-  ]);
+  ]);*/
 
   //Acciones de la tabla
   actions: string[] = ['detail'];

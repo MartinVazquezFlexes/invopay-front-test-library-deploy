@@ -24,14 +24,14 @@ export class ProvidersComponent implements OnInit {
   keyTranslate = 'IP.ADMIN_TABLE';
 
   //Titulos
-  titlesFile = new Map<string, string>([
+  /*titlesFile = new Map<string, string>([
     ['logoUrl', 'Logo'],
     ['name', 'Nombre'],
     ['paymentProvider', 'Proveedor'],
     ['paymentChannels', 'Canales de Pago'],
     ['isPaymentEntityActive', 'Activo'],
     ['description', 'Descripción'],
-  ]);
+  ]);*/
 
   //Acciones de la tabla
   //actions: string[] = ['detail'];

@@ -129,10 +129,10 @@ export class SellDetailsComponent implements OnInit {
   ];
 
   //Por si queres traducir el encabezado
-  keyTranslate = '';
+  keyTranslate = 'IP.ADMIN_TABLE';
 
   //Titulos
-  titlesFile = new Map<string, string>([
+  /*titlesFile = new Map<string, string>([
     ['installmentNumber', 'Nro Cuota'],
     ['amount', 'Valor'],
     ['dueDate', 'Fecha Vencimiento'],
@@ -140,7 +140,7 @@ export class SellDetailsComponent implements OnInit {
     ['commission', 'Comisión'],
     ['commissionAmount', 'Valor Comisión'],
     ['payedDate', 'Fecha Pago'],
-  ]);
+  ]);*/
 
   //Acciones de la tabla
   actions: string[] = [''];

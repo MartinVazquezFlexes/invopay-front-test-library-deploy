@@ -132,11 +132,11 @@ tableData: detailRevenueTable[] = [];
   keyTranslate = 'IP.ADMIN_TABLE';
 
   //Titulos
-  titlesFile = new Map<string,string>([
+  /*titlesFile = new Map<string,string>([
     ['installmentNumber', 'Nro Cuota'],
     ['dueDate', 'Fecha Vencimiento'],
     ['amount', 'Valor'],
-  ]);
+  ]);*/
 
 
   //Acciones de la tabla

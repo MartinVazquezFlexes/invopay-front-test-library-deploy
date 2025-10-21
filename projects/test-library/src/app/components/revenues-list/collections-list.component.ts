@@ -143,7 +143,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
   keyTranslate = 'IP.ADMIN_TABLE';
 
   //Titulos
-  titlesFile = new Map<string, string>([
+  /*titlesFile = new Map<string, string>([
     ['revenueDateDisplay', 'Fecha'],
     ['revenueAmount', 'Recaudado'],
     ['paymentProvider', 'Proveedor'],
@@ -153,7 +153,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     ['productName', 'Producto'],
     ['premiumAmount', 'Prima'],
     ['brokerName', 'Broker'],
-  ]);
+  ]);*/
 
   //Acciones de la tabla
   actions: string[] = ['detail'];
