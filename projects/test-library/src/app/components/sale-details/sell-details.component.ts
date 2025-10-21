@@ -198,9 +198,9 @@ export class SellDetailsComponent implements OnInit {
               this.saleDetails.policyData.premiumAmount
             ).toLocaleString()}`,
             premiumPaymentPlan:
-              this.saleDetails.policyData.premiumPaymentPlan.map((p) => ({
-                ...p,
-                amount: `${currency} ${Math.round(p.amount).toLocaleString()}`,
+              this.saleDetails.policyData.premiumPaymentPlan.map((plan) => ({
+                ...plan,
+                amount: `${currency} ${Math.round(plan.amount).toLocaleString()}`,
               })),
           },
         };

@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 
 //creo los filtros
-export interface FiltrosRevenue {
+export interface RevenueFilters {
   paymentChannelFilter?: string;
   startDateFilter?: string;
   endDateFilter?: string;
@@ -16,11 +16,11 @@ export class RevenueFiltersService {
 
 constructor() { }
 
-  private filtersRevenueSubject = new BehaviorSubject<FiltrosRevenue>({}); //Creamos el sujeto
-  filtros$ = this.filtersRevenueSubject.asObservable(); //Me suscribo a sus cambios
+  private filtersRevenueSubject = new BehaviorSubject<RevenueFilters>({}); //Creamos el sujeto
+  filters$ = this.filtersRevenueSubject.asObservable(); //Me suscribo a sus cambios
 
-  setFilters(filtros: FiltrosRevenue) { //Actualizo filtros
-    this.filtersRevenueSubject.next({ ...this.filtersRevenueSubject.value, ...filtros });
+  setFilters(filters: RevenueFilters) { //Actualizo filtros
+    this.filtersRevenueSubject.next({ ...this.filtersRevenueSubject.value, ...filters });
   }
 
   getFilters() { //Recuperar los filtros

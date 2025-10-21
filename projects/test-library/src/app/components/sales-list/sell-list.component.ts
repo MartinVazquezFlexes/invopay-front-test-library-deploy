@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  Filtros,
+  SaleFilters,
   SellFiltersService,
 } from '../../services/sellFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -62,7 +62,7 @@ export class SellListComponent implements OnInit, OnDestroy {
 
 
     //Los inicializo y obtengo los filtros
-    let filters: Filtros;
+    let filters: SaleFilters;
 
     if (keepFilters) {
       //si vengo del detalle = cargo los filtros
@@ -108,20 +108,20 @@ export class SellListComponent implements OnInit, OnDestroy {
 
     //Me suscribo a los cambios de filtros y actualizo al cambiar
     //(cuando toco los botones se actualizan)
-    this.subscription = this.filtersService.filtros$.subscribe((filtros) => {
+    this.subscription = this.filtersService.filters$.subscribe((filters) => {
       this.filtersForm.patchValue(
         {
           //Actualiza el form si limpio los filtros al cerrar el modal
           startDate:
-            filtros.startDateFilter ||
+            filters.startDateFilter ||
             this.oneMonthAgo.toLocaleDateString('en-CA'),
           endDate:
-            filtros.endDateFilter || this.today.toLocaleDateString('en-CA'),
+            filters.endDateFilter || this.today.toLocaleDateString('en-CA'),
         },
         { emitEvent: false }
       ); //para no disparar valueChanges
 
-      this.applyFilters(filtros);
+      this.applyFilters(filters);
     });
 
     this.getSales();
@@ -136,15 +136,15 @@ export class SellListComponent implements OnInit, OnDestroy {
     this.saleService.getSales().subscribe({
       next: (response) => {
         //convertir de number a string "ARS 13.000"
-        this.tableData = response.content.map((s: sale) => ({
-          ...s,
-          saleDateToOrder: s.saleDate,
-          amount: `${s.currency} ${Math.round(s.amount).toLocaleString()}`,
-          policyAmount: `${s.currency} ${Math.round(
-            s.policyAmount
+        this.tableData = response.content.map((sale: sale) => ({
+          ...sale,
+          saleDateToOrder: sale.saleDate,
+          amount: `${sale.currency} ${Math.round(sale.amount).toLocaleString()}`,
+          policyAmount: `${sale.currency} ${Math.round(
+            sale.policyAmount
           ).toLocaleString()}`,
-          premiumAmount: `${s.currency} ${Math.round(
-            s.premiumAmount
+          premiumAmount: `${sale.currency} ${Math.round(
+            sale.premiumAmount
           ).toLocaleString()}`,
         })) as any; //cambiar a any porque deja de ser number
 
@@ -257,20 +257,20 @@ export class SellListComponent implements OnInit, OnDestroy {
   //Filtros
 
   applyDateFilters() {
-    const val = this.filtersForm.value;
+    const value = this.filtersForm.value;
 
-    const filtros: Filtros = {
-      startDateFilter: val.startDate || undefined,
-      endDateFilter: val.endDate || undefined,
+    const filters: SaleFilters = {
+      startDateFilter: value.startDate || undefined,
+      endDateFilter: value.endDate || undefined,
     };
 
     //seteo para que se dispare el cambio
-    this.filtersService.setFilters(filtros);
+    this.filtersService.setFilters(filters);
   }
 
 
-  applyFilters(filters?: Filtros) {
-    const appliedFilters: Filtros = filters ?? this.filtersService.getFilters();
+  applyFilters(filters?: SaleFilters) {
+    const appliedFilters: SaleFilters = filters ?? this.filtersService.getFilters();
 
     //parsear fechas correctamente
     const parseDate = (dateValue: string | Date | null | undefined): Date | null => {
@@ -326,10 +326,10 @@ export class SellListComponent implements OnInit, OnDestroy {
         !appliedFilters.productIdFilter ||
         sale.productId === appliedFilters.productIdFilter;
 
-      const desdeOk = !start || saleDate >= start;
-      const hastaOk = !end || saleDate <= end;
+      const startOk = !start || saleDate >= start;
+      const endOk = !end || saleDate <= end;
 
-      return desdeOk && hastaOk && productoOk && brokerOk && idOk;
+      return startOk && endOk && productoOk && brokerOk && idOk;
     });
 
     this.currentPage = 1;

@@ -68,10 +68,10 @@ export class ProvidersComponent implements OnInit {
         this.tableData = response.content;
         //console.log('Proveedores: ', this.tableData);
 
-        this.tableData = response.content.map((pe: PaymentEntity) => ({
-          ...pe,
+        this.tableData = response.content.map((paymentEntity: PaymentEntity) => ({
+          ...paymentEntity,
           logoUrl: 'assets/icons/images.jpg', //PASAR UN ICON DEFAULT//
-          isPaymentEntityActive: pe.isActive ? 'Si' : 'No', //mostrar si/no segun isActive
+          isPaymentEntityActive: paymentEntity.isActive ? 'Si' : 'No', //mostrar si/no segun isActive
 
         })) as any; //cambiar a any porque deja de ser number
 

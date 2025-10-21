@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 //creo los filtros
-export interface Filtros {
+export interface SaleFilters {
   startDateFilter?: string;
   endDateFilter?: string;
   productIdFilter?: string;
@@ -21,11 +21,11 @@ export class SellFiltersService {
 
 constructor() { }
 
-  private filtersSubject = new BehaviorSubject<Filtros>({}); //Creamos el sujeto
-  filtros$ = this.filtersSubject.asObservable(); //Me suscribo a sus cambios
+  private filtersSubject = new BehaviorSubject<SaleFilters>({}); //Creamos el sujeto
+  filters$ = this.filtersSubject.asObservable(); //Me suscribo a sus cambios
 
-  setFilters(filtros: Filtros) { //Actualizo filtros
-    this.filtersSubject.next({ ...this.filtersSubject.value, ...filtros });
+  setFilters(filters: SaleFilters) { //Actualizo filtros
+    this.filtersSubject.next({ ...this.filtersSubject.value, ...filters });
   }
 
   getFilters() { //Recuperar los filtros

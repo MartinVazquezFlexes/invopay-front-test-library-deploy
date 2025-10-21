@@ -217,9 +217,9 @@ tableData: detailRevenueTable[] = [];
               this.revenueDetails.policyData.premiumAmount
             ).toLocaleString()}`,
             premiumPaymentPlan:
-              this.revenueDetails.policyData.premiumPaymentPlan.map((p) => ({
-                ...p,
-                amount: `${currency} ${Math.round(p.amount).toLocaleString()}`,
+              this.revenueDetails.policyData.premiumPaymentPlan.map((plan) => ({
+                ...plan,
+                amount: `${currency} ${Math.round(plan.amount).toLocaleString()}`,
               })),
           }
         };

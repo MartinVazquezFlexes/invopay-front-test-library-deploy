@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RevenueService } from '../../services/revenue.service';
 import {
-  FiltrosRevenue,
+  RevenueFilters,
   RevenueFiltersService,
 } from '../../services/revenueFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -59,7 +59,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
       false;
 
     //Los inicializo y obtengo los filtros
-    let filters: FiltrosRevenue;
+    let filters: RevenueFilters;
 
     if (keepFilters) {
       //si vengo del detalle = cargo los filtros
@@ -103,20 +103,20 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
 
     //Me suscribo a los cambios de filtros y actualizo al cambiar
     //(cuando toco los botones se actualizan)
-    this.subscription = this.filtersService.filtros$.subscribe((filtros) => {
+    this.subscription = this.filtersService.filters$.subscribe((filters) => {
       this.filtersForm.patchValue(
         {
           //Actualiza el form si limpio los filtros al cerrar el modal
           startDate:
-            filtros.startDateFilter ||
+            filters.startDateFilter ||
             this.oneMonthAgo.toLocaleDateString('en-CA'),
           endDate:
-            filtros.endDateFilter || this.today.toLocaleDateString('en-CA'),
+            filters.endDateFilter || this.today.toLocaleDateString('en-CA'),
         },
         { emitEvent: false }
       ); //para no disparar valueChanges
 
-      this.applyFilters(filtros);
+      this.applyFilters(filters);
     });
 
     this.getRevenues();
@@ -211,19 +211,19 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.revenueService.getRevenues().subscribe({
       next: (response) => {
         //convertir de number a string "ARS 13.000"
-        this.tableData = response.content.map((s: revenueDetails) => ({
-          ...s,
-          revenueDate: s.revenueDate, //la que voy a filtrar
-          revenueDateDisplay: this.formatDate(s.revenueDate), //la que voy a mostrar
-          revenueAmount: `${s.currency} ${Math.round(
-            s.revenueAmount
+        this.tableData = response.content.map((revenue: revenueDetails) => ({
+          ...revenue,
+          revenueDate: revenue.revenueDate, //la que voy a filtrar
+          revenueDateDisplay: this.formatDate(revenue.revenueDate), //la que voy a mostrar
+          revenueAmount: `${revenue.currency} ${Math.round(
+            revenue.revenueAmount
           ).toLocaleString()}`,
 
-          isConsolidated: s.isConsolidated ? 'Si' : 'No',
+          isConsolidated: revenue.isConsolidated ? 'Si' : 'No',
 
           //if isConsolidated = false entonces "-" 
-          premiumAmount: s.isConsolidated ? `${s.currency} ${Math.round(
-            s.premiumAmount,
+          premiumAmount: revenue.isConsolidated ? `${revenue.currency} ${Math.round(
+            revenue.premiumAmount,
           ).toLocaleString()}` : '-'
         })) as any; //cambiar a any porque deja de ser number
 
@@ -242,8 +242,8 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
   }
 
 
-  applyFilters(filters?: FiltrosRevenue) {
-    const appliedFilters: FiltrosRevenue =
+  applyFilters(filters?: RevenueFilters) {
+    const appliedFilters: RevenueFilters =
       filters ?? this.filtersService.getFilters();
     //console.log('Filtros:', appliedFilters);
 
@@ -292,10 +292,10 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
           .toLowerCase()
           .includes(appliedFilters.paymentChannelFilter.toLowerCase());
 
-      const desdeOk = !start || revenueDate >= start;
-      const hastaOk = !end || revenueDate <= end;
+      const startOk = !start || revenueDate >= start;
+      const endOk = !end || revenueDate <= end;
 
-      return desdeOk && hastaOk && paymentChannelOk;
+      return startOk && endOk && paymentChannelOk;
     });
 
     this.currentPage = 1; //cargo la pagina 1 al filtrar
@@ -305,14 +305,14 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     //Filtros
 
   applyDateFilters() {
-    const val = this.filtersForm.value;
-    const filtros: FiltrosRevenue = {
-      startDateFilter: val.startDate || undefined,
-      endDateFilter: val.endDate || undefined,
+    const value = this.filtersForm.value;
+    const filters: RevenueFilters = {
+      startDateFilter: value.startDate || undefined,
+      endDateFilter: value.endDate || undefined,
     };
 
     //seteo para que se dispare el cambio
-    this.filtersService.setFilters(filtros);
+    this.filtersService.setFilters(filters);
   }
 
   updateDateRanges() {

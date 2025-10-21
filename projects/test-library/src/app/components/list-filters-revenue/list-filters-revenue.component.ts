@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FiltrosRevenue, RevenueFiltersService } from '../../services/revenueFilters.service';
+import { RevenueFilters, RevenueFiltersService } from '../../services/revenueFilters.service';
 
 @Component({
   selector: 'app-list-filters-revenue',
@@ -55,7 +55,7 @@ export class ListFiltersRevenueComponent implements OnInit {
     //Actualizar tabla
     const val = this.filtersModalForm.value;
 
-    const filtros: FiltrosRevenue = {
+    const filtersApply: RevenueFilters = {
       paymentChannelFilter:
         val.paymentChannel === 'Todos'
           ? undefined
@@ -63,22 +63,10 @@ export class ListFiltersRevenueComponent implements OnInit {
     };
 
     //guardo los filtros y cierro
-    this.filtersService.setFilters(filtros);
+    this.filtersService.setFilters(filtersApply);
 
     this.close.emit();
   }
-
-  /*
-        //Si selecciona todos le paso el filtro vacio
-      paymentChannelFilter:
-        val.paymentChannel === 'Todos'
-          ? undefined
-          : val.paymentChannel ?? undefined,
-
-                paymentChannel: new FormControl(),
-
-                    paymentChannel: FormControl<string | null>;
-   */
 
                     
 

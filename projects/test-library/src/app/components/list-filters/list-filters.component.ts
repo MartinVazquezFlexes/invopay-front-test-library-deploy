@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
-  Filtros,
+  SaleFilters,
   SellFiltersService,
 } from '../../services/sellFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -15,8 +15,8 @@ export class ListFiltersComponent implements OnInit {
 
   //Creo los controls
   filtersModalForm!: FormGroup<{
-    idProducto: FormControl<string | null>;
-    producto: FormControl<string | null>;
+    productId: FormControl<string | null>;
+    productName: FormControl<string | null>;
     broker: FormControl<string | null>;
   }>;
 
@@ -24,8 +24,8 @@ export class ListFiltersComponent implements OnInit {
     //Los inicializo y obtengo los filtros
     const filters = this.filtersService.getFilters();
     this.filtersModalForm = new FormGroup({
-      idProducto: new FormControl(filters.productIdFilter || ''),
-      producto: new FormControl(filters.productFilter || ''),
+      productId: new FormControl(filters.productIdFilter || ''),
+      productName: new FormControl(filters.productFilter || ''),
       broker: new FormControl(filters.brokerFilter || ''),
     });
   }
@@ -41,8 +41,8 @@ export class ListFiltersComponent implements OnInit {
     //Actualizar tabla
     // Resetear FormGroup
     this.filtersModalForm.setValue({
-      idProducto: '',
-      producto: '',
+      productId: '',
+      productName: '',
       broker: '',
     });
 
@@ -63,16 +63,16 @@ export class ListFiltersComponent implements OnInit {
     //console.log('Filtros:', filters);
     //filtrar por los datos obtenidos
     //Actualizar tabla
-    const val = this.filtersModalForm.value;
+    const value = this.filtersModalForm.value;
 
-    const filtros: Filtros = {
-      productIdFilter: val.idProducto || undefined,
-      productFilter: val.producto || undefined,
-      brokerFilter: val.broker || undefined,
+    const filtersApply: SaleFilters = {
+      productIdFilter: value.productId || undefined,
+      productFilter: value.productName || undefined,
+      brokerFilter: value.broker || undefined,
     };
 
     //guardo los filtros y cierro
-    this.filtersService.setFilters(filtros);
+    this.filtersService.setFilters(filtersApply);
 
     this.close.emit();
   }
