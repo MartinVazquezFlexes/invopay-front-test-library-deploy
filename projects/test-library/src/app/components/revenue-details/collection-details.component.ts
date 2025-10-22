@@ -105,11 +105,11 @@ tableData: detailRevenueTable[] = [];
       { value: '', disabled: true },
       Validators.required
     ),
-    policyNumberPol: new FormControl(
+    policyNumberPolicy: new FormControl(
       { value: '', disabled: true },
       Validators.required
     ),
-    amountPolPolicy: new FormControl(
+    amountPolicyPolicy: new FormControl(
       { value: '', disabled: true },
       Validators.required
     ),
@@ -270,8 +270,8 @@ tableData: detailRevenueTable[] = [];
        //productNamePolicy - policyNumberPol - amountPolPolicy - 
        // saleDate - premiumAmount
       productNamePolicy: this.revenueDetailsFormatted.policyData?.productName || '',
-      policyNumberPol: this.revenueDetailsFormatted.policyData?.number || '',
-      amountPolPolicy: this.revenueDetailsFormatted.policyData?.amount || '',
+      policyNumberPolicy: this.revenueDetailsFormatted.policyData?.number || '',
+      amountPolicyPolicy: this.revenueDetailsFormatted.policyData?.amount || '',
       saleDate: this.revenueDetailsFormatted.policyData?.saleDate
         ? this.revenueDetailsFormatted.policyData?.saleDate.split('T')[0]
         : '',

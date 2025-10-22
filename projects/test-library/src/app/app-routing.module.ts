@@ -8,6 +8,7 @@ import { SellDetailsComponent } from './components/sale-details/sell-details.com
 import { CollectionDetailsComponent } from './components/revenue-details/collection-details.component';
 import { NavbarHomeComponent } from './components/navbar-home/navbar-home.component';
 import { HomeComponent } from './invopay/views/home/home.component';
+import { AuthGuardProtectedRoutes } from './guards/auth-routes.guard';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {
     path: '',
     component: NavbarHomeComponent,
+    canActivateChild: [AuthGuardProtectedRoutes],
     children: [
       { path: 'invopay/sales-list', component: SellListComponent },
       { path: 'invopay/sale-details', component: SellDetailsComponent },

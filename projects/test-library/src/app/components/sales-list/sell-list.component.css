@@ -97,11 +97,24 @@ form {
 }
 
 /*mostrar tabla, ocultar cards*/
+
+.filters-card {
+  display: block;
+}
+
 .table-view {
   display: block;
 }
 
 .card-view {
+  display: none;
+}
+
+.filter-button-mobile {
+  display: none;
+}
+
+.modal-header{
   display: none;
 }
 
@@ -138,6 +151,104 @@ app-paginator {
 
 /*ocultar tabla, mostrar cards*/
 @media (max-width: 768px) {
+
+  /*Botón de filtros mobile*/
+  .filter-button-mobile {
+    display: block;
+    width: 100%;
+    text-align: end;
+  }
+
+  .filters-card {
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    width: 100vw; /* 👈 ocupa el ancho exacto de la ventana */
+    box-sizing: border-box;
+    background: #ffffff; /* 🔹 fondo blanco */
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    display: none;
+  }
+
+  /* Fondo oscuro (overlay) detrás del panel */
+  .filters-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Cuando se muestran los filtros */
+  .filters-card.show-mobile {
+    display: block;
+    transform: translateY(0);
+  }
+
+  .filters-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+.filters {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-date {
+  width: 100%;
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #0071CE;
+  font-size: 20px;
+}
+
+.modal-header button {
+  background: #ffffff;
+  border-radius: 15px;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-header button img {
+  width: 20px;
+  height: 20px;
+}
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /*Cards mobile*/
   .table-view {
     display: none;
   }
@@ -221,7 +332,7 @@ app-paginator {
   }
 
   .card-row label {
-    color: rgb(132, 129, 138);
+    color:#0071CE;
     font-size: 14px;
     font-weight: 500;
   }
@@ -242,6 +353,7 @@ app-paginator {
     color: #0071ce;
     font-weight: 600;
   }
+  /*Fin cards mobile*/
 
   .container {
     padding: 10px;
@@ -273,23 +385,23 @@ app-paginator {
   }
 
   .filters {
-  flex-direction: column;
-  align-items: stretch !important;
-  gap: 10px;
-}
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 10px;
+  }
 
-.buttons {
-  justify-content: center !important;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  order: 2;
-}
+  .buttons {
+    justify-content: end !important;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    order: 2;
+  }
 
-form {
-  order: 1;
-  width: 100%;
-}
+  form {
+    order: 1;
+    width: 100%;
+  }
 
   button {
     width: auto;

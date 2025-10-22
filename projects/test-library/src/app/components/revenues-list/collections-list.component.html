@@ -1,16 +1,31 @@
 <div class="container">
   <div class="card">
     <h2 class="title">Recaudaciones</h2>
+    <!--Botón para mostrar filtros en mobile-->
+    <div class="filter-button-mobile">
+      <app-ip-button-modal
+        typeBtn="submit"
+        size="normal"
+        (clicked)="toggleFilters()"
+      >
+        <img src="assets/icons/filter3.svg" /> Filtrar
+      </app-ip-button-modal>
+    </div>
   </div>
 
-  <div class="card">
+  <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
+  </app-list-filters-revenue>
+
+  <div class="filters-overlay" [class.show]="showFiltersOnMobile"></div>
+
+  <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
+    <div class="modal-header">
+      <h3>Filtrar Recaudaciones</h3>
+      <button (click)="toggleFilters()">
+        <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+      </button>
+    </div>
     <div class="filters">
-      <!--
-      Lista toda la recaudacion del mes actual en formato de tabla. 
-      Se tiene un filtro por:
-      - rango de fecha
-      - canal de pago (transferencia, tarjeta, boleto, efectivo, cheque). 
-      -->
       <form [formGroup]="filtersForm">
         <div class="input-date">
           <input
@@ -53,29 +68,30 @@
         >
           <img src="assets/icons/filter3.svg" />
         </app-ip-button-modal>
-        <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
-        </app-list-filters-revenue>
       </div>
     </div>
-
-    <div class="table-view">
-      <!--Ver columna actions porque no traduce-->
-      <app-table
-        *ngIf="pagedData.length > 0"
-        [propertyOrder]="propertyOrder"
-        [data]="pagedData"
-        [keyTranslate]="keyTranslate"
-        [tableStyle]="'invopay'"
-        [actions]="actions"
-        [actionsIf]="actionsIf"
-        [initTable]="initTable"
-        [scroll]="scroll"
-        (sort)="onSort($event)"
-        (action)="onAction($event)"
-        (selectedItemsChange)="onSelectedItemsChange($event)"
-      >
-      </app-table>
     </div>
+
+    <div class="card">
+      <div class="table-view">
+        <!--Ver columna actions porque no traduce-->
+        <app-table
+          *ngIf="pagedData.length > 0"
+          [propertyOrder]="propertyOrder"
+          [data]="pagedData"
+          [keyTranslate]="keyTranslate"
+          [tableStyle]="'invopay'"
+          [actions]="actions"
+          [actionsIf]="actionsIf"
+          [initTable]="initTable"
+          [scroll]="scroll"
+          (sort)="onSort($event)"
+          (action)="onAction($event)"
+          (selectedItemsChange)="onSelectedItemsChange($event)"
+        >
+        </app-table>
+      </div>
+    
 
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->

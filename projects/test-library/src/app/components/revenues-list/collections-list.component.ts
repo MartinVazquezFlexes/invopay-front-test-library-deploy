@@ -122,9 +122,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.getRevenues();
   }
 
-  
   //Recibir la info de los filtros y guardarla en observable para no perderla al navegar
-
 
   //Encabezados
   propertyOrder = [
@@ -167,7 +165,6 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
   //Si queremos scroll o no
   scroll = true;
 
-
   //MODAL
   showModal = false;
   openModal() {
@@ -176,6 +173,10 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.showModal = false;
+
+    if (window.innerWidth <= 768) {
+      this.showFiltersOnMobile = false;
+    } 
   }
 
   //Cuando se pulsa el boton de detalle le paso el
@@ -187,13 +188,23 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     });
   }
 
+  //MOBILE
+
   openMenuId: number | null = null;
 
   toggleMenu(id: number) {
     this.openMenuId = this.openMenuId === id ? null : id;
   }
 
-  toDetails(id:number){
+  showFiltersOnMobile = false;
+
+  toggleFilters() {
+    this.showFiltersOnMobile = !this.showFiltersOnMobile;
+  }
+
+  //MOBILE
+
+  toDetails(id: number) {
     this.router.navigate(['/invopay/revenue-details'], {
       state: { data: id }, //objeto seleccionado para mostrar en el detalle
     });
@@ -221,10 +232,12 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
 
           isConsolidated: revenue.isConsolidated ? 'Si' : 'No',
 
-          //if isConsolidated = false entonces "-" 
-          premiumAmount: revenue.isConsolidated ? `${revenue.currency} ${Math.round(
-            revenue.premiumAmount,
-          ).toLocaleString()}` : '-'
+          //if isConsolidated = false entonces "-"
+          premiumAmount: revenue.isConsolidated
+            ? `${revenue.currency} ${Math.round(
+                revenue.premiumAmount
+              ).toLocaleString()}`
+            : '-',
         })) as any; //cambiar a any porque deja de ser number
 
         this.filteredRevenues = this.tableData; //Lista que voy a filtrar
@@ -241,14 +254,15 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     });
   }
 
-
   applyFilters(filters?: RevenueFilters) {
     const appliedFilters: RevenueFilters =
       filters ?? this.filtersService.getFilters();
     //console.log('Filtros:', appliedFilters);
 
-        //parsear fechas correctamente
-    const parseDate = (dateValue: string | Date | null | undefined): Date | null => {
+    //parsear fechas correctamente
+    const parseDate = (
+      dateValue: string | Date | null | undefined
+    ): Date | null => {
       if (!dateValue) return null;
 
       let date: Date;
@@ -258,7 +272,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
       } else {
         //Es un string
         const dateStr = dateValue.toString().trim();
-        
+
         //Si tiene T (formato ISO), extraer solo la parte YYYY-MM-DD
         if (dateStr.includes('T')) {
           //"2025-09-23T00:00:00" -> "2025-09-23"
@@ -302,7 +316,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.updatePage(); //actualizo los items de la pagina 1
   }
 
-    //Filtros
+  //Filtros
 
   applyDateFilters() {
     const value = this.filtersForm.value;
@@ -313,6 +327,11 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
 
     //seteo para que se dispare el cambio
     this.filtersService.setFilters(filters);
+
+    
+    if (window.innerWidth <= 768) {
+      this.showFiltersOnMobile = false;
+    } 
   }
 
   updateDateRanges() {
@@ -338,8 +357,6 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.endDateMax = this.today.toISOString().substring(0, 10);
   }
 
-
-
   //Paginador
   /*
         Aca irian los datos de cantidad de items en tiempo real
@@ -363,65 +380,62 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.pagedData = this.filteredRevenues.slice(startIndex, endIndex);
   }
 
-onItemsPerPageChange(newValue: any) {
-  this.itemsPerPage = Number(newValue);
-  this.currentPage = 1;
-  this.updatePage();
-}
+  onItemsPerPageChange(newValue: any) {
+    this.itemsPerPage = Number(newValue);
+    this.currentPage = 1;
+    this.updatePage();
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-
-
-    //formatear fecha para mostrar
+  //formatear fecha para mostrar
   private formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear();
-  
-  const hours = date.getHours().toString().padStart(2, '0');
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  const seconds = date.getSeconds().toString().padStart(2, '0');
-  
-  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-}
+    const date = new Date(dateString);
 
-onSort(event: any) {
-  const sortKey = event.key; //revenueDateDisplay
-  const sortEvent = event.event; //'asc', 'desc' o 'clean'
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
 
-  //mapear al original
-  const sortFieldMap: { [key: string]: string } = {
-    'revenueDateDisplay': 'revenueDate'
-  };
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
 
-  const actualSortField = sortFieldMap[sortKey] || sortKey;
-
-  if (sortEvent === 'clean') {
-    this.applyFilters();
-  } else {
-    this.filteredRevenues.sort((a, b) => {
-      let aValue = (a as any)[actualSortField];
-      let bValue = (b as any)[actualSortField];
-
-      //convertir a fecha para sort
-      if (actualSortField === 'revenueDate') {
-        aValue = new Date(aValue).getTime();
-        bValue = new Date(bValue).getTime();
-      }
-
-      if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
-      if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
-      return 0;
-    });
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
   }
 
-  this.currentPage = 1;
-  this.updatePage();
-}
+  onSort(event: any) {
+    const sortKey = event.key; //revenueDateDisplay
+    const sortEvent = event.event; //'asc', 'desc' o 'clean'
 
+    //mapear al original
+    const sortFieldMap: { [key: string]: string } = {
+      revenueDateDisplay: 'revenueDate',
+    };
+
+    const actualSortField = sortFieldMap[sortKey] || sortKey;
+
+    if (sortEvent === 'clean') {
+      this.applyFilters();
+    } else {
+      this.filteredRevenues.sort((a, b) => {
+        let aValue = (a as any)[actualSortField];
+        let bValue = (b as any)[actualSortField];
+
+        //convertir a fecha para sort
+        if (actualSortField === 'revenueDate') {
+          aValue = new Date(aValue).getTime();
+          bValue = new Date(bValue).getTime();
+        }
+
+        if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
+        if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+
+    this.currentPage = 1;
+    this.updatePage();
+  }
 }

@@ -1,14 +1,32 @@
 <div class="container">
   <div class="card">
     <h2 class="title">Ventas</h2>
+    <!--Botón para mostrar filtros en mobile-->
+    <div class="filter-button-mobile">
+      <app-ip-button-modal
+        typeBtn="submit"
+        size="normal"
+        (clicked)="toggleFilters()"
+      >
+        <img src="assets/icons/filter3.svg" /> Filtrar ventas
+      </app-ip-button-modal>
+    </div>
   </div>
 
-  <div class="card">
+  <app-list-filters *ngIf="showModal" (close)="closeModal()">
+  </app-list-filters>
+
+  <div class="filters-overlay" [class.show]="showFiltersOnMobile"></div>
+
+  <!--Filtros-->
+  <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
+    <div class="modal-header">
+      <h3>Filtrar Ventas</h3>
+      <button (click)="toggleFilters()">
+        <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+      </button>
+    </div>
     <div class="filters">
-      <!--
-      - El filtro de busqueda permite filtrar en un periodo de hasta 3 meses.  
-      - Por defecto siempre se muestra el mes actual.
-      -->
       <form [formGroup]="filtersForm">
         <div class="input-date">
           <input
@@ -30,7 +48,6 @@
             [max]="endDateMax"
           />
           <label for="end">Hasta</label>
-          <!--<app-ip-date-input></app-ip-date-input>-->
         </div>
       </form>
 
@@ -40,7 +57,7 @@
           size="small"
           (clicked)="applyDateFilters()"
         >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
         </app-ip-button-modal>
 
         <app-ip-button-modal
@@ -50,15 +67,14 @@
         >
           <img src="assets/icons/filter3.svg" />
         </app-ip-button-modal>
-
-        <app-list-filters *ngIf="showModal" (close)="closeModal()">
-        </app-list-filters>
       </div>
     </div>
+  </div>
 
+  <!--Contenido principal-->
+  <div class="card">
     <!--Mostrar si no es mobile-->
     <div class="table-view">
-      <!--Ver columna actions porque no traduce-->
       <app-table
         *ngIf="pagedData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -77,48 +93,47 @@
     </div>
 
     <!--Mostrar si es mobile-->
-    <!--Hacer card la info para mobile-->
-  <div class="card-view" *ngFor="let item of pagedData">
-  <div class="card-header">
-    <span class="card-id">#{{ item.id }}</span>
-    <div class="menu-container">
-      <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
-      <div class="menu-dropdown" *ngIf="openMenuId === item.id">
-        <button (click)="toDetails(item.id)">Detalle</button>
+    <div class="card-view" *ngFor="let item of pagedData">
+      <div class="card-header">
+        <span class="card-id">#{{ item.id }}</span>
+        <div class="menu-container">
+          <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
+          <div class="menu-dropdown" *ngIf="openMenuId === item.id">
+            <button (click)="toDetails(item.id)">Detalle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-row">
+        <label>Fecha de venta</label>
+        <span class="card-date">{{ item.saleDate | date : "dd/MM/yyyy" }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Producto</label>
+        <span>{{ item.productName }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Broker</label>
+        <span>{{ item.brokerName }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Cliente</label>
+        <span>{{ item.customerName }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Poliza</label>
+        <span class="card-amount">{{ item.policyAmount }}</span>
+      </div>
+
+      <div class="card-row">
+        <label>Prima</label>
+        <span class="card-amount">{{ item.premiumAmount }}</span>
       </div>
     </div>
-  </div>
-
-  <div class="card-row">
-    <label>Fecha de venta</label>
-    <span class="card-date">{{ item.saleDate | date: 'dd/MM/yyyy' }}</span>
-  </div>
-
-  <div class="card-row">
-    <label>Producto</label>
-    <span>{{ item.productName }}</span>
-  </div>
-
-  <div class="card-row">
-    <label>Broker</label>
-    <span>{{ item.brokerName }}</span>
-  </div>
-
-  <div class="card-row">
-    <label>Cliente</label>
-    <span>{{ item.customerName }}</span>
-  </div>
-
-  <div class="card-row">
-    <label>Poliza</label>
-    <span class="card-amount">{{ item.policyAmount }}</span>
-  </div>
-
-  <div class="card-row">
-    <label>Prima</label>
-    <span class="card-amount">{{ item.premiumAmount }}</span>
-  </div>
-</div>
 
     <div class="pagination">
       <div class="center">
@@ -136,15 +151,13 @@
         </select>
       </div>
 
-      
-        <app-paginator
-          [totalItems]="filteredSales.length"
-          [itemsPerPage]="itemsPerPage"
-          [currentPages]="currentPage"
-          (pageChange)="onPageChange($event)"
-        >
-        </app-paginator>
-      
+      <app-paginator
+        [totalItems]="filteredSales.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
     </div>
   </div>
 </div>

@@ -206,11 +206,22 @@ export class SellListComponent implements OnInit, OnDestroy {
     });
   }
 
+  //MOBILE
+
   openMenuId: number | null = null;
 
   toggleMenu(id: number) {
     this.openMenuId = this.openMenuId === id ? null : id;
   }
+
+  showFiltersOnMobile = false;
+
+  toggleFilters() {
+  this.showFiltersOnMobile = !this.showFiltersOnMobile;
+}
+
+  //MOBILE
+
 
   toDetails(id:number){
     this.router.navigate(['/invopay/sale-details'], {
@@ -229,6 +240,10 @@ export class SellListComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.showModal = false;
+
+    if (window.innerWidth <= 768) {
+      this.showFiltersOnMobile = false;
+    }
   }
 
   updateDateRanges() {
@@ -266,6 +281,10 @@ export class SellListComponent implements OnInit, OnDestroy {
 
     //seteo para que se dispare el cambio
     this.filtersService.setFilters(filters);
+
+    if (window.innerWidth <= 768) {
+      this.showFiltersOnMobile = false;
+    } 
   }
 
 
