@@ -1,7 +1,13 @@
 <div class="container">
   <div class="card-title">
     <h2 class="title">Detalle Venta</h2>
-    <button (click)="back()">Volver</button>
+    <app-ip-button-modal
+        typeBtn="submit"
+        size="normal"
+        (clicked)="back()"
+      >
+        Volver
+      </app-ip-button-modal>
   </div>
 
   <form [formGroup]="detailedInfoForm">
