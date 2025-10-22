@@ -16,7 +16,7 @@
   <app-list-filters *ngIf="showModal" (close)="closeModal()">
   </app-list-filters>
 
-  <div class="filters-overlay" [class.show]="showFiltersOnMobile"></div>
+  <div class="filters-overlay" [class.show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
 
   <!--Filtros-->
   <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">

@@ -184,6 +184,12 @@ app-paginator {
     display: none;
   }
 
+  ::ng-deep app-list-filters {
+  position: fixed;
+  z-index: 1100 !important; /*Mayor que filters-card(1001) para que se vea*/
+  inset: 0;
+  }
+
   /* Fondo oscuro (overlay) detrás del panel */
   .filters-overlay {
     position: fixed;

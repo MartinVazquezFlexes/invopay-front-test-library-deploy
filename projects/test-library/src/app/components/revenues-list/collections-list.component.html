@@ -16,7 +16,7 @@
   <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
   </app-list-filters-revenue>
 
-  <div class="filters-overlay" [class.show]="showFiltersOnMobile"></div>
+  <div class="filters-overlay" [class.show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
 
   <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
     <div class="modal-header">
