@@ -1,30 +1,49 @@
 <div class="container">
   <div class="card-title">
-    <h2 class="title">Detalle Recaudación</h2>
-    <app-ip-button-modal
+    <div class="button-back">
+      <app-ip-button-modal
+        class="btn-white"
         typeBtn="submit"
-        size="normal"
+        size="small"
         (clicked)="back()"
       >
-        Volver
+        <img src="assets/new-styles/icons/arrow-back.svg" />
       </app-ip-button-modal>
+    </div>
+    <h2 class="title">Detalle Recaudación</h2>
   </div>
 
   <form [formGroup]="detailedInfoForm">
-  <div class="card">
-    <div class="sections-titles">
-    <!--se ve siempre que se abre la pagina-->
-    <h3 [class.active]="activeSection === 'transaction'" (click)="showTransactionSection()">Transacción</h3>
-    <!--se ven solo cuando la recaudacion esta consolidada-->
-    <h3 *ngIf="isRevenueConsolidated" [class.active]="activeSection === 'conciliation'" (click)="showConciliationSection()">Conciliación</h3>
-    <h3 *ngIf="isRevenueConsolidated" [class.active]="activeSection === 'policy'" (click)="showPolicySection()">Póliza</h3>
-    </div>
+    <div class="card">
+      <div class="sections-titles">
+        <!--se ve siempre que se abre la pagina-->
+        <h3
+          [class.active]="activeSection === 'transaction'"
+          (click)="showTransactionSection()"
+        >
+          Transacción
+        </h3>
+        <!--se ven solo cuando la recaudacion esta consolidada-->
+        <h3
+          *ngIf="isRevenueConsolidated"
+          [class.active]="activeSection === 'conciliation'"
+          (click)="showConciliationSection()"
+        >
+          Conciliación
+        </h3>
+        <h3
+          *ngIf="isRevenueConsolidated"
+          [class.active]="activeSection === 'policy'"
+          (click)="showPolicySection()"
+        >
+          Póliza
+        </h3>
+      </div>
 
-    <!--SECCION TRANSACCION-->
-    <div *ngIf="showTransaction">
-
-      <div class="inputs">
-        <div class="card-input">
+      <!--SECCION TRANSACCION-->
+      <div *ngIf="showTransaction">
+        <div class="inputs">
+          <div class="card-input">
             <label for="revenueDate">Fecha Recaudación</label>
             <app-ip-input
               inputId="revenueDate"
@@ -72,15 +91,12 @@
               label=""
             ></app-ip-text-area-input>
           </div>
+        </div>
       </div>
 
-    </div>
-
-
-    <!--SECCION CONCILIACION-->
-    <div *ngIf="showConciliation">
-      <div class="inputs">
-
+      <!--SECCION CONCILIACION-->
+      <div *ngIf="showConciliation">
+        <div class="inputs">
           <div class="card-input">
             <label for="isConsolidated">Consolidada</label>
             <app-ip-input
@@ -111,7 +127,6 @@
             ></app-ip-input>
           </div>
 
-          
           <div class="card-input">
             <label for="amountPolicy">Monto</label>
             <app-ip-input
@@ -151,15 +166,13 @@
               type="text"
             ></app-ip-input>
           </div>
-
+        </div>
       </div>
-    </div>
 
-
-    <!--SECCION POLIZA-->
-    <div *ngIf="showPolicy"> 
-      <div class="inputs">
-        <div class="card-input">
+      <!--SECCION POLIZA-->
+      <div *ngIf="showPolicy">
+        <div class="inputs">
+          <div class="card-input">
             <label for="productNamePolicy">Producto</label>
             <app-ip-input
               inputId="productNamePolicy"
@@ -208,44 +221,41 @@
               type="text"
             ></app-ip-input>
           </div>
+        </div>
+        <h3 class="title">Plan de Pago de Cuotas</h3>
+        <div class="table-view">
+          <app-table
+            *ngIf="tableData.length > 0"
+            [propertyOrder]="propertyOrder"
+            [data]="tableData"
+            [keyTranslate]="keyTranslate"
+            [tableStyle]="'invopay'"
+            [initTable]="initTable"
+            [scroll]="scroll"
+            (action)="onAction($event)"
+            (selectedItemsChange)="onSelectedItemsChange($event)"
+          >
+          </app-table>
+        </div>
 
-      </div>
-      <h3 class="title">Plan de Pago de Cuotas</h3>
-      <div class="table-view">
-      <app-table
-        *ngIf="tableData.length > 0"
-        [propertyOrder]="propertyOrder"
-        [data]="tableData"
-        [keyTranslate]="keyTranslate"
-        [tableStyle]="'invopay'" 
-        [initTable]="initTable"
-        [scroll]="scroll"
-        (action)="onAction($event)"
-        (selectedItemsChange)="onSelectedItemsChange($event)">
-      </app-table>
-      </div>
+        <!--Mostrar si es mobile-->
+        <!--Hacer card la info para mobile-->
+        <div class="card-view" *ngFor="let item of tableData">
+          <div class="card-header">
+            <span class="card-id">N°{{ item.installmentNumber }}</span>
+          </div>
 
-    <!--Mostrar si es mobile-->
-    <!--Hacer card la info para mobile-->
-    <div class="card-view" *ngFor="let item of tableData">
-      <div class="card-header">
-        <span class="card-id">N°{{ item.installmentNumber }}</span>
-      </div>
+          <div class="card-row-mobile">
+            <label>Fecha Vencimiento</label>
+            <span>{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
+          </div>
 
-      <div class="card-row-mobile">
-        <label>Fecha Vencimiento</label>
-        <span>{{ item.dueDate | date: "dd/MM/yyyy" }}</span>
+          <div class="card-row-mobile">
+            <label>Valor</label>
+            <span class="card-amount">{{ item.amount }}</span>
+          </div>
+        </div>
       </div>
-
-      <div class="card-row-mobile">
-        <label>Valor</label>
-        <span class="card-amount">{{ item.amount }}</span>
-      </div>
-     
     </div>
-
-    </div>
-
-  </div>
   </form>
 </div>

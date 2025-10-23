@@ -1,13 +1,16 @@
 <div class="container">
   <div class="card-title">
+    <div class="button-back">
+      <app-ip-button-modal
+      class="btn-white"
+      typeBtn="submit"
+      size="small"
+      (clicked)="back()"
+    >
+      <img src="assets/new-styles/icons/arrow-back.svg" />
+    </app-ip-button-modal>
+    </div>
     <h2 class="title">Detalle Venta</h2>
-    <app-ip-button-modal
-        typeBtn="submit"
-        size="normal"
-        (clicked)="back()"
-      >
-        Volver
-      </app-ip-button-modal>
   </div>
 
   <form [formGroup]="detailedInfoForm">
@@ -144,7 +147,7 @@
       >
       </app-table>
     </div>
-    
+
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->
     <div class="card-view" *ngFor="let item of tableData">
@@ -159,7 +162,7 @@
 
       <div class="card-row-mobile">
         <label>Fecha Vencimiento</label>
-        <span>{{ item.dueDate | date: "dd/MM/yyyy" }}</span>
+        <span>{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
       </div>
 
       <div class="card-row-mobile">
@@ -179,10 +182,8 @@
 
       <div class="card-row-mobile">
         <label>Fecha de Pago</label>
-        <span>{{ item.payedDate | date: "dd/MM/yyyy" }}</span>
+        <span>{{ item.payedDate | date : "dd/MM/yyyy" }}</span>
       </div>
-     
     </div>
-
   </div>
 </div>

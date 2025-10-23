@@ -21,6 +21,7 @@ body {
 .title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 22px;
 }
 
 .subtitle {
@@ -37,9 +38,21 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: start;
   box-sizing: border-box;
+}
+
+.button-back{
+  margin:20px 0px;
+}
+
+::ng-deep .btn-white button.ip-button {
+  background: white !important;
+  border: 0px solid #ddd !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #f5f5f5 !important;
 }
 
 .card {
@@ -119,22 +132,7 @@ form {
   width: 100% !important;
 }
 
-button {
-  background: #0071ce;
-  color: #ffffff;
-  margin-top: 15px;
-  border-radius: 15px;
-  border: 1px solid #0071ce;
-  cursor: pointer;
-  min-width: 100px;
-  height: 40px;
-  padding: 0 20px;
-  transition: background-color 0.3s;
-}
 
-button:hover {
-  background-color: #0362af;
-}
 
 .pagination {
   display: flex;
@@ -170,9 +168,14 @@ button:hover {
     padding: 20px;
   }
 
+
+  .card-title h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
   .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 0px;
@@ -182,6 +185,15 @@ button:hover {
     margin-bottom: 20px;
     box-shadow: none;
   }
+
+  ::ng-deep .btn-white button.ip-button {
+  background: #f5f5f5 !important;
+  border: 0px solid #f5f5f5 !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #e6e6e6 !important;
+}
 
   .row {
     flex-direction: column;
@@ -269,7 +281,6 @@ button:hover {
 
   .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 0px;
@@ -282,7 +293,7 @@ button:hover {
 
   .card-title h2 {
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .card {
@@ -323,7 +334,6 @@ button:hover {
 
   .card-input {
     max-width: 100%;
-    margin: 15px 0;
   }
 
   .card-input input {

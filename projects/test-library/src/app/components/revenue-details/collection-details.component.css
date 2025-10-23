@@ -20,6 +20,7 @@ body {
 .title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 22px;
 }
 
 .sections-titles {
@@ -58,9 +59,21 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: start;
   box-sizing: border-box;
+}
+
+.button-back{
+  margin:20px 0px;
+}
+
+::ng-deep .btn-white button.ip-button {
+  background: white !important;
+  border: 0px solid #ddd !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #f5f5f5 !important;
 }
 
 .card {
@@ -73,7 +86,6 @@ body {
   box-sizing: border-box;
   height: 70vh;
   max-width: 100%;
-  overflow-y: auto;
 }
 
 form {
@@ -172,7 +184,15 @@ button:hover {
   .card-input:has(textarea) {
     grid-column: span 2;
   }
+
+    .title {
+    text-align: start;
+    width: 100%;
+  }
+
 }
+
+
 
 /* Tablets */
 @media (max-width: 1023px) and (min-width: 769px) {
@@ -181,9 +201,17 @@ button:hover {
     padding: 20px;
   }
 
+    .card-title h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+    .title {
+    text-align: start;
+    width: 100%;
+  }
+
   .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 0px;
@@ -194,8 +222,19 @@ button:hover {
     box-shadow: none;
   }
 
+  
+  ::ng-deep .btn-white button.ip-button {
+  background: #f5f5f5 !important;
+  border: 0px solid #f5f5f5 !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #e6e6e6 !important;
+}
+
   .card {
     height: 90vh;
+    overflow-y: auto;
   }
 
   .inputs {
@@ -229,6 +268,16 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
   }
+
+  
+  ::ng-deep .btn-white button.ip-button {
+  background: #f5f5f5 !important;
+  border: 0px solid #f5f5f5 !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #e6e6e6 !important;
+}
 
   .card-header {
     display: flex;
@@ -285,7 +334,6 @@ button:hover {
 
   .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 0px;
@@ -299,8 +347,19 @@ button:hover {
   .card {
     width: 100%;
     padding: 15px;
+    overflow-y: auto;
     height: 90vh;
     border-radius: 12px;
+  }
+
+  .card-title h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+    .title {
+    text-align: start;
+    width: 100%;
   }
 
   .sections-titles {
@@ -319,7 +378,6 @@ button:hover {
 
   .card-input {
     max-width: 100%;
-    margin: 15px 0;
   }
 
   .card-input input {
@@ -365,6 +423,16 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
   }
+
+  
+  ::ng-deep .btn-white button.ip-button {
+  background: #f5f5f5 !important;
+  border: 0px solid #f5f5f5 !important;
+}
+
+::ng-deep .btn-white button.ip-button:hover:enabled {
+  background: #e6e6e6 !important;
+}
 
   .card-header {
     display: flex;
@@ -420,7 +488,6 @@ button:hover {
   }
   .card-title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
     border-radius: 0px;
@@ -440,6 +507,7 @@ button:hover {
     padding: 12px;
     border-radius: 10px;
     width: 100%;
+    overflow-y: auto;
     height: 90vh;
   }
 
@@ -468,7 +536,6 @@ button:hover {
 
   .card-input {
     max-width: 100%;
-    margin: 12px 0;
   }
 
   .card-input input {
