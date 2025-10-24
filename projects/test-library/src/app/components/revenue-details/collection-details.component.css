@@ -21,6 +21,7 @@ body {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 22px;
+  padding: 0px 20px;
 }
 
 .sections-titles {
@@ -28,6 +29,7 @@ body {
   align-items: flex-start;
   gap: 30px;
   margin-bottom: 10px;
+  padding: 0px 20px;
 }
 
 .sections-titles h3 {
@@ -80,11 +82,11 @@ body {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px 0px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  height: 70vh;
+  height: auto;
   max-width: 100%;
 }
 
@@ -99,6 +101,7 @@ form {
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   width: 100%;
+  padding: 0px 20px;
 }
 
 .card-input {
@@ -179,6 +182,7 @@ button:hover {
 @media (min-width: 1024px) {
   .inputs {
     grid-template-columns: repeat(2, 1fr);
+    width: 95%;
   }
 
   .card-input:has(textarea) {
@@ -233,13 +237,13 @@ button:hover {
 }
 
   .card {
-    height: 90vh;
     overflow-y: auto;
   }
 
   .inputs {
     grid-template-columns: 1fr;
     gap: 15px;
+    width: 90%;
   }
 
   .card-input {
@@ -348,7 +352,6 @@ button:hover {
     width: 100%;
     padding: 15px;
     overflow-y: auto;
-    height: 90vh;
     border-radius: 12px;
   }
 
@@ -374,6 +377,7 @@ button:hover {
   .inputs {
     grid-template-columns: 1fr;
     gap: 15px;
+    width: 90%;
   }
 
   .card-input {
@@ -508,7 +512,6 @@ button:hover {
     border-radius: 10px;
     width: 100%;
     overflow-y: auto;
-    height: 90vh;
   }
 
   .title {
@@ -532,6 +535,7 @@ button:hover {
   .inputs {
     grid-template-columns: 1fr;
     gap: 12px;
+    width: 90%;
   }
 
   .card-input {

@@ -20,14 +20,15 @@ body {
 .title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 40px;
 }
 
 .card {
   background-color: #ffffff;
   border-radius: 15px;
-  width: 95%;
+  width: 100%;
   max-width: 100%;
-  padding: 20px 40px;
+  padding: 20px 0px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -35,9 +36,9 @@ body {
 .card-title {
   background-color: #ffffff;
   border-radius: 15px;
-  width: 95%;
+  width: 100%;
   max-width: 100%;
-  padding: 20px 40px;
+  padding: 20px 0px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -56,6 +57,7 @@ body {
   margin-top: 0;
   display: flex;
   align-items: center;
+  padding-left: 40px;
 }
 
 .selectCenter {
