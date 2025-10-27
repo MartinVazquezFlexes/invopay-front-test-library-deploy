@@ -20,7 +20,7 @@
 
   <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
     <div class="modal-header">
-      <h3>Filtrar Recaudaciones</h3>
+      <h4>Filtrar Recaudaciones</h4>
       <button (click)="toggleFilters()">
         <img src="assets/new-styles/icons/buttons/close-icon.svg" />
       </button>
@@ -101,7 +101,7 @@
         <div class="menu-container">
           <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
           <div class="menu-dropdown" *ngIf="openMenuId === item.id">
-            <button (click)="toDetails(item.id)">Detalle</button>
+            <button (click)="toDetails(item.id)">Revisar</button>
           </div>
         </div>
       </div>

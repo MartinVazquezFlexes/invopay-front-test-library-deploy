@@ -26,10 +26,33 @@
           </select>
   </div>
 
-  <div class="modal-buttons">
-    <button class="btn-one" (click)="cleanFilters()">Limpiar Filtros</button>
-    <button class="btn-one" (click)="close.emit()">Cerrar</button>
-    <button class="btn-two" (click)="applyFilters()">Aplicar</button>
-  </div>
+    <div class="modal-buttons">
+      <app-ip-button-modal
+        class="btn-clean"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="cleanFilters()"
+      >
+        Limpiar Filtros
+      </app-ip-button-modal>
+
+      <app-ip-button-modal
+        class="btn-close"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="close.emit()"
+      >
+        Cerrar
+      </app-ip-button-modal>
+
+      <app-ip-button-modal
+        class="btn-apply"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="applyFilters()"
+      >
+        Aplicar
+      </app-ip-button-modal>
+    </div>
   </form>
 </div>

@@ -4,123 +4,132 @@
   font-family: Arial, sans-serif;
   overflow: hidden;
   position: relative;
+}
 
-  .sidebar {
-    width: 220px;
-    background: #ffffff;
-    color: #0071CE;
-    transition: width 0.3s;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
+.layout .sidebar {
+  width: 220px;
+  background: #ffffff;
+  color: #0071CE;
+  transition: width 0.3s;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-    &.closed {
-      width: 60px;
-    }
+.layout .sidebar.closed {
+  width: 60px;
+}
 
-    .sidebar-header {
-      padding: 15px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #f0f0f0;
-    }
+.layout .sidebar .sidebar-header {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+}
 
-    .menu {
-      list-style: none;
-      padding: 10px 0;
-      margin: 0;
-      flex: 1;
-      overflow-y: auto;
+.layout .sidebar .menu {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
 
-      li {
-        a {
-          display: flex;
-          align-items: center;
-          padding: 12px 10px;
-          /*margin: 2px 8px;*/
-          color: rgb(0, 0, 0);
-          text-decoration: none;
-          transition: all 0.2s ease;
-          position: relative;
+.layout .sidebar .menu li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
 
-          &:hover {
-            background: #f0f7ff;
-            color: #f5f5f5;
-          }
+.layout .sidebar .menu li a:hover {
+  background: #f0f7ff;
+  color: #f5f5f5;
+}
 
-          &.active {
-            background: #e6f3fb;
-            color: #d6e8f7;
-            border-left: 3px solid #0071CE;
-            padding-left: 7px;
-          }
+.layout .sidebar .menu li a.active {
+  background: #e6f3fb;
+  color: #d6e8f7;
+  border-left: 3px solid #0071CE;
+  padding-left: 7px;
+}
 
-          .icon {
-            min-width: 24px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 25px;
-            flex-shrink: 0;
+.layout .sidebar .menu li a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+  flex-shrink: 0;
+}
 
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-            }
-          }
+.layout .sidebar .menu li a .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-          .text {
-            white-space: nowrap;
-            color: #0071CE;
-            font-size: 14px;
-            font-weight: 500;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-        }
-      }
+.layout .sidebar .menu li a .text {
+  white-space: nowrap;
+  color: #0071CE;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    }
-  }
+.layout .sidebar .menu .mobile-only {
+  display: none;
+}
 
-  .content {
-    flex: 1;
-    background: #F5F5F5;
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    box-sizing: border-box;
-    min-width: 0;
-    overflow: hidden;
+.layout .content {
+  flex: 1;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+}
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      flex-shrink: 0;
-    }
+.layout .content .topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
 
-    .main-section {
-      overflow: auto;
-      flex: 1;
-      box-sizing: border-box;
-      min-height: 0;
-    }
-  }
+.layout .content .main-section {
+  overflow: auto;
+  flex: 1;
+  box-sizing: border-box;
+  min-height: 0;
 }
 
 .avlalogo img {
   width: 70%;
   max-width: 120px;
+}
+
+.avlalogo.mobile-logo {
+  display: none;
+}
+
+.avlalogo.desktop-logo {
+  display: block;
 }
 
 .toggle-btn {
@@ -134,16 +143,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  img {
-    width: 20px;
-    height: 20px;
-  }
+.toggle-btn img {
+  width: 20px;
+  height: 20px;
+}
 
-  &:hover {
-    background-color: #f5f5f5;
-    border-color: #009ce4;
-  }
+.toggle-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #009ce4;
 }
 
 .user {
@@ -152,6 +161,10 @@
   justify-content: center;
   gap: 10px;
   font-size: 12px;
+}
+
+.user.desktop-only {
+  display: flex;
 }
 
 .user-name {
@@ -179,10 +192,10 @@
   color: #009ce4;
   cursor: pointer;
   transition: transform 0.2s;
+}
 
-  &:hover {
-    transform: scale(1.1);
-  }
+.icon:hover {
+  transform: scale(1.1);
 }
 
 .mobile-menu-btn {
@@ -191,11 +204,11 @@
   border: none;
   padding: 8px;
   cursor: pointer;
+}
 
-  img {
-    width: 24px;
-    height: 24px;
-  }
+.mobile-menu-btn img {
+  width: 24px;
+  height: 24px;
 }
 
 .overlay {
@@ -211,60 +224,98 @@
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
   pointer-events: none;
-
-  &.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
 }
 
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.layout .sidebar .sidebar-header .avlalogo {
+  display: none;
+}
+
+/* TABLET Y MOBILE */
 @media (max-width: 768px) {
-  .layout {
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 250px;
-      transform: translateX(-100%);
-      z-index: 999;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
 
-      &:not(.closed) {
-        transform: translateX(0);
-      }
+  .layout .sidebar .sidebar-header .avlalogo {
+    display: block;
+  }
 
-      .sidebar-header {
-        padding: 15px;
-        border-bottom: 1px solid #f0f0f0;
-        margin: 0;
-      }
+  .layout .sidebar .sidebar-header .avlalogo img {
+    width: 80px;
+  }
 
-      .menu {
-        padding: 10px 0;
+  .layout .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    transform: translateX(-100%);
+    z-index: 999;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
 
-        li a {
-          padding: 10px 12px;
-        }
-      }
-    }
+  .layout .sidebar:not(.closed) {
+    transform: translateX(0);
+  }
 
-    .content {
-      width: 100%;
-      margin-left: 0;
+  .layout .sidebar .sidebar-header {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+  }
 
-      .topbar {
-        padding: 10px 15px;
-        position: relative;
-        z-index: 10;
-      }
+  .layout .sidebar .sidebar-header .avlalogo {
+    display: block;
+  }
 
-      .main-section {
-        padding: 15px;
-      }
-    }
+  .layout .sidebar .sidebar-header .avlalogo img {
+    width: 80px;
+  }
+
+  .layout .sidebar .sidebar-header .toggle-btn {
+    display: none;
+  }
+
+  .layout .sidebar .menu {
+    padding: 10px 0;
+  }
+
+  .layout .sidebar .menu li a {
+    padding: 10px 12px;
+  }
+
+  .layout .sidebar .menu .mobile-only {
+    display: block;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 10px;
+  }
+
+  .layout .sidebar .menu .mobile-only:first-of-type {
+    margin-top: auto;
+    padding-top: 10px;
+  }
+
+  .layout .content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .layout .content .topbar {
+    padding: 10px 15px;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .layout .content .main-section {
+    padding: 15px;
   }
 
   .overlay {
@@ -275,12 +326,20 @@
     display: block;
   }
 
-  .avlalogo img {
+  .avlalogo.mobile-logo {
+    display: block;
+  }
+
+  .avlalogo.mobile-logo img {
     width: 80px;
   }
 
-  .user {
-    gap: 8px;
+  .avlalogo.desktop-logo {
+    display: none;
+  }
+
+  .user.desktop-only {
+    display: none;
   }
 
   .user-name {
@@ -288,13 +347,14 @@
   }
 }
 
+/* MOBILE PEQUEÑO */
 @media (max-width: 480px) {
   .layout .content .main-section {
     padding: 10px;
   }
 
-  .avlalogo img {
-    width: 60px;
+  .avlalogo.mobile-logo img {
+    width: 70px;
   }
 
   .toggle-btn {

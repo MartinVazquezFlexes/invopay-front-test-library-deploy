@@ -32,6 +32,12 @@ export class ListFiltersComponent implements OnInit {
 
   @Output() close = new EventEmitter<void>();
 
+
+    // getter para acceder a cualquier control
+  getControl(controlName: string): FormControl {
+    return this.filtersModalForm.get(controlName) as FormControl;
+  }
+
   //Filtros
 
   cleanFilters() {

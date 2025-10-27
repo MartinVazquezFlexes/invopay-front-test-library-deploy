@@ -3,27 +3,62 @@
   <div class="modal-header">
     <h4>Filtrar Ventas</h4>
     <button (click)="close.emit()">
-      <img src="assets/new-styles/icons/buttons/close-icon.svg">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg" />
     </button>
   </div>
   <form [formGroup]="filtersModalForm">
+    <div class="modal-body">
+      <input
+        type="text"
+        placeholder="Id Producto"
+        formControlName="productId"
+      /> 
+      <input type="text" placeholder="Producto" formControlName="productName" />
+      <select name="brokerSelect" id="brokers" formControlName="broker">
+        <option value="" disabled selected hidden>Broker</option>
+        <option value="Juan Pérez">Juan Pérez</option>
+        <option value="Sofía Gómez">Sofía Gómez</option>
+        <option value="María Rodríguez">María Rodríguez</option>
+      </select>
+    </div>
 
-  
-  <div class="modal-body">
-    <input type="text" placeholder="Id Producto" formControlName="productId">
-    <input type="text" placeholder="Producto" formControlName="productName">
-    <select name="brokerSelect" id="brokers" formControlName="broker">
-      <option value="" disabled selected hidden>Broker</option>
-      <option value="Juan Pérez">Juan Pérez</option>
-      <option value="Sofía Gómez">Sofía Gómez</option>
-      <option value="María Rodríguez">María Rodríguez</option>
-    </select>
-  </div>
+    <!--
+            <app-ip-input
+              inputId="productId"
+              [control]="getControl('productId')"
+              label=""
+              placeholder="Id Producto"
+              type="text"
+      ></app-ip-input>
+      -->
 
-  <div class="modal-buttons">
-    <button class="btn-one" (click)="cleanFilters()">Limpiar Filtros</button>
-    <button class="btn-one" (click)="close.emit()">Cerrar</button>
-    <button class="btn-two" (click)="applyFilters()">Aplicar</button>
-  </div>
+    <div class="modal-buttons">
+      <app-ip-button-modal
+        class="btn-clean"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="cleanFilters()"
+      >
+        Limpiar Filtros
+      </app-ip-button-modal>
+
+      <app-ip-button-modal
+        class="btn-close"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="close.emit()"
+      >
+        Cerrar
+      </app-ip-button-modal>
+
+      <app-ip-button-modal
+        class="btn-apply"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="applyFilters()"
+      >
+        Aplicar
+      </app-ip-button-modal>
+    </div>
   </form>
 </div>

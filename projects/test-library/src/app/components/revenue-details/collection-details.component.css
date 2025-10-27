@@ -21,7 +21,7 @@ body {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 22px;
-  padding: 0px 20px;
+  padding: 10px 20px;
 }
 
 .sections-titles {
@@ -57,9 +57,9 @@ body {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
-  padding: 20px 40px;
+  max-width: 100%;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
   display: flex;
   align-items: start;
   box-sizing: border-box;
@@ -67,6 +67,7 @@ body {
 
 .button-back{
   margin:20px 0px;
+  padding-left: 40px;
 }
 
 ::ng-deep .btn-white button.ip-button {
@@ -84,7 +85,7 @@ body {
   width: 100%;
   padding: 20px 0px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
   box-sizing: border-box;
   height: auto;
   max-width: 100%;
@@ -192,6 +193,10 @@ button:hover {
     .title {
     text-align: start;
     width: 100%;
+    margin: 0;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
 }
@@ -212,19 +217,28 @@ button:hover {
     .title {
     text-align: start;
     width: 100%;
+    margin: 0;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
-  .card-title {
-    display: flex;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 0px;
-    width: 100%;
-    padding: 0;
-    max-width: 100%;
-    margin-bottom: 20px;
-    box-shadow: none;
-  }
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 0px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 14px;
+  max-width: 100%;
+  box-shadow: none;
+}
+.button-back {
+  padding-left: 0px;
+  margin: 0;
+}
 
   
   ::ng-deep .btn-white button.ip-button {
@@ -267,9 +281,10 @@ button:hover {
     display: block;
     background: #ffffff;
     border-radius: 12px;
-    padding: 16px;
+    padding: 2px 10px;
     margin-bottom: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 
+                0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
   }
 
@@ -288,7 +303,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    padding-bottom: 8px;
+    padding: 15px 0px;
     border-bottom: 1px solid #0071ce;
   }
 
@@ -333,20 +348,26 @@ button:hover {
   }
 
   .container {
-    padding: 15px;
+    padding: 2px;
   }
 
-  .card-title {
-    display: flex;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 0px;
-    width: 100%;
-    padding: 0;
-    max-width: 100%;
-    margin-bottom: 20px;
-    box-shadow: none;
-  }
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 0px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 14px;
+  max-width: 100%;
+  box-shadow: none;
+}
+.button-back {
+  padding-left: 0px;
+  margin: 0;
+}
+
 
   .card {
     width: 100%;
@@ -363,6 +384,10 @@ button:hover {
     .title {
     text-align: start;
     width: 100%;
+    margin: 0;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
   .sections-titles {
@@ -422,9 +447,10 @@ button:hover {
     display: block;
     background: #ffffff;
     border-radius: 12px;
-    padding: 16px;
+    padding: 2px 10px;
     margin-bottom: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 
+                0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
   }
 
@@ -443,7 +469,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
-    padding-bottom: 8px;
+    padding: 15px 0px;
     border-bottom: 1px solid #0071ce;
   }
 
@@ -488,19 +514,24 @@ button:hover {
   }
 
   .container {
-    padding: 10px;
+    padding: 2px;
   }
-  .card-title {
-    display: flex;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 0px;
-    width: 100%;
-    padding: 0;
-    max-width: 100%;
-    margin-bottom: 20px;
-    box-shadow: none;
-  }
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 0px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 14px;
+  max-width: 100%;
+  box-shadow: none;
+}
+.button-back {
+  padding-left: 0px;
+  margin: 0;
+}
 
   .card-title h2 {
     margin: 0;
@@ -517,6 +548,10 @@ button:hover {
   .title {
     text-align: start;
     width: 100%;
+    margin: 0;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
   form {
