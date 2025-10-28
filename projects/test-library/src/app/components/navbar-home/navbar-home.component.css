@@ -1,7 +1,7 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Poppins, Loos, Arial, sans-serif;
   overflow: hidden;
   position: relative;
 }
@@ -9,7 +9,7 @@
 .layout .sidebar {
   width: 220px;
   background: #ffffff;
-  color: #0071CE;
+  color: rgb(0, 113, 206);
   transition: width 0.3s;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -41,7 +41,8 @@
 .layout .sidebar .menu li a {
   display: flex;
   align-items: center;
-  padding: 12px 10px;
+  padding: 6px 20px;
+  margin-bottom: 5px;
   color: rgb(0, 0, 0);
   text-decoration: none;
   transition: all 0.2s ease;
@@ -57,14 +58,22 @@
 .layout .sidebar .menu li a.active {
   background: #e6f3fb;
   color: #d6e8f7;
-  border-left: 3px solid #0071CE;
-  padding-left: 7px;
+  padding-left: 20px;
+}
+
+.layout .sidebar .menu li a.active .text {
+  white-space: nowrap;
+  color: #0071CE;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .layout .sidebar .menu li a .icon {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +91,6 @@
   white-space: nowrap;
   color: #0071CE;
   font-size: 14px;
-  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -108,7 +116,7 @@
   align-items: center;
   padding: 15px 30px;
   background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
   flex-shrink: 0;
 }
 
@@ -146,8 +154,8 @@
 }
 
 .toggle-btn img {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .toggle-btn:hover {
@@ -202,13 +210,13 @@
   display: none;
   background: transparent;
   border: none;
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
 }
 
 .mobile-menu-btn img {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }
 
 .overlay {
@@ -286,12 +294,12 @@
   }
 
   .layout .sidebar .menu li a {
-    padding: 10px 12px;
+    padding: 10px 20px;
   }
 
   .layout .sidebar .menu .mobile-only {
     display: block;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid rgb(224, 224, 224);
     margin-top: 10px;
   }
 

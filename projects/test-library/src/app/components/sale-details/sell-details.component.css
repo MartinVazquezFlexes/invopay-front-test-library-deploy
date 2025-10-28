@@ -20,7 +20,8 @@ body {
 .title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 22px;
+  padding-top: 20px;
+  margin: 0;
 }
 
 .subtitle {
@@ -49,8 +50,7 @@ body {
 }
 
 .button-back{
-  margin:20px 0px;
-  padding-left: 40px;
+  margin:16px 0px;
 }
 
 ::ng-deep .btn-white button.ip-button {
@@ -336,6 +336,7 @@ form {
     text-align: start;
     width: 100%;
     margin: 0;
+    padding-top: 0px;
     font-size: 19.2px;
     line-height: 19.2px;
     font-family: Poppins, Loos, Arial, sans-serif;

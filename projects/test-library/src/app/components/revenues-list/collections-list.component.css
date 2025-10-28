@@ -21,6 +21,7 @@ body {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 40px;
+  margin: 0;
 }
 
 .card {
