@@ -4,6 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 .container {
@@ -21,7 +22,13 @@ body {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 22px;
-  padding: 10px 20px;
+}
+
+.policy-title{
+  color: #0071ce;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 22px;
+  padding-left: 20px;
 }
 
 .sections-titles {
@@ -177,28 +184,6 @@ button:hover {
 
 .card-view {
   display: none;
-}
-
-/* Pantallas grandes (desktop) */
-@media (min-width: 1024px) {
-  .inputs {
-    grid-template-columns: repeat(2, 1fr);
-    width: 95%;
-  }
-
-  .card-input:has(textarea) {
-    grid-column: span 2;
-  }
-
-    .title {
-    text-align: start;
-    width: 100%;
-    margin: 0;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
-  }
-
 }
 
 
