@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-title">
-    <h2 class="title">Recaudaciones</h2>
+    <h2 class="title">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</h2>
     <!--Botón para mostrar filtros en mobile-->
     <div class="filter-button-mobile">
       <app-ip-button-modal
@@ -8,7 +8,8 @@
         size="normal"
         (clicked)="toggleFilters()"
       >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="search-icon-mobile" /> <span class="text-filter-mobile">Filtrar</span>
+        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="search-icon-mobile" /> 
+        <span class="text-filter-mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
       </app-ip-button-modal>
     </div>
   </div>
@@ -20,7 +21,7 @@
 
   <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
     <div class="modal-header">
-      <h4>Filtrar Recaudaciones</h4>
+      <h4>{{ 'IP.REVENUE_LIST.FILTER' | translate }}</h4>
       <button (click)="toggleFilters()">
         <img src="assets/new-styles/icons/buttons/close-icon.svg" />
       </button>
@@ -35,7 +36,7 @@
             [min]="startDateMin"
             [max]="startDateMax"
           />
-          <label for="start">Desde</label>
+          <label for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
         </div>
 
         <div class="input-date">
@@ -46,7 +47,7 @@
             [min]="endDateMin"
             [max]="endDateMax"
           />
-          <label for="end">Hasta</label>
+          <label for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
           <!--<app-ip-date-input></app-ip-date-input>-->
         </div>
       </form>
@@ -101,55 +102,55 @@
         <div class="menu-container">
           <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
           <div class="menu-dropdown" *ngIf="openMenuId === item.id">
-            <button (click)="toDetails(item.id)">Revisar</button>
+            <button (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
           </div>
         </div>
       </div>
 
       <div class="card-row">
-        <label>Fecha de venta</label>
+        <label>{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
         <span class="card-date">{{
           item.revenueDate | date : "dd/MM/yyyy"
         }}</span>
       </div>
 
       <div class="card-row">
-        <label>Recaudado</label>
+        <label>{{'IP.ADMIN_TABLE.REVENUEAMOUNT' | translate}}</label>
         <span class="card-amount">{{ item.revenueAmount }}</span>
       </div>
 
       <div class="card-row">
-        <label>Proveedor</label>
+        <label>{{'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate}}</label>
         <span>{{ item.paymentProvider }}</span>
       </div>
 
       <div class="card-row">
-        <label>Canal de Pago</label>
+        <label>{{'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate}}</label>
         <span>{{ item.paymentChannel }}</span>
       </div>
 
       <div class="card-row">
-        <label>Consolidada</label>
+        <label>{{'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate}}</label>
         <span>{{ item.isConsolidated }}</span>
       </div>
 
       <div class="card-row">
-        <label>Número Poliza</label>
+        <label>{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
         <span>{{ item.policyNumber }}</span>
       </div>
 
       <div class="card-row">
-        <label>Producto</label>
+        <label>{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
         <span>{{ item.productName }}</span>
       </div>
 
       <div class="card-row">
-        <label>Prima</label>
+        <label>{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
         <span class="card-amount">{{ item.premiumAmount }}</span>
       </div>
 
       <div class="card-row">
-        <label>Broker</label>
+        <label>{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
         <span>{{ item.brokerName }}</span>
       </div>
     </div>

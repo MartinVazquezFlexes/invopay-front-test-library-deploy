@@ -74,7 +74,7 @@
       "PAYMENTPROVIDER": "Fornecedor",
       "PAYMENTCHANNEL": "Canal Pagamento",
       "ISCONSOLIDATED": "Consolidada",
-      "POLICYNUMBER": "Nro Apólice",
+      "POLICYNUMBER": "Número da Apólice",
       "LOGOURL": "Logo",
       "NAME": "Nome",
       "PAYMENTCHANNELS": "Canais de Pagamento",
@@ -95,6 +95,25 @@
       "TITLE": "Usuário",
       "USERNAME": "NOME DE USUÁRIO",
       "USERSTATUS": "ESTADO"
+    },
+    "REVENUE_LIST":{
+      "TITLE":"Arrecadações",
+      "FILTER": "Filtrar Arrecadações"
+    },
+    "SALE_DETAILS":{
+      "TITLE":"Detalhes da Venda",
+      "SUBTITLE_DETAIL_INFO": "Informações Detalhadas",
+      "SUBTITLE_CLIENT_INFO":"Informações do Cliente",
+      "SUBTITLE_PLAN":"Plano de Pagamento de Parcelas",
+      "COMMISION_BROKER":"Valor da Comissão do Corretor",
+      "COMMISION_PERCENTAGE":"Porcentagem Comissão"
+    },
+    "REVENUE_DETAILS":{
+      "TITLE":"Detalhe Arrecadação",
+      "TRANSACTION":"Transação",
+      "REVENUE_DATE":"Data da Cobrança",
+      "PAY_NUMBER":"Número de Pagamento",
+      "PAY_VALUE":"Valor do Pagamento"
     },
     "ADMIN_TABLE_ENTERPRISE": {
       "ACTIONS": "Ações",

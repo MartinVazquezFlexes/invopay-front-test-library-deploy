@@ -10,17 +10,17 @@
       <img src="assets/new-styles/icons/arrow-back.svg" />
     </app-ip-button-modal>
     </div>
-    <h2 class="title">Detalle Venta</h2>
+    <h2 class="title">{{ 'IP.SALE_DETAILS.TITLE' | translate }}</h2>
   </div>
 
   <form [formGroup]="detailedInfoForm">
     <div class="row">
       <!-- Información Detallada -->
       <div class="card-row">
-        <h3 class="subtitle">Información Detallada</h3>
+        <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_DETAIL_INFO' | translate }}</h3>
         <div class="inputs">
           <div class="card-input">
-            <label for="saleDate">Fecha Venta</label>
+            <label for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
             <app-ip-input
               inputId="saleDate"
               [control]="getControl('saleDate')"
@@ -30,7 +30,7 @@
           </div>
 
           <div class="card-input">
-            <label for="productName">Nombre Producto</label>
+            <label for="productName">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
             <app-ip-input
               inputId="productName"
               [control]="getControl('productName')"
@@ -40,7 +40,7 @@
           </div>
 
           <div class="card-input">
-            <label for="premiumAmount">Valor Prima</label>
+            <label for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="premiumAmount"
               [control]="getControl('premiumAmount')"
@@ -50,7 +50,7 @@
           </div>
 
           <div class="card-input">
-            <label for="brokerCommission">Valor Comisión Broker</label>
+            <label for="brokerCommission">{{ 'IP.SALE_DETAILS.COMMISION_BROKER' | translate }}</label>
             <app-ip-input
               inputId="brokerCommission"
               [control]="getControl('brokerCommission')"
@@ -60,7 +60,7 @@
           </div>
 
           <div class="card-input">
-            <label for="policyNumber">Número Póliza</label>
+            <label for="policyNumber">{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
             <app-ip-input
               inputId="policyNumber"
               [control]="getControl('policyNumber')"
@@ -70,7 +70,7 @@
           </div>
 
           <div class="card-input">
-            <label for="policyAmount">Valor Póliza</label>
+            <label for="policyAmount">{{'IP.ADMIN_TABLE.POLICYAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="policyAmount"
               [control]="getControl('policyAmount')"
@@ -80,7 +80,7 @@
           </div>
 
           <div class="card-input">
-            <label for="commissionPercentage">Porcentaje Comisión</label>
+            <label for="commissionPercentage">{{ 'IP.SALE_DETAILS.COMMISION_PERCENTAGE' | translate }}</label>
             <app-ip-input
               inputId="commissionPercentage"
               [control]="getControl('commissionPercentage')"
@@ -93,10 +93,10 @@
 
       <!-- Información del Cliente -->
       <div class="card-row">
-        <h3 class="subtitle">Información Cliente</h3>
+        <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_CLIENT_INFO' | translate }}</h3>
         <div class="inputs">
           <div class="card-input">
-            <label for="customerName">Nombre</label>
+            <label for="customerName">{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
             <app-ip-input
               inputId="customerName"
               [control]="getControl('customerName')"
@@ -106,7 +106,7 @@
           </div>
 
           <div class="card-input">
-            <label for="customerPhoneNumber">Teléfono</label>
+            <label for="customerPhoneNumber">{{'IP.ADMIN_TABLE_ENTERPRISE_FORM_MODAL.CONTACTNUMBER' | translate}}</label>
             <app-ip-input
               inputId="customerPhoneNumber"
               [control]="getControl('customerPhoneNumber')"
@@ -116,7 +116,7 @@
           </div>
 
           <div class="card-input">
-            <label for="customerEmail">Email</label>
+            <label for="customerEmail">{{'IP.CARD_TABLE.SUPPLIER.USEREMAIL' | translate}}</label>
             <app-ip-input
               inputId="customerEmail"
               [control]="getControl('customerEmail')"
@@ -131,7 +131,7 @@
 
   <!-- Tabla de plan de pagos -->
   <div class="card">
-    <h3 class="subtitle">Plan de Pago de Cuotas</h3>
+    <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_PLAN' | translate }}</h3>
     <div class="table-view">
       <app-table
         *ngIf="tableData.length > 0"
@@ -156,32 +156,32 @@
       </div>
 
       <div class="card-row-mobile">
-        <label>Valor</label>
+        <label>{{'IP.ADMIN_TABLE.AMOUNT' | translate}}</label>
         <span class="card-amount">{{ item.amount }}</span>
       </div>
 
       <div class="card-row-mobile">
-        <label>Fecha Vencimiento</label>
+        <label>{{'IP.ADMIN_TABLE.DUEDATE' | translate}}</label>
         <span>{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
       </div>
 
       <div class="card-row-mobile">
-        <label>Estado</label>
+        <label>{{'IP.ADMIN_TABLE.ISPAID' | translate}}</label>
         <span>{{ item.isPaid }}</span>
       </div>
 
       <div class="card-row-mobile">
-        <label>Comisión</label>
+        <label>{{'IP.ADMIN_TABLE.COMMISSION' | translate}}</label>
         <span>{{ item.commission }}</span>
       </div>
 
       <div class="card-row-mobile">
-        <label>Valor Comisión</label>
+        <label>{{'IP.ADMIN_TABLE.COMMISSIONAMOUNT' | translate}}</label>
         <span class="card-amount">{{ item.commissionAmount }}</span>
       </div>
 
       <div class="card-row-mobile">
-        <label>Fecha de Pago</label>
+        <label>{{'IP.ADMIN_TABLE.PAYEDDATE' | translate}}</label>
         <span>{{ item.payedDate | date : "dd/MM/yyyy" }}</span>
       </div>
     </div>

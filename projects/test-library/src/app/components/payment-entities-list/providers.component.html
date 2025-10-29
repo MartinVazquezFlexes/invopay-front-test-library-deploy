@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-title">
-    <h2 class="title">Proveedores</h2>
+    <h2 class="title">{{ 'IP.LOGIN.SUPPLIER' | translate }}</h2>
   </div>
 
   <div class="card">
@@ -32,12 +32,12 @@
       </div>
 
       <div class="card-row">
-        <label>Nombre</label>
+        <label>{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
         <span class="card-amount">{{ item.name }}</span>
       </div>
 
       <div class="card-row">
-        <label>Canales de Pago</label>
+        <label>{{'IP.ADMIN_TABLE.PAYMENTCHANNELS' | translate}}</label>
         <div class="payment-channels-container">
           <span class="payment-channel-span" *ngFor="let channel of item.paymentChannels">
             {{ channel }}
@@ -46,13 +46,13 @@
       </div>
 
       <div class="card-row">
-        <label>Activo</label>
-        <span *ngIf="item.isActive">Si</span>
-        <span *ngIf="!item.isActive">No</span>
+        <label>{{'IP.ADMIN_TABLE.ISPAYMENTENTITYACTIVE' | translate}}</label>
+        <span *ngIf="item.isActive">{{'IP.YES' | translate}}</span>
+        <span *ngIf="!item.isActive">{{'IP.NO' | translate}}</span>
       </div>
 
       <div class="card-row">
-        <label>Descripción</label>
+        <label>{{'IP.ADMIN_TABLE.DESCRIPTION' | translate}}</label>
         <span>{{ item.description }}</span>
       </div>
     </div>

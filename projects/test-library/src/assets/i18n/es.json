@@ -98,13 +98,13 @@
       "PAYMENTPROVIDER": "Proveedor",
       "PAYMENTCHANNEL": "Canal Pago",
       "ISCONSOLIDATED": "Consolidada",
-      "POLICYNUMBER": "Nro Póliza",
+      "POLICYNUMBER": "Número Póliza",
       "LOGOURL": "Logo",
       "NAME": "Nombre",
       "PAYMENTCHANNELS": "Canales de Pago",
       "ISPAYMENTENTITYACTIVE": "Activo",
       "DESCRIPTION": "Descripción",
-      "INSTALLMENTNUMBER": "Nro Cuota",
+      "INSTALLMENTNUMBER": "Número Cuota",
       "AMOUNT": "Valor",
       "DUEDATE": "Fecha Vencimiento",
       "ISPAID": "Estado",
@@ -126,6 +126,25 @@
       "USERCREATIONDATE": "FECHA DE CARGA",
       "USERNAME": "NOMBRE COMPLETO",
       "USERSTATUS": "ESTADO"
+    },
+    "REVENUE_LIST":{
+      "TITLE":"Recaudaciones",
+      "FILTER": "Filtrar Recaudaciones"
+    },
+    "SALE_DETAILS":{
+      "TITLE":"Detalle Venta",
+      "SUBTITLE_DETAIL_INFO": "Información Detallada",
+      "SUBTITLE_CLIENT_INFO":"Información Cliente",
+      "SUBTITLE_PLAN":"Plan de Pago de Cuotas",
+      "COMMISION_BROKER":"Valor Comisión Broker",
+      "COMMISION_PERCENTAGE":"Porcentaje Comisión"
+    },
+    "REVENUE_DETAILS":{
+      "TITLE":"Detalle Recaudación",
+      "TRANSACTION":"Transacción",
+      "REVENUE_DATE":"Fecha Recaudación",
+      "PAY_NUMBER":"Número de Pago",
+      "PAY_VALUE":"Valor de Pago"
     },
     "ADMIN_TABLE_ENTERPRISE": {
       "ACTIONS": "ACCIONES",

@@ -1,7 +1,7 @@
 <div class="modal" (click)="close.emit()"></div>
 <div class="modal-content">
   <div class="modal-header">
-    <h4>Filtrar Ventas</h4>
+    <h4>{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FILTER_TITLE' | translate }}</h4>
     <button (click)="close.emit()">
       <img src="assets/new-styles/icons/buttons/close-icon.svg" />
     </button>
@@ -15,7 +15,7 @@
       /> 
       <input type="text" placeholder="Producto" formControlName="productName" />
       <select name="brokerSelect" id="brokers" formControlName="broker">
-        <option value="" disabled selected hidden>Broker</option>
+        <option value="" disabled selected hidden>{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</option>
         <option value="Juan Pérez">Juan Pérez</option>
         <option value="Sofía Gómez">Sofía Gómez</option>
         <option value="María Rodríguez">María Rodríguez</option>
@@ -39,7 +39,7 @@
         size="normal"
         (clicked)="cleanFilters()"
       >
-        Limpiar Filtros
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER' | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -48,7 +48,7 @@
         size="normal"
         (clicked)="close.emit()"
       >
-        Cerrar
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE' | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -57,7 +57,7 @@
         size="normal"
         (clicked)="applyFilters()"
       >
-        Aplicar
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY' | translate }}
       </app-ip-button-modal>
     </div>
   </form>

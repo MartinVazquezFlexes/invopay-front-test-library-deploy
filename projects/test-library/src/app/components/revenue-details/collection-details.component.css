@@ -108,7 +108,7 @@ form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  width: 100%;
+  width: 95%;
   padding: 0px 20px;
 }
 

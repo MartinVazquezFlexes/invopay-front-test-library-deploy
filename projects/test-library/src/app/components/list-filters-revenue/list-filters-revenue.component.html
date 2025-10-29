@@ -1,7 +1,7 @@
 <div class="modal" (click)="close.emit()"></div>
 <div class="modal-content">
   <div class="modal-header">
-    <h4>Filtrar Recaudaciones</h4>
+    <h4>{{ 'IP.REVENUE_LIST.FILTER' | translate }}</h4>
     <button (click)="close.emit()">
       <img src="assets/new-styles/icons/buttons/close-icon.svg">
     </button>
@@ -16,7 +16,7 @@
             id="inputPayMethod"
             formControlName="paymentChannel"
           >
-            <option value="" disabled selected hidden>Canal de Pago</option>
+            <option value="" disabled selected hidden>{{ 'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate }}</option>
             <option value="Todos">Todos</option>
             <option value="TRANSFERENCIA">Transferencia</option>
             <option value="TARJETA">Tarjeta</option>
@@ -33,7 +33,7 @@
         size="normal"
         (clicked)="cleanFilters()"
       >
-        Limpiar Filtros
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER' | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -42,7 +42,7 @@
         size="normal"
         (clicked)="close.emit()"
       >
-        Cerrar
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE' | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -51,7 +51,7 @@
         size="normal"
         (clicked)="applyFilters()"
       >
-        Aplicar
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY' | translate }}
       </app-ip-button-modal>
     </div>
   </form>

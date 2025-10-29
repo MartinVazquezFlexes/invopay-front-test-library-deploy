@@ -15,25 +15,25 @@
       <li>
         <a routerLink="/home" routerLinkActive="active" (click)="closeSidebarOnMobile()">
           <span class="icon"><img src="assets/new-styles/icons/sidebar/home-icon.svg" alt="Inicio" /></span>
-          <span class="text">Inicio</span>
+          <span class="text">{{ 'IP.SIDENAV.HOME' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="/invopay/sales-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
           <span class="icon"><img src="assets/new-styles/icons/payments.svg" alt="Ventas" /></span>
-          <span class="text">Ventas</span>
+          <span class="text">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="/invopay/revenues-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
           <span class="icon"><img src="assets/icons/pay_in.svg" alt="Recaudaciones" /></span>
-          <span class="text">Recaudaciones</span>
+          <span class="text">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</span>
         </a>
       </li>
       <li>
         <a routerLink="/invopay/payment-entities" routerLinkActive="active" (click)="closeSidebarOnMobile()">
           <span class="icon"><img src="assets/icons/group_people.svg" alt="Proveedores" /></span>
-          <span class="text">Proveedores</span>
+          <span class="text">{{ 'IP.LOGIN.SUPPLIER' | translate }}</span>
         </a>
       </li>
 
@@ -41,13 +41,13 @@
       <li class="mobile-only">
         <a (click)="closeSidebarOnMobile()">
           <span class="icon"><img src="assets/new-styles/icons/settings-icon.svg" alt="Configuración" /></span>
-          <span class="text">Configuración</span>
+          <span class="text">{{ 'IP.SETTINGS.MANAGE' | translate }}</span>
         </a>
       </li>
       <li class="mobile-only">
         <a (click)="logOut()">
           <span class="icon"><img src="assets/new-styles/icons/navbar/logout.svg" alt="Cerrar sesión" /></span>
-          <span class="text">Cerrar sesión</span>
+          <span class="text">{{ 'IP.SIDENAV.OPTIONS.LOGOUT' | translate }}</span>
         </a>
       </li>
     </ul>
