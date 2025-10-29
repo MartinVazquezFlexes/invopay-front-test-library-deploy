@@ -6,7 +6,7 @@ body {
   align-items: center;
 }
 
-.container {
+.sales {
   background: #f5f5f5;
   width: 100%;
   min-height: 100vh;
@@ -17,14 +17,14 @@ body {
   box-sizing: border-box;
 }
 
-.title {
+.sales__title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 40px;
   margin: 0;
 }
 
-.card {
+.sales__card {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -34,7 +34,7 @@ body {
   box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
 }
 
-.card-title {
+.sales__header {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -44,23 +44,23 @@ body {
   box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
 }
 
-.filters {
+.sales__filters {
   display: flex;
   justify-content: flex-end;
 }
 
-form {
+.sales__form {
   display: flex;
   flex-wrap: wrap;
 }
 
-.input-date {
+.sales__input-date {
   position: relative;
   width: 200px;
   margin: 10px;
 }
 
-.input-date label {
+.sales__label {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -74,7 +74,7 @@ form {
   border-radius: 20px;
 }
 
-.input-date input[type="date"] {
+.sales__input[type="date"] {
   width: 100%;
   padding: 12px 12px;
   border: 1px solid #e0e0e0;
@@ -85,14 +85,14 @@ form {
   box-sizing: border-box;
 }
 
-.input-date input[type="date"]:focus {
+.sales__input[type="date"]:focus {
   outline: none;
   border-color: #0071ce;
   box-shadow: 0 0 0 3px rgba(0, 113, 206, 0.1);
 }
 
-.input-date input[type="date"]:focus + label,
-.input-date input[type="date"]:valid + label {
+.sales__input[type="date"]:focus + .sales__label,
+.sales__input[type="date"]:valid + .sales__label {
   top: -8px;
   left: 8px;
   font-size: 11px;
@@ -101,7 +101,7 @@ form {
   padding: 2px 8px;
 }
 
-.buttons {
+.sales__buttons {
   align-items: center;
   text-align: center;
   display: flex;
@@ -109,29 +109,27 @@ form {
   padding-right: 20px;
 }
 
-/*mostrar tabla, ocultar cards*/
-
-.filters-card {
+.sales__card--filters {
   display: block;
 }
 
-.table-view {
+.sales__table-view {
   display: block;
 }
 
-.card-view {
+.sales__card-view {
   display: none;
 }
 
-.filter-button-mobile {
+.sales__filter-button--mobile {
   display: none;
 }
 
-.modal-header{
+.sales__modal-header {
   display: none;
 }
 
-.pagination {
+.sales__pagination {
   display: flex;
   width: 100%;
   align-items: center;
@@ -141,14 +139,14 @@ form {
   min-height: 50px;
 }
 
-.center {
+.sales__pagination-center {
   margin-top: 0;
   display: flex;
   align-items: center;
   padding-left: 40px;
 }
 
-.selectCenter {
+.sales__select {
   padding: 8px 12px;
   border-radius: 15px;
   border: 1px solid;
@@ -157,42 +155,41 @@ form {
   align-items: center;
 }
 
-app-paginator {
+.sales app-paginator {
   display: flex;
   align-items: center;
   height: 5vh;
   padding-bottom: 20px;
 }
 
-/*ocultar tabla, mostrar cards*/
+/* RESPONSIVE: MOBILE */
 @media (max-width: 768px) {
 
-  /*Botón de filtros mobile*/
-  .filter-button-mobile {
+  .sales__filter-button--mobile {
     display: block;
     width: 100%;
     text-align: end;
     padding-right: 20px;
   }
 
-  .search-icon-mobile {
+  .sales__search-icon--mobile {
     width: 14px;
     height: 11px;
     padding-right: 5px;
   }
 
-  .text-filter-mobile{
+  .sales__filter-text--mobile {
     font-size: 12px;
     font-family: "Poppins", Loos, Arial, sans-serif;
   }
 
-  .filters-card {
+  .sales__card--filters {
     position: fixed;
     bottom: -20px;
     left: 0;
-    width: 100vw; /*ocupa el ancho exacto de la ventana*/
+    width: 100vw;
     box-sizing: border-box;
-    background: #ffffff; /* 🔹 fondo blanco */
+    background: #ffffff;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1001;
@@ -202,14 +199,12 @@ app-paginator {
   }
 
   ::ng-deep app-list-filters {
-  position: fixed;
-  z-index: 1100 !important; /*Mayor que filters-card(1001) para que se vea*/
-  inset: 0;
+    position: fixed;
+    z-index: 1100 !important;
+    inset: 0;
   }
 
-
-  /* Fondo oscuro (overlay) detrás del panel */
-  .filters-overlay {
+  .sales__filters-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
@@ -219,94 +214,91 @@ app-paginator {
     transition: opacity 0.3s ease-in-out;
   }
 
-  /* Cuando se muestran los filtros */
-  .filters-card.show-mobile {
+  .sales__card--show-mobile {
     display: block;
     transform: translateY(0);
   }
 
-  .filters-overlay.show {
+  .sales__filters-overlay--show {
     opacity: 1;
     pointer-events: all;
   }
 
-.filters {
-  flex-direction: column;
-  gap: 16px;
-}
+  .sales__filters {
+    flex-direction: column;
+    gap: 16px;
+  }
 
-.input-date {
-  width: 100%;
-}
+  .sales__input-date {
+    width: 100%;
+  }
 
-.card-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 0px;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 14px;
-  max-width: 100%;
-  box-shadow: none;
-}
+  .sales__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 14px;
+    max-width: 100%;
+    box-shadow: none;
+  }
 
+  .sales__title {
+    padding-left: 20px;
+    text-align: start;
+    width: 100%;
+    margin: 0;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    font-family: Poppins, Loos, Arial, sans-serif;
+  }
 
-.title {
-  padding-left: 20px;
-  text-align: start;
-  width: 100%;
-  margin: 0;
-  font-size: 19.2px;
-  line-height: 19.2px;
-  font-family: Poppins, Loos, Arial, sans-serif;
-}
+  ::ng-deep .sales__filter-button--mobile app-ip-button-modal button.ip-button {
+    width: 96px !important;
+    height: 32px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    min-width: 96px !important;
+    min-height: 32px !important;
+  }
 
-::ng-deep .filter-button-mobile app-ip-button-modal button.ip-button {
-  width: 96px !important;
-  height: 32px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  min-width: 96px !important;
-  min-height: 32px !important;
-}
+  .sales__pagination-center {
+    padding-left: 0px;
+  }
 
-.center {
-  padding-left: 0px;
-}
+  .sales__modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #e0e0e0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
 
+  .sales__modal-header h4 {
+    margin: 0;
+    color: rgb(62, 62, 62);
+    font-size: 16px;
+  }
 
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid #e0e0e0;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-}
+  .sales__modal-close {
+    background: rgb(245, 245, 245);
+    border-radius: 15px;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.modal-header h4 {
-  margin: 0;
-  color: rgb(62, 62, 62);
-  font-size: 16px;
-}
-
-.modal-header button {
-  background: rgb(245, 245, 245);
-  border-radius: 15px;
-  border: 0px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-header button img {
-  width: 15px;
-  height: 15px;
-}
+  .sales__modal-close img {
+    width: 15px;
+    height: 15px;
+  }
 
   @keyframes slideDown {
     from {
@@ -319,12 +311,12 @@ app-paginator {
     }
   }
 
-  /*Cards mobile*/
-  .table-view {
+  /* Mobile Cards */
+  .sales__table-view {
     display: none;
   }
 
-  .card-view {
+  .sales__card-view {
     display: block;
     background: #ffffff;
     border-radius: 12px;
@@ -335,7 +327,7 @@ app-paginator {
     position: relative;
   }
 
-  .card-header {
+  .sales__card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -343,17 +335,17 @@ app-paginator {
     border-bottom: 1px solid #0071ce;
   }
 
-  .card-id {
+  .sales__card-id {
     color: #0071ce;
     font-weight: 600;
     font-size: 14px;
   }
 
-  .menu-container {
+  .sales__menu {
     position: relative;
   }
 
-  .menu-button {
+  .sales__menu-button {
     background: none;
     border: none;
     font-size: 24px;
@@ -363,8 +355,7 @@ app-paginator {
     line-height: 1;
   }
 
-
-  .menu-dropdown {
+  .sales__menu-dropdown {
     position: absolute;
     right: 0;
     top: 100%;
@@ -376,7 +367,7 @@ app-paginator {
     margin-top: 4px;
   }
 
-  .menu-dropdown button {
+  .sales__menu-item {
     width: 100%;
     padding: 12px 16px;
     border: none;
@@ -387,47 +378,46 @@ app-paginator {
     color: rgb(132, 129, 138);
   }
 
-  .menu-dropdown button:hover {
+  .sales__menu-item:hover {
     background: #f5f5f5;
   }
 
-  .card-row {
+  .sales__card-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
   }
 
-  .card-row label {
-    color:#0071CE;
+  .sales__card-label {
+    color: #0071CE;
     font-size: 14px;
     font-weight: 500;
   }
 
-  .card-row span {
+  .sales__card-value {
     color: #333;
     font-size: 14px;
     font-weight: 500;
     text-align: right;
   }
 
-  .card-date {
+  .sales__card-value--date {
     color: #666;
     font-size: 13px;
   }
 
-  .card-amount {
+  .sales__card-value--amount {
     color: #0071ce;
     font-weight: 600;
   }
-  /*Fin cards mobile*/
 
   body {
     overflow-x: hidden;
     width: 100vw;
   }
 
-  .container {
+  .sales {
     padding: 2px;
     width: 100%;
     max-width: 100vw;
@@ -435,7 +425,7 @@ app-paginator {
     box-sizing: border-box;
   }
 
-  .card {
+  .sales__card {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -446,28 +436,27 @@ app-paginator {
     box-shadow: 0 0px 0px rgb(255, 255, 255);
   }
 
-
-  .input-date {
+  .sales__input-date {
     width: 100%;
     min-width: 100%;
   }
 
-  .input-date label {
+  .sales__label {
     margin-bottom: 10px;
   }
 
-  .input-date input[type="date"] {
+  .sales__input[type="date"] {
     font-size: 16px;
     padding: 14px 12px;
   }
 
-  .filters {
+  .sales__filters {
     flex-direction: column;
     align-items: stretch !important;
     gap: 10px;
   }
 
-  .buttons {
+  .sales__buttons {
     justify-content: end !important;
     width: 95%;
     margin-top: 10px;
@@ -475,7 +464,7 @@ app-paginator {
     order: 2;
   }
 
-  form {
+  .sales__form {
     order: 1;
     width: 95%;
   }
@@ -487,12 +476,12 @@ app-paginator {
     padding: 12px 16px;
   }
 
-  .pagination {
+  .sales__pagination {
     flex-direction: column;
     gap: 15px;
   }
 
-  .selectCenter {
+  .sales__select {
     width: 100%;
   }
 }

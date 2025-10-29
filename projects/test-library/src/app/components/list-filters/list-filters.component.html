@@ -1,13 +1,13 @@
 <div class="modal" (click)="close.emit()"></div>
-<div class="modal-content">
-  <div class="modal-header">
+<div class="modal__content">
+  <div class="modal__header">
     <h4>{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FILTER_TITLE' | translate }}</h4>
     <button (click)="close.emit()">
       <img src="assets/new-styles/icons/buttons/close-icon.svg" />
     </button>
   </div>
   <form [formGroup]="filtersModalForm">
-    <div class="modal-body">
+    <div class="modal__body">
       <input
         type="text"
         placeholder="Id Producto"
@@ -32,9 +32,9 @@
       ></app-ip-input>
       -->
 
-    <div class="modal-buttons">
+    <div class="modal__buttons">
       <app-ip-button-modal
-        class="btn-clean"
+        class="btn--clean"
         typeBtn="submit"
         size="normal"
         (clicked)="cleanFilters()"
@@ -43,7 +43,7 @@
       </app-ip-button-modal>
 
       <app-ip-button-modal
-        class="btn-close"
+        class="btn--close"
         typeBtn="submit"
         size="normal"
         (clicked)="close.emit()"
@@ -52,7 +52,7 @@
       </app-ip-button-modal>
 
       <app-ip-button-modal
-        class="btn-apply"
+        class="btn--apply"
         typeBtn="submit"
         size="normal"
         (clicked)="applyFilters()"

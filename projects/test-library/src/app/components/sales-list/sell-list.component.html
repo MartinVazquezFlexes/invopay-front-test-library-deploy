@@ -1,16 +1,16 @@
-<div class="container">
-  <div class="card-title">
-    <h2 class="title">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</h2>
+<div class="sales">
+  <div class="sales__header">
+    <h2 class="sales__title">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</h2>
     
     <!--Botón para mostrar filtros en mobile-->
-    <div class="filter-button-mobile">
+    <div class="sales__filter-button sales__filter-button--mobile">
       <app-ip-button-modal
         typeBtn="submit"
         size="normal"
         (clicked)="toggleFilters()"
       >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="search-icon-mobile" /> 
-        <span class="text-filter-mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
+        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="sales__search-icon sales__search-icon--mobile" /> 
+        <span class="sales__filter-text sales__filter-text--mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
       </app-ip-button-modal>
     </div>
   </div>
@@ -18,42 +18,44 @@
   <app-list-filters *ngIf="showModal" (close)="closeModal()">
   </app-list-filters>
 
-  <div class="filters-overlay" [class.show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
+  <div class="sales__filters-overlay" [class.sales__filters-overlay--show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
 
   <!--Filtros-->
-  <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
-    <div class="modal-header">
+  <div class="sales__card sales__card--filters" [class.sales__card--show-mobile]="showFiltersOnMobile">
+    <div class="sales__modal-header">
       <h4>{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FILTER_TITLE' | translate }}</h4>
-      <button (click)="toggleFilters()">
+      <button class="sales__modal-close" (click)="toggleFilters()">
         <img src="assets/new-styles/icons/buttons/close-icon.svg" />
       </button>
     </div>
-    <div class="filters">
-      <form [formGroup]="filtersForm">
-        <div class="input-date">
+    <div class="sales__filters">
+      <form class="sales__form" [formGroup]="filtersForm">
+        <div class="sales__input-date">
           <input
+            class="sales__input"
             type="date"
             id="start"
             formControlName="startDate"
             [min]="startDateMin"
             [max]="startDateMax"
           />
-          <label for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
+          <label class="sales__label" for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
         </div>
 
-        <div class="input-date">
+        <div class="sales__input-date">
           <input
+            class="sales__input"
             type="date"
             id="end"
             formControlName="endDate"
             [min]="endDateMin"
             [max]="endDateMax"
           />
-          <label for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
+          <label class="sales__label" for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
         </div>
       </form>
 
-      <div class="buttons">
+      <div class="sales__buttons">
         <app-ip-button-modal
           typeBtn="submit"
           size="small"
@@ -74,9 +76,9 @@
   </div>
 
   <!--Contenido principal-->
-  <div class="card">
+  <div class="sales__card">
     <!--Mostrar si no es mobile-->
-    <div class="table-view">
+    <div class="sales__table-view">
       <app-table
         *ngIf="pagedData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -95,54 +97,54 @@
     </div>
 
     <!--Mostrar si es mobile-->
-    <div class="card-view" *ngFor="let item of pagedData">
-      <div class="card-header">
-        <span class="card-id">#{{ item.id }}</span>
-        <div class="menu-container">
-          <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
-          <div class="menu-dropdown" *ngIf="openMenuId === item.id">
-            <button (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
+    <div class="sales__card-view" *ngFor="let item of pagedData">
+      <div class="sales__card-header">
+        <span class="sales__card-id">#{{ item.id }}</span>
+        <div class="sales__menu">
+          <button class="sales__menu-button" (click)="toggleMenu(item.id)">⋮</button>
+          <div class="sales__menu-dropdown" *ngIf="openMenuId === item.id">
+            <button class="sales__menu-item" (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
           </div>
         </div>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
-        <span class="card-date">{{ item.saleDate | date : "dd/MM/yyyy" }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
+        <span class="sales__card-value sales__card-value--date">{{ item.saleDate | date : "dd/MM/yyyy" }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
-        <span>{{ item.productName }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
+        <span class="sales__card-value">{{ item.productName }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
-        <span>{{ item.brokerName }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
+        <span class="sales__card-value">{{ item.brokerName }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.CUSTOMERNAME' | translate}}</label>
-        <span>{{ item.customerName }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.CUSTOMERNAME' | translate}}</label>
+        <span class="sales__card-value">{{ item.customerName }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.POLICYAMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.policyAmount }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.POLICYAMOUNT' | translate}}</label>
+        <span class="sales__card-value sales__card-value--amount">{{ item.policyAmount }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.premiumAmount }}</span>
+      <div class="sales__card-row">
+        <label class="sales__card-label">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
+        <span class="sales__card-value sales__card-value--amount">{{ item.premiumAmount }}</span>
       </div>
     </div>
 
-    <div class="pagination">
-      <div class="center">
+    <div class="sales__pagination">
+      <div class="sales__pagination-center">
         <select
           name="selectPages"
           id="pages"
-          class="selectCenter"
+          class="sales__select"
           [(ngModel)]="itemsPerPage"
           (ngModelChange)="onItemsPerPageChange($event)"
         >

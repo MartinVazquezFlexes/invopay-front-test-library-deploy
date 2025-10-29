@@ -1,53 +1,53 @@
 <div class="layout">
   <!-- Sidebar -->
-  <aside class="sidebar" [class.closed]="!sidebarOpen">
-    <div class="sidebar-header">
-      <div class="avlalogo">
+  <aside class="layout__sidebar" [class.layout__sidebar--closed]="!sidebarOpen">
+    <div class="layout__sidebar-header">
+      <div class="layout__logo">
         <img src="assets/new-styles/logoPNG.png" alt="AVLA" />
       </div>
-      <button class="toggle-btn" (click)="toggleSidebar()">
+      <button class="layout__toggle-btn" (click)="toggleSidebar()">
         <img src="assets/new-styles/icons/navbar/ham-icon.svg" alt="Menu" />
       </button>
     </div>
 
-    <ul class="menu">
+    <ul class="layout__menu">
       <!-- Sección Principal -->
-      <li>
-        <a routerLink="/home" routerLinkActive="active" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/new-styles/icons/sidebar/home-icon.svg" alt="Inicio" /></span>
-          <span class="text">{{ 'IP.SIDENAV.HOME' | translate }}</span>
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/home" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/sidebar/home-icon.svg" alt="Inicio" /></span>
+          <span class="layout__menu-text">{{ 'IP.SIDENAV.HOME' | translate }}</span>
         </a>
       </li>
-      <li>
-        <a routerLink="/invopay/sales-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/new-styles/icons/payments.svg" alt="Ventas" /></span>
-          <span class="text">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</span>
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/sales-list" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/payments.svg" alt="Ventas" /></span>
+          <span class="layout__menu-text">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</span>
         </a>
       </li>
-      <li>
-        <a routerLink="/invopay/revenues-list" routerLinkActive="active" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/pay_in.svg" alt="Recaudaciones" /></span>
-          <span class="text">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</span>
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/revenues-list" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/icons/pay_in.svg" alt="Recaudaciones" /></span>
+          <span class="layout__menu-text">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</span>
         </a>
       </li>
-      <li>
-        <a routerLink="/invopay/payment-entities" routerLinkActive="active" (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/icons/group_people.svg" alt="Proveedores" /></span>
-          <span class="text">{{ 'IP.LOGIN.SUPPLIER' | translate }}</span>
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/payment-entities" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/icons/group_people.svg" alt="Proveedores" /></span>
+          <span class="layout__menu-text">{{ 'IP.LOGIN.SUPPLIER' | translate }}</span>
         </a>
       </li>
 
       <!-- Opciones mobile (solo visible en mobile) -->
-      <li class="mobile-only">
-        <a (click)="closeSidebarOnMobile()">
-          <span class="icon"><img src="assets/new-styles/icons/settings-icon.svg" alt="Configuración" /></span>
-          <span class="text">{{ 'IP.SETTINGS.MANAGE' | translate }}</span>
+      <li class="layout__menu-item layout__menu-item--mobile-only">
+        <a class="layout__menu-link" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/settings-icon.svg" alt="Configuración" /></span>
+          <span class="layout__menu-text">{{ 'IP.SETTINGS.MANAGE' | translate }}</span>
         </a>
       </li>
-      <li class="mobile-only">
-        <a (click)="logOut()">
-          <span class="icon"><img src="assets/new-styles/icons/navbar/logout.svg" alt="Cerrar sesión" /></span>
-          <span class="text">{{ 'IP.SIDENAV.OPTIONS.LOGOUT' | translate }}</span>
+      <li class="layout__menu-item layout__menu-item--mobile-only">
+        <a class="layout__menu-link" (click)="logOut()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/navbar/logout.svg" alt="Cerrar sesión" /></span>
+          <span class="layout__menu-text">{{ 'IP.SIDENAV.OPTIONS.LOGOUT' | translate }}</span>
         </a>
       </li>
     </ul>
@@ -55,47 +55,47 @@
 
   <!-- Overlay para cerrar el menú -->
   <div
-    class="overlay"
-    [class.active]="sidebarOpen"
+    class="layout__overlay"
+    [class.layout__overlay--active]="sidebarOpen"
     (click)="toggleSidebar()"
   ></div>
 
   <!-- Contenido principal -->
-  <main class="content">
-    <header class="topbar">
+  <main class="layout__content">
+    <header class="layout__topbar">
       <!-- Logo a la izquierda en mobile -->
-      <div class="avlalogo mobile-logo">
+      <div class="layout__logo layout__logo--mobile">
         <img src="assets/new-styles/logoPNG.png" alt="AVLA" />
       </div>
 
       <!-- Logo centrado en desktop -->
-      <div class="avlalogo desktop-logo">
+      <div class="layout__logo layout__logo--desktop">
         <img src="assets/new-styles/logoPNG.png" alt="AVLA" />
       </div>
 
-      <div class="user desktop-only">
-        <img src="assets/new-styles/icons/settings-icon.svg" class="icon" alt="Configuración" />
+      <div class="layout__user layout__user--desktop-only">
+        <img src="assets/new-styles/icons/settings-icon.svg" class="layout__icon" alt="Configuración" />
 
-        <div class="user-name">
-          <span class="user-role">User Test</span>
-          <span class="user-name-text">Martin</span>
+        <div class="layout__user-info">
+          <span class="layout__user-role">User Test</span>
+          <span class="layout__user-name">Martin</span>
         </div>
 
         <img
           src="assets/new-styles/icons/navbar/logout.svg"
-          class="icon"
+          class="layout__icon"
           alt="Cerrar sesión"
           (click)="logOut()"
         />
       </div>
 
       <!-- Botón hamburguesa a la derecha en mobile -->
-      <button class="mobile-menu-btn" (click)="toggleSidebar()">
+      <button class="layout__mobile-menu-btn" (click)="toggleSidebar()">
         <img src="assets/new-styles/icons/navbar/ham-icon.svg" alt="Menu" />
       </button>
     </header>
 
-    <div class="main-section">
+    <div class="layout__main-section">
       <div *ngIf="showProfile">
         <!--<h2>Profile</h2>
       <p>

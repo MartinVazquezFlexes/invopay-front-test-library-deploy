@@ -8,7 +8,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.modal__content {
   position: fixed;
   top: 50%; 
   left: 50%;
@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-.modal-header {
+.modal__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,13 +33,13 @@
   padding-bottom: 10px;
 }
 
-.modal-header h4 {
+.modal__header h4 {
   margin: 0;
   color: rgb(62, 62, 62);
   font-size: 16px;
 }
 
-.modal-header button {
+.modal__header button {
   background: #ffffff;
   border-radius: 15px;
   border: 1px solid white;
@@ -49,20 +49,20 @@
   justify-content: center;
 }
 
-.modal-header button img {
+.modal__header button img {
   width: 15px;
   height: 15px;
 }
 
-.modal-body {
+.modal__body {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   padding: 0;
 }
 
-.modal-body input,
-.modal-body select {
+.modal__body input,
+.modal__body select {
   flex: 1;
   min-width: 10px;
   background: #ffffff;
@@ -74,17 +74,17 @@
   box-sizing: border-box;
 }
 
-.modal-body input:focus,
-.modal-body select:focus {
+.modal__body input:focus,
+.modal__body select:focus {
   outline: none;
   border-color: #0071CE;
 }
 
-.modal-body select {
+.modal__body select {
   cursor: pointer;
 }
 
-.modal-buttons {
+.modal__buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
@@ -92,67 +92,67 @@
   margin-top: 10px;
 }
 
-::ng-deep .modal-buttons .btn-clean button.ip-button,
-::ng-deep .modal-buttons .btn-close button.ip-button {
+::ng-deep .modal__buttons .btn--clean button.ip-button,
+::ng-deep .modal__buttons .btn--close button.ip-button {
   background: rgb(238, 235, 235) !important;
   color: #333 !important;
 }
 
-::ng-deep .modal-buttons .btn-clean button.ip-button:hover:enabled,
-::ng-deep .modal-buttons .btn-close button.ip-button:hover:enabled {
+::ng-deep .modal__buttons .btn--clean button.ip-button:hover:enabled,
+::ng-deep .modal__buttons .btn--close button.ip-button:hover:enabled {
   background: rgb(220, 217, 217) !important;
 }
 
 
 /*mobile*/
 @media (max-width: 768px) {
-  .modal-content {
+  .modal__content {
     width: 90%;
     max-width: 90%;
     min-width: 300px;
     padding: 20px 15px;
   }
 
-  .modal-body {
+  .modal__body {
     flex-direction: column;
     padding: 15px 0;
     gap: 12px;
   }
 
-  .modal-body input,
-  .modal-body select {
+  .modal__body input,
+  .modal__body select {
     width: 100%;
     min-width: 100%;
     font-size: 16px;
   }
 
-  .modal-buttons {
+  .modal__buttons {
     display: flex;
     gap: 8px;
   }
 
 
-  .modal-header h4 {
+  .modal__header h4 {
     font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .modal-content {
+  .modal__content {
     width: 95%;
     min-width: 300px;
     padding: 15px;
   }
 
-  .modal-body {
+  .modal__body {
     padding: 10px 0;
   }
 
-  .modal-header h4 {
+  .modal__header h4 {
     font-size: 16px;
   }
 
-  .modal-buttons {
+  .modal__buttons {
     display: flex;
     gap: 8px;
   }

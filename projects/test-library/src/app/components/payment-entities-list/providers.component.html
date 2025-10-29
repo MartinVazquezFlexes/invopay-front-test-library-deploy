@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="card-title">
-    <h2 class="title">{{ 'IP.LOGIN.SUPPLIER' | translate }}</h2>
+<div class="supplier">
+  <div class="supplier__header">
+    <h2 class="supplier__title">{{ 'IP.LOGIN.SUPPLIER' | translate }}</h2>
   </div>
 
-  <div class="card">
-    <div class="table-view">
+  <div class="supplier__card">
+    <div class="supplier__table-view">
       <!--[actions]="actions"-->
       <app-table
         *ngIf="pagedData.length > 0"
@@ -23,46 +23,46 @@
 
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->
-    <div class="card-view" *ngFor="let item of pagedData">
-      <div class="card-header">
-        <span class="card-id">#{{ item.id }}</span>
-        <div class="menu-container">
+    <div class="supplier__card-view" *ngFor="let item of pagedData">
+      <div class="supplier__card-header">
+        <span class="supplier__card-id">#{{ item.id }}</span>
+        <div class="supplier__image-container">
           <img src="assets/icons/images.jpg" [alt]="item.name" width="10%" />
         </div>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
-        <span class="card-amount">{{ item.name }}</span>
+      <div class="supplier__card-row">
+        <label class="supplier__card-label">{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
+        <span class="supplier__card-value supplier__card-value--amount">{{ item.name }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PAYMENTCHANNELS' | translate}}</label>
-        <div class="payment-channels-container">
-          <span class="payment-channel-span" *ngFor="let channel of item.paymentChannels">
+      <div class="supplier__card-row">
+        <label class="supplier__card-label">{{'IP.ADMIN_TABLE.PAYMENTCHANNELS' | translate}}</label>
+        <div class="supplier__payment-channels">
+          <span class="supplier__payment-channel" *ngFor="let channel of item.paymentChannels">
             {{ channel }}
           </span>
         </div>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.ISPAYMENTENTITYACTIVE' | translate}}</label>
-        <span *ngIf="item.isActive">{{'IP.YES' | translate}}</span>
-        <span *ngIf="!item.isActive">{{'IP.NO' | translate}}</span>
+      <div class="supplier__card-row">
+        <label class="supplier__card-label">{{'IP.ADMIN_TABLE.ISPAYMENTENTITYACTIVE' | translate}}</label>
+        <span class="supplier__card-value" *ngIf="item.isActive">{{'IP.YES' | translate}}</span>
+        <span class="supplier__card-value" *ngIf="!item.isActive">{{'IP.NO' | translate}}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.DESCRIPTION' | translate}}</label>
-        <span>{{ item.description }}</span>
+      <div class="supplier__card-row">
+        <label class="supplier__card-label">{{'IP.ADMIN_TABLE.DESCRIPTION' | translate}}</label>
+        <span class="supplier__card-value">{{ item.description }}</span>
       </div>
     </div>
 
-    <div class="pagination">
-      <div class="center">
+    <div class="supplier__pagination">
+      <div class="supplier__pagination-center">
         <select
           name="selectPages"
           id="pages"
-          class="selectCenter"
+          class="supplier__select"
           [(ngModel)]="itemsPerPage"
           (ngModelChange)="onItemsPerPageChange($event)"
         >

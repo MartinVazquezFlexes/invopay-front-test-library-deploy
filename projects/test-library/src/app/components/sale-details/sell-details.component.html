@@ -1,26 +1,26 @@
-<div class="container">
-  <div class="card-title">
-    <div class="button-back">
+<div class="sale-details">
+  <div class="sale-details__header">
+    <div class="sale-details__button-back">
       <app-ip-button-modal
-      class="btn-white"
-      typeBtn="submit"
-      size="small"
-      (clicked)="back()"
-    >
-      <img src="assets/new-styles/icons/arrow-back.svg" />
-    </app-ip-button-modal>
+        class="sale-details__btn-white"
+        typeBtn="submit"
+        size="small"
+        (clicked)="back()"
+      >
+        <img src="assets/new-styles/icons/arrow-back.svg" />
+      </app-ip-button-modal>
     </div>
-    <h2 class="title">{{ 'IP.SALE_DETAILS.TITLE' | translate }}</h2>
+    <h2 class="sale-details__title">{{ 'IP.SALE_DETAILS.TITLE' | translate }}</h2>
   </div>
 
-  <form [formGroup]="detailedInfoForm">
-    <div class="row">
+  <form class="sale-details__form" [formGroup]="detailedInfoForm">
+    <div class="sale-details__row">
       <!-- Información Detallada -->
-      <div class="card-row">
-        <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_DETAIL_INFO' | translate }}</h3>
-        <div class="inputs">
-          <div class="card-input">
-            <label for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
+      <div class="sale-details__card-row">
+        <h3 class="sale-details__subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_DETAIL_INFO' | translate }}</h3>
+        <div class="sale-details__inputs">
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
             <app-ip-input
               inputId="saleDate"
               [control]="getControl('saleDate')"
@@ -29,8 +29,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="productName">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="productName">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
             <app-ip-input
               inputId="productName"
               [control]="getControl('productName')"
@@ -39,8 +39,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="premiumAmount"
               [control]="getControl('premiumAmount')"
@@ -49,8 +49,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="brokerCommission">{{ 'IP.SALE_DETAILS.COMMISION_BROKER' | translate }}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="brokerCommission">{{ 'IP.SALE_DETAILS.COMMISION_BROKER' | translate }}</label>
             <app-ip-input
               inputId="brokerCommission"
               [control]="getControl('brokerCommission')"
@@ -59,8 +59,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="policyNumber">{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="policyNumber">{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
             <app-ip-input
               inputId="policyNumber"
               [control]="getControl('policyNumber')"
@@ -69,8 +69,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="policyAmount">{{'IP.ADMIN_TABLE.POLICYAMOUNT' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="policyAmount">{{'IP.ADMIN_TABLE.POLICYAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="policyAmount"
               [control]="getControl('policyAmount')"
@@ -79,8 +79,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="commissionPercentage">{{ 'IP.SALE_DETAILS.COMMISION_PERCENTAGE' | translate }}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="commissionPercentage">{{ 'IP.SALE_DETAILS.COMMISION_PERCENTAGE' | translate }}</label>
             <app-ip-input
               inputId="commissionPercentage"
               [control]="getControl('commissionPercentage')"
@@ -92,11 +92,11 @@
       </div>
 
       <!-- Información del Cliente -->
-      <div class="card-row">
-        <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_CLIENT_INFO' | translate }}</h3>
-        <div class="inputs">
-          <div class="card-input">
-            <label for="customerName">{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
+      <div class="sale-details__card-row">
+        <h3 class="sale-details__subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_CLIENT_INFO' | translate }}</h3>
+        <div class="sale-details__inputs">
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="customerName">{{'IP.ADMIN_TABLE.NAME' | translate}}</label>
             <app-ip-input
               inputId="customerName"
               [control]="getControl('customerName')"
@@ -105,8 +105,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="customerPhoneNumber">{{'IP.ADMIN_TABLE_ENTERPRISE_FORM_MODAL.CONTACTNUMBER' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="customerPhoneNumber">{{'IP.ADMIN_TABLE_ENTERPRISE_FORM_MODAL.CONTACTNUMBER' | translate}}</label>
             <app-ip-input
               inputId="customerPhoneNumber"
               [control]="getControl('customerPhoneNumber')"
@@ -115,8 +115,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="customerEmail">{{'IP.CARD_TABLE.SUPPLIER.USEREMAIL' | translate}}</label>
+          <div class="sale-details__input-wrapper">
+            <label class="sale-details__label" for="customerEmail">{{'IP.CARD_TABLE.SUPPLIER.USEREMAIL' | translate}}</label>
             <app-ip-input
               inputId="customerEmail"
               [control]="getControl('customerEmail')"
@@ -130,9 +130,9 @@
   </form>
 
   <!-- Tabla de plan de pagos -->
-  <div class="card">
-    <h3 class="subtitle">{{ 'IP.SALE_DETAILS.SUBTITLE_PLAN' | translate }}</h3>
-    <div class="table-view">
+  <div class="sale-details__card">
+    <h3 class="sale-details__subtitle sale-details__subtitle--card">{{ 'IP.SALE_DETAILS.SUBTITLE_PLAN' | translate }}</h3>
+    <div class="sale-details__table-view">
       <app-table
         *ngIf="tableData.length > 0"
         [propertyOrder]="propertyOrder"
@@ -150,39 +150,39 @@
 
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->
-    <div class="card-view" *ngFor="let item of tableData">
-      <div class="card-header">
-        <span class="card-id">N°{{ item.installmentNumber }}</span>
+    <div class="sale-details__card-view" *ngFor="let item of tableData">
+      <div class="sale-details__card-header">
+        <span class="sale-details__card-id">N°{{ item.installmentNumber }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.AMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.amount }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.AMOUNT' | translate}}</label>
+        <span class="sale-details__card-value sale-details__card-value--amount">{{ item.amount }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.DUEDATE' | translate}}</label>
-        <span>{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.DUEDATE' | translate}}</label>
+        <span class="sale-details__card-value">{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.ISPAID' | translate}}</label>
-        <span>{{ item.isPaid }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.ISPAID' | translate}}</label>
+        <span class="sale-details__card-value">{{ item.isPaid }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.COMMISSION' | translate}}</label>
-        <span>{{ item.commission }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.COMMISSION' | translate}}</label>
+        <span class="sale-details__card-value">{{ item.commission }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.COMMISSIONAMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.commissionAmount }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.COMMISSIONAMOUNT' | translate}}</label>
+        <span class="sale-details__card-value sale-details__card-value--amount">{{ item.commissionAmount }}</span>
       </div>
 
-      <div class="card-row-mobile">
-        <label>{{'IP.ADMIN_TABLE.PAYEDDATE' | translate}}</label>
-        <span>{{ item.payedDate | date : "dd/MM/yyyy" }}</span>
+      <div class="sale-details__card-row-mobile">
+        <label class="sale-details__card-label">{{'IP.ADMIN_TABLE.PAYEDDATE' | translate}}</label>
+        <span class="sale-details__card-value">{{ item.payedDate | date : "dd/MM/yyyy" }}</span>
       </div>
     </div>
   </div>

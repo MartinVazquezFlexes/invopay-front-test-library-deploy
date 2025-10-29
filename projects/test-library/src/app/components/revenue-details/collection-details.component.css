@@ -7,7 +7,7 @@ body {
   margin: 0;
 }
 
-.container {
+.revenue-details {
   background: #f5f5f5;
   width: 100%;
   height: 100vh;
@@ -18,21 +18,21 @@ body {
   box-sizing: border-box;
 }
 
-.title {
+.revenue-details__title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 20px;
   margin: 0;
 }
 
-.policy-title{
+.revenue-details__policy-title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 22px 0px;
   padding-left: 20px;
 }
 
-.sections-titles {
+.revenue-details__sections-titles {
   display: flex;
   align-items: flex-start;
   gap: 30px;
@@ -40,7 +40,7 @@ body {
   padding: 0px 20px;
 }
 
-.sections-titles h3 {
+.revenue-details__section-title {
   color: #0071ce;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 5px;
@@ -48,12 +48,12 @@ body {
   margin-bottom: 20px;
 }
 
-.sections-titles h3:hover {
+.revenue-details__section-title:hover {
   background: #cbe2f8;
   color: #005a9e;
 }
 
-.sections-titles h3.active {
+.revenue-details__section-title--active {
   color: #0071ce;
   background: #f0f7ff;
   padding: 8px 16px;
@@ -61,7 +61,7 @@ body {
   border-bottom: 2px solid #0071ce;
 }
 
-.card-title {
+.revenue-details__header {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -73,20 +73,20 @@ body {
   box-sizing: border-box;
 }
 
-.button-back{
-  margin:16px 0px;
+.revenue-details__button-back {
+  margin: 16px 0px;
 }
 
-::ng-deep .btn-white button.ip-button {
+::ng-deep .revenue-details__btn-white button.ip-button {
   background: white !important;
   border: 0px solid #ddd !important;
 }
 
-::ng-deep .btn-white button.ip-button:hover:enabled {
+::ng-deep .revenue-details__btn-white button.ip-button:hover:enabled {
   background: #f5f5f5 !important;
 }
 
-.card {
+.revenue-details__card {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -98,13 +98,13 @@ body {
   max-width: 100%;
 }
 
-form {
+.revenue-details__form {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
 }
 
-.inputs {
+.revenue-details__inputs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
@@ -112,14 +112,14 @@ form {
   padding: 0px 20px;
 }
 
-.card-input {
+.revenue-details__input-wrapper {
   position: relative;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-.card-input label {
+.revenue-details__label {
   position: absolute;
   top: -10px;
   left: 10px;
@@ -129,17 +129,16 @@ form {
   font-size: 14px;
 }
 
-.card-input app-ip-input {
+.revenue-details__input-wrapper app-ip-input {
   width: 100% !important;
   display: block !important;
 }
 
-.card-input app-ip-input input {
+.revenue-details__input-wrapper app-ip-input input {
   width: 100% !important;
   box-sizing: border-box !important;
 }
 
-/*para forzar el tamaño de inputs y textarea*/
 ::ng-deep app-ip-input input {
   width: 100% !important;
   box-sizing: border-box !important;
@@ -149,7 +148,7 @@ form {
   width: 100% !important;
 }
 
-.card-input:has(app-ip-text-area-input) {
+.revenue-details__input-wrapper--full {
   grid-column: span 2;
   width: 100%;
 }
@@ -177,29 +176,27 @@ button:hover {
   cursor: pointer;
 }
 
-/*mostrar tabla, ocultar cards*/
-.table-view {
+.revenue-details__table-view {
   display: block;
 }
 
-.card-view {
+.revenue-details__card-view {
   display: none;
 }
 
-
-
-/* Tablets */
+/* RESPONSIVE: TABLETS */
 @media (max-width: 1023px) and (min-width: 769px) {
-  .card {
+  .revenue-details__card {
     width: 100%;
     padding: 20px;
   }
 
-    .card-title h2 {
+  .revenue-details__header h2 {
     margin: 0;
     font-size: 18px;
   }
-    .title {
+
+  .revenue-details__title {
     text-align: start;
     width: 100%;
     margin: 0;
@@ -209,61 +206,61 @@ button:hover {
     font-family: Poppins, Loos, Arial, sans-serif;
   }
 
-.card-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 0px;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 14px;
-  max-width: 100%;
-  box-shadow: none;
-}
-.button-back {
-  padding-left: 0px;
-  margin: 0;
-}
+  .revenue-details__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 14px;
+    max-width: 100%;
+    box-shadow: none;
+  }
 
-  
-  ::ng-deep .btn-white button.ip-button {
-  background: #f5f5f5 !important;
-  border: 0px solid #f5f5f5 !important;
-}
+  .revenue-details__button-back {
+    padding-left: 0px;
+    margin: 0;
+  }
 
-::ng-deep .btn-white button.ip-button:hover:enabled {
-  background: #e6e6e6 !important;
-}
+  ::ng-deep .revenue-details__btn-white button.ip-button {
+    background: #f5f5f5 !important;
+    border: 0px solid #f5f5f5 !important;
+  }
 
-  .card {
+  ::ng-deep .revenue-details__btn-white button.ip-button:hover:enabled {
+    background: #e6e6e6 !important;
+  }
+
+  .revenue-details__card {
     overflow-y: auto;
   }
 
-  .inputs {
+  .revenue-details__inputs {
     grid-template-columns: 1fr;
     gap: 15px;
     width: 90%;
   }
 
-  .card-input {
+  .revenue-details__input-wrapper {
     max-width: 100%;
   }
 
-  .card-input:has(textarea) {
+  .revenue-details__input-wrapper--full {
     grid-column: span 1;
     width: 100%;
     max-width: 100%;
   }
 }
 
-/* Dispositivos móviles grandes (iPhone Pro Max, etc.) */
+/* RESPONSIVE: MOBILE LARGE */
 @media (max-width: 768px) and (min-width: 481px) {
-  .table-view {
+  .revenue-details__table-view {
     display: none;
   }
 
-  .card-view {
+  .revenue-details__card-view {
     display: block;
     background: #ffffff;
     border-radius: 12px;
@@ -274,17 +271,16 @@ button:hover {
     position: relative;
   }
 
-  
-  ::ng-deep .btn-white button.ip-button {
-  background: #f5f5f5 !important;
-  border: 0px solid #f5f5f5 !important;
-}
+  ::ng-deep .revenue-details__btn-white button.ip-button {
+    background: #f5f5f5 !important;
+    border: 0px solid #f5f5f5 !important;
+  }
 
-::ng-deep .btn-white button.ip-button:hover:enabled {
-  background: #e6e6e6 !important;
-}
+  ::ng-deep .revenue-details__btn-white button.ip-button:hover:enabled {
+    background: #e6e6e6 !important;
+  }
 
-  .card-header {
+  .revenue-details__card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -293,81 +289,77 @@ button:hover {
     border-bottom: 1px solid #0071ce;
   }
 
-  .card-id {
+  .revenue-details__card-id {
     color: #0071ce;
     font-weight: 600;
     font-size: 14px;
   }
 
-  .menu-container {
-    text-align: end;
-  }
-
-  .card-row-mobile {
+  .revenue-details__card-row-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
   }
 
-  .card-row-mobile label {
+  .revenue-details__card-label {
     color: #0071ce;
     font-size: 14px;
     font-weight: 500;
   }
 
-  .card-row-mobile span {
+  .revenue-details__card-value {
     color: #333;
     font-size: 14px;
     font-weight: 500;
     text-align: right;
   }
 
-  .card-date {
+  .revenue-details__card-value--date {
     color: #666;
     font-size: 13px;
   }
 
-  .card-amount {
+  .revenue-details__card-value--amount {
     color: #0071ce;
     font-weight: 600;
   }
 
-  .container {
+  .revenue-details {
     padding: 2px;
   }
 
-.card-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 0px;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 14px;
-  max-width: 100%;
-  box-shadow: none;
-}
-.button-back {
-  padding-left: 0px;
-  margin: 0;
-}
+  .revenue-details__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 14px;
+    max-width: 100%;
+    box-shadow: none;
+  }
 
+  .revenue-details__button-back {
+    padding-left: 0px;
+    margin: 0;
+  }
 
-  .card {
+  .revenue-details__card {
     width: 100%;
     padding: 15px;
     overflow-y: auto;
     border-radius: 12px;
   }
 
-  .card-title h2 {
+  .revenue-details__header h2 {
     margin: 0;
     font-size: 18px;
   }
 
-    .title {
+  .revenue-details__title {
     text-align: start;
     width: 100%;
     margin: 0;
@@ -377,40 +369,40 @@ button:hover {
     font-family: Poppins, Loos, Arial, sans-serif;
   }
 
-  .sections-titles {
+  .revenue-details__sections-titles {
     gap: 20px;
     margin-bottom: 15px;
   }
 
-  .sections-titles h3 {
+  .revenue-details__section-title {
     font-size: 14px;
   }
 
-  .inputs {
+  .revenue-details__inputs {
     grid-template-columns: 1fr;
     gap: 15px;
     width: 90%;
   }
 
-  .card-input {
+  .revenue-details__input-wrapper {
     max-width: 100%;
   }
 
-  .card-input input {
+  .revenue-details__input-wrapper input {
     font-size: 16px;
     padding: 12px 10px;
   }
 
-  .card-input textarea {
+  .revenue-details__input-wrapper textarea {
     font-size: 16px;
     padding: 12px 10px;
   }
 
-  .card-input label {
+  .revenue-details__label {
     font-size: 13px;
   }
 
-  .card-input:has(textarea) {
+  .revenue-details__input-wrapper--full {
     grid-column: span 1;
     width: 100%;
     max-width: 100%;
@@ -424,13 +416,13 @@ button:hover {
   }
 }
 
-/* Móviles pequeños */
+/* RESPONSIVE: MOBILE SMALL */
 @media (max-width: 480px) {
-  .table-view {
+  .revenue-details__table-view {
     display: none;
   }
 
-  .card-view {
+  .revenue-details__card-view {
     display: block;
     background: #ffffff;
     border-radius: 12px;
@@ -441,17 +433,16 @@ button:hover {
     position: relative;
   }
 
-  
-  ::ng-deep .btn-white button.ip-button {
-  background: #f5f5f5 !important;
-  border: 0px solid #f5f5f5 !important;
-}
+  ::ng-deep .revenue-details__btn-white button.ip-button {
+    background: #f5f5f5 !important;
+    border: 0px solid #f5f5f5 !important;
+  }
 
-::ng-deep .btn-white button.ip-button:hover:enabled {
-  background: #e6e6e6 !important;
-}
+  ::ng-deep .revenue-details__btn-white button.ip-button:hover:enabled {
+    background: #e6e6e6 !important;
+  }
 
-  .card-header {
+  .revenue-details__card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -460,79 +451,77 @@ button:hover {
     border-bottom: 1px solid #0071ce;
   }
 
-  .card-id {
+  .revenue-details__card-id {
     color: #0071ce;
     font-weight: 600;
     font-size: 14px;
   }
 
-  .menu-container {
-    text-align: end;
-  }
-
-  .card-row-mobile {
+  .revenue-details__card-row-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
   }
 
-  .card-row-mobile label {
+  .revenue-details__card-label {
     color: #0071ce;
     font-size: 14px;
     font-weight: 500;
   }
 
-  .card-row-mobile span {
+  .revenue-details__card-value {
     color: #333;
     font-size: 14px;
     font-weight: 500;
     text-align: right;
   }
 
-  .card-date {
+  .revenue-details__card-value--date {
     color: #666;
     font-size: 13px;
   }
 
-  .card-amount {
+  .revenue-details__card-value--amount {
     color: #0071ce;
     font-weight: 600;
   }
 
-  .container {
+  .revenue-details {
     padding: 2px;
   }
-.card-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 0px;
-  width: 100%;
-  padding: 0;
-  margin-bottom: 14px;
-  max-width: 100%;
-  box-shadow: none;
-}
-.button-back {
-  padding-left: 0px;
-  margin: 0;
-}
 
-  .card-title h2 {
+  .revenue-details__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 0px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 14px;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .revenue-details__button-back {
+    padding-left: 0px;
+    margin: 0;
+  }
+
+  .revenue-details__header h2 {
     margin: 0;
     font-size: 18px;
   }
 
-  .card {
+  .revenue-details__card {
     padding: 12px;
     border-radius: 10px;
     width: 100%;
     overflow-y: auto;
   }
 
-  .title {
+  .revenue-details__title {
     text-align: start;
     width: 100%;
     margin: 0;
@@ -542,47 +531,47 @@ button:hover {
     font-family: Poppins, Loos, Arial, sans-serif;
   }
 
-  form {
+  .revenue-details__form {
     width: 100%;
   }
 
-  .sections-titles {
+  .revenue-details__sections-titles {
     gap: 15px;
     margin-bottom: 10px;
   }
 
-  .sections-titles h3 {
+  .revenue-details__section-title {
     font-size: 12px;
   }
 
-  .inputs {
+  .revenue-details__inputs {
     grid-template-columns: 1fr;
     gap: 12px;
     width: 90%;
   }
 
-  .card-input {
+  .revenue-details__input-wrapper {
     max-width: 100%;
   }
 
-  .card-input input {
+  .revenue-details__input-wrapper input {
     font-size: 16px;
     padding: 12px;
     border-radius: 12px;
   }
 
-  .card-input textarea {
+  .revenue-details__input-wrapper textarea {
     font-size: 16px;
     padding: 12px;
     border-radius: 12px;
   }
 
-  .card-input label {
+  .revenue-details__label {
     font-size: 12px;
     padding: 0 4px;
   }
 
-  .card-input:has(textarea) {
+  .revenue-details__input-wrapper--full {
     grid-column: span 1;
     width: 100%;
     max-width: 100%;

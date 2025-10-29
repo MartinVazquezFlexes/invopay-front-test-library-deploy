@@ -1,15 +1,15 @@
-<div class="container">
-  <div class="card-title">
-    <h2 class="title">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</h2>
+<div class="revenue">
+  <div class="revenue__header">
+    <h2 class="revenue__title">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</h2>
     <!--Botón para mostrar filtros en mobile-->
-    <div class="filter-button-mobile">
+    <div class="revenue__filter-button revenue__filter-button--mobile">
       <app-ip-button-modal
         typeBtn="submit"
         size="normal"
         (clicked)="toggleFilters()"
       >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="search-icon-mobile" /> 
-        <span class="text-filter-mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
+        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="revenue__search-icon revenue__search-icon--mobile" /> 
+        <span class="revenue__filter-text revenue__filter-text--mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
       </app-ip-button-modal>
     </div>
   </div>
@@ -17,43 +17,45 @@
   <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
   </app-list-filters-revenue>
 
-  <div class="filters-overlay" [class.show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
+  <div class="revenue__filters-overlay" [class.revenue__filters-overlay--show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
 
-  <div class="card filters-card" [class.show-mobile]="showFiltersOnMobile">
-    <div class="modal-header">
+  <div class="revenue__card revenue__card--filters" [class.revenue__card--show-mobile]="showFiltersOnMobile">
+    <div class="revenue__modal-header">
       <h4>{{ 'IP.REVENUE_LIST.FILTER' | translate }}</h4>
-      <button (click)="toggleFilters()">
+      <button class="revenue__modal-close" (click)="toggleFilters()">
         <img src="assets/new-styles/icons/buttons/close-icon.svg" />
       </button>
     </div>
-    <div class="filters">
-      <form [formGroup]="filtersForm">
-        <div class="input-date">
+    <div class="revenue__filters">
+      <form class="revenue__form" [formGroup]="filtersForm">
+        <div class="revenue__input-date">
           <input
+            class="revenue__input"
             type="date"
             id="start"
             formControlName="startDate"
             [min]="startDateMin"
             [max]="startDateMax"
           />
-          <label for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
+          <label class="revenue__label" for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
         </div>
 
-        <div class="input-date">
+        <div class="revenue__input-date">
           <input
+            class="revenue__input"
             type="date"
             id="end"
             formControlName="endDate"
             [min]="endDateMin"
             [max]="endDateMax"
           />
-          <label for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
+          <label class="revenue__label" for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
           <!--<app-ip-date-input></app-ip-date-input>-->
         </div>
       </form>
 
       <!--Sumar los iconos (PREGUNTAR)-->
-      <div class="buttons">
+      <div class="revenue__buttons">
         <app-ip-button-modal
           typeBtn="submit"
           size="small"
@@ -71,96 +73,96 @@
         </app-ip-button-modal>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="card">
-      <div class="table-view">
-        <!--Ver columna actions porque no traduce-->
-        <app-table
-          *ngIf="pagedData.length > 0"
-          [propertyOrder]="propertyOrder"
-          [data]="pagedData"
-          [keyTranslate]="keyTranslate"
-          [tableStyle]="'invopay'"
-          [actions]="actions"
-          [actionsIf]="actionsIf"
-          [initTable]="initTable"
-          [scroll]="scroll"
-          (sort)="onSort($event)"
-          (action)="onAction($event)"
-          (selectedItemsChange)="onSelectedItemsChange($event)"
-        >
-        </app-table>
-      </div>
-    
+  <div class="revenue__card">
+    <div class="revenue__table-view">
+      <!--Ver columna actions porque no traduce-->
+      <app-table
+        *ngIf="pagedData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="pagedData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'"
+        [actions]="actions"
+        [actionsIf]="actionsIf"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (sort)="onSort($event)"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)"
+      >
+      </app-table>
+    </div>
+  
 
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->
-    <div class="card-view" *ngFor="let item of pagedData">
-      <div class="card-header">
-        <span class="card-id">#{{ item.id }}</span>
-        <div class="menu-container">
-          <button class="menu-button" (click)="toggleMenu(item.id)">⋮</button>
-          <div class="menu-dropdown" *ngIf="openMenuId === item.id">
-            <button (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
+    <div class="revenue__card-view" *ngFor="let item of pagedData">
+      <div class="revenue__card-header">
+        <span class="revenue__card-id">#{{ item.id }}</span>
+        <div class="revenue__menu">
+          <button class="revenue__menu-button" (click)="toggleMenu(item.id)">⋮</button>
+          <div class="revenue__menu-dropdown" *ngIf="openMenuId === item.id">
+            <button class="revenue__menu-item" (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
           </div>
         </div>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
-        <span class="card-date">{{
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
+        <span class="revenue__card-value revenue__card-value--date">{{
           item.revenueDate | date : "dd/MM/yyyy"
         }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.REVENUEAMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.revenueAmount }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.REVENUEAMOUNT' | translate}}</label>
+        <span class="revenue__card-value revenue__card-value--amount">{{ item.revenueAmount }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate}}</label>
-        <span>{{ item.paymentProvider }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate}}</label>
+        <span class="revenue__card-value">{{ item.paymentProvider }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate}}</label>
-        <span>{{ item.paymentChannel }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate}}</label>
+        <span class="revenue__card-value">{{ item.paymentChannel }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate}}</label>
-        <span>{{ item.isConsolidated }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate}}</label>
+        <span class="revenue__card-value">{{ item.isConsolidated }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
-        <span>{{ item.policyNumber }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
+        <span class="revenue__card-value">{{ item.policyNumber }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
-        <span>{{ item.productName }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
+        <span class="revenue__card-value">{{ item.productName }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
-        <span class="card-amount">{{ item.premiumAmount }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
+        <span class="revenue__card-value revenue__card-value--amount">{{ item.premiumAmount }}</span>
       </div>
 
-      <div class="card-row">
-        <label>{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
-        <span>{{ item.brokerName }}</span>
+      <div class="revenue__card-row">
+        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
+        <span class="revenue__card-value">{{ item.brokerName }}</span>
       </div>
     </div>
 
-    <div class="pagination">
-      <div class="center">
+    <div class="revenue__pagination">
+      <div class="revenue__pagination-center">
         <select
           name="selectPages"
           id="pages"
-          class="selectCenter"
+          class="revenue__select"
           [(ngModel)]="itemsPerPage"
           (ngModelChange)="onItemsPerPageChange($event)"
         >

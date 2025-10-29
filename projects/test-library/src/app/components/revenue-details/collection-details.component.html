@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="card-title">
-    <div class="button-back">
+<div class="revenue-details">
+  <div class="revenue-details__header">
+    <div class="revenue-details__button-back">
       <app-ip-button-modal
-        class="btn-white"
+        class="revenue-details__btn-white"
         typeBtn="submit"
         size="small"
         (clicked)="back()"
@@ -10,15 +10,16 @@
         <img src="assets/new-styles/icons/arrow-back.svg" />
       </app-ip-button-modal>
     </div>
-    <h2 class="title">{{ 'IP.REVENUE_DETAILS.TITLE' | translate }}</h2>
+    <h2 class="revenue-details__title">{{ 'IP.REVENUE_DETAILS.TITLE' | translate }}</h2>
   </div>
 
-  <form [formGroup]="detailedInfoForm">
-    <div class="card">
-      <div class="sections-titles">
+  <form class="revenue-details__form" [formGroup]="detailedInfoForm">
+    <div class="revenue-details__card">
+      <div class="revenue-details__sections-titles">
         <!--se ve siempre que se abre la pagina-->
         <h3
-          [class.active]="activeSection === 'transaction'"
+          class="revenue-details__section-title"
+          [class.revenue-details__section-title--active]="activeSection === 'transaction'"
           (click)="showTransactionSection()"
         >
           {{ 'IP.REVENUE_DETAILS.TRANSACTION' | translate }}
@@ -26,14 +27,16 @@
         <!--se ven solo cuando la recaudacion esta consolidada-->
         <h3
           *ngIf="isRevenueConsolidated"
-          [class.active]="activeSection === 'conciliation'"
+          class="revenue-details__section-title"
+          [class.revenue-details__section-title--active]="activeSection === 'conciliation'"
           (click)="showConciliationSection()"
         >
           {{ 'IP.TABLE.CONSOLIDATED.PAY_IN.CONCILIATION' | translate }}
         </h3>
         <h3
           *ngIf="isRevenueConsolidated"
-          [class.active]="activeSection === 'policy'"
+          class="revenue-details__section-title"
+          [class.revenue-details__section-title--active]="activeSection === 'policy'"
           (click)="showPolicySection()"
         >
           {{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}
@@ -41,10 +44,10 @@
       </div>
 
       <!--SECCION TRANSACCION-->
-      <div *ngIf="showTransaction">
-        <div class="inputs">
-          <div class="card-input">
-            <label for="revenueDate">{{ 'IP.REVENUE_DETAILS.REVENUE_DATE' | translate }}</label>
+      <div class="revenue-details__section" *ngIf="showTransaction">
+        <div class="revenue-details__inputs">
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="revenueDate">{{ 'IP.REVENUE_DETAILS.REVENUE_DATE' | translate }}</label>
             <app-ip-input
               inputId="revenueDate"
               [control]="getControl('revenueDate')"
@@ -53,8 +56,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="amountRevenue">{{ 'IP.ACCOUNTABILITY-DETAILS.AMOUNT' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="amountRevenue">{{ 'IP.ACCOUNTABILITY-DETAILS.AMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountRevenue"
               [control]="getControl('amountRevenue')"
@@ -63,8 +66,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="paymentChannel">{{ 'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="paymentChannel">{{ 'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate }}</label>
             <app-ip-input
               inputId="paymentChannel"
               [control]="getControl('paymentChannel')"
@@ -73,8 +76,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="paymentEntity">{{ 'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="paymentEntity">{{ 'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate }}</label>
             <app-ip-input
               inputId="paymentEntity"
               [control]="getControl('paymentEntity')"
@@ -83,8 +86,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="transactionObservations">{{ 'IP.BILL_DETAILS.COMMENTS' | translate }}</label>
+          <div class="revenue-details__input-wrapper revenue-details__input-wrapper--full">
+            <label class="revenue-details__label" for="transactionObservations">{{ 'IP.BILL_DETAILS.COMMENTS' | translate }}</label>
             <app-ip-text-area-input
               inputId="transactionObservations"
               [control]="getControl('transactionObservations')"
@@ -95,10 +98,10 @@
       </div>
 
       <!--SECCION CONCILIACION-->
-      <div *ngIf="showConciliation">
-        <div class="inputs">
-          <div class="card-input">
-            <label for="isConsolidated">{{ 'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate }}</label>
+      <div class="revenue-details__section" *ngIf="showConciliation">
+        <div class="revenue-details__inputs">
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="isConsolidated">{{ 'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate }}</label>
             <app-ip-input
               inputId="isConsolidated"
               [control]="getControl('isConsolidated')"
@@ -107,8 +110,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="productName">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="productName">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
             <app-ip-input
               inputId="productName"
               [control]="getControl('productName')"
@@ -117,8 +120,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="policyNumber">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="policyNumber">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
             <app-ip-input
               inputId="policyNumber"
               [control]="getControl('policyNumber')"
@@ -127,8 +130,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="amountPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="amountPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountPolicy"
               [control]="getControl('amountPolicy')"
@@ -137,8 +140,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="brokerName">{{ 'IP.ADMIN_TABLE.BROKERNAME' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="brokerName">{{ 'IP.ADMIN_TABLE.BROKERNAME' | translate }}</label>
             <app-ip-input
               inputId="brokerName"
               [control]="getControl('brokerName')"
@@ -147,8 +150,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="payNumber">{{ 'IP.REVENUE_DETAILS.PAY_NUMBER' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="payNumber">{{ 'IP.REVENUE_DETAILS.PAY_NUMBER' | translate }}</label>
             <app-ip-input
               inputId="payNumber"
               [control]="getControl('payNumber')"
@@ -157,8 +160,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="payAmount">{{ 'IP.REVENUE_DETAILS.PAY_VALUE' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="payAmount">{{ 'IP.REVENUE_DETAILS.PAY_VALUE' | translate }}</label>
             <app-ip-input
               inputId="payAmount"
               [control]="getControl('payAmount')"
@@ -170,10 +173,10 @@
       </div>
 
       <!--SECCION POLIZA-->
-      <div *ngIf="showPolicy">
-        <div class="inputs">
-          <div class="card-input">
-            <label for="productNamePolicy">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
+      <div class="revenue-details__section" *ngIf="showPolicy">
+        <div class="revenue-details__inputs">
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="productNamePolicy">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
             <app-ip-input
               inputId="productNamePolicy"
               [control]="getControl('productNamePolicy')"
@@ -182,8 +185,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="policyNumberPolicy">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="policyNumberPolicy">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
             <app-ip-input
               inputId="policyNumberPolicy"
               [control]="getControl('policyNumberPolicy')"
@@ -192,8 +195,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="amountPolicyPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="amountPolicyPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountPolicyPolicy"
               [control]="getControl('amountPolicyPolicy')"
@@ -202,8 +205,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
             <app-ip-input
               inputId="saleDate"
               [control]="getControl('saleDate')"
@@ -212,8 +215,8 @@
             ></app-ip-input>
           </div>
 
-          <div class="card-input">
-            <label for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
+          <div class="revenue-details__input-wrapper">
+            <label class="revenue-details__label" for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="premiumAmount"
               [control]="getControl('premiumAmount')"
@@ -222,10 +225,10 @@
             ></app-ip-input>
           </div>
         </div>
-        <div class="policy-title">
+        <div class="revenue-details__policy-title">
           <h3>{{ 'IP.SALE_DETAILS.SUBTITLE_PLAN' | translate }}</h3>
         </div>
-        <div class="table-view">
+        <div class="revenue-details__table-view">
           <app-table
             *ngIf="tableData.length > 0"
             [propertyOrder]="propertyOrder"
@@ -242,19 +245,19 @@
 
         <!--Mostrar si es mobile-->
         <!--Hacer card la info para mobile-->
-        <div class="card-view" *ngFor="let item of tableData">
-          <div class="card-header">
-            <span class="card-id">N°{{ item.installmentNumber }}</span>
+        <div class="revenue-details__card-view" *ngFor="let item of tableData">
+          <div class="revenue-details__card-header">
+            <span class="revenue-details__card-id">N°{{ item.installmentNumber }}</span>
           </div>
 
-          <div class="card-row-mobile">
-            <label>{{'IP.ADMIN_TABLE.DUEDATE' | translate}}</label>
-            <span>{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
+          <div class="revenue-details__card-row-mobile">
+            <label class="revenue-details__card-label">{{'IP.ADMIN_TABLE.DUEDATE' | translate}}</label>
+            <span class="revenue-details__card-value">{{ item.dueDate | date : "dd/MM/yyyy" }}</span>
           </div>
 
-          <div class="card-row-mobile">
-            <label>{{'IP.ADMIN_TABLE.AMOUNT' | translate}}</label>
-            <span class="card-amount">{{ item.amount }}</span>
+          <div class="revenue-details__card-row-mobile">
+            <label class="revenue-details__card-label">{{'IP.ADMIN_TABLE.AMOUNT' | translate}}</label>
+            <span class="revenue-details__card-value revenue-details__card-value--amount">{{ item.amount }}</span>
           </div>
         </div>
       </div>
