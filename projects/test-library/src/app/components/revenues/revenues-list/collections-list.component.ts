@@ -1,13 +1,10 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RevenueService } from '../../services/revenue.service';
-import {
-  RevenueFilters,
-  RevenueFiltersService,
-} from '../../services/revenueFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { revenueDetails } from '../../models/revenue';
+import { RevenueService } from '../services/revenue.service';
+import { RevenueFilters, RevenueFiltersService } from '../services/revenueFilters.service';
+import { revenueDetails } from '../models/revenue';
 
 @Component({
   selector: 'app-collections-list',

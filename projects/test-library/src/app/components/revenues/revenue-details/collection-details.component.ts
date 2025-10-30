@@ -1,9 +1,9 @@
 
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RevenueService } from '../../services/revenue.service';
-import { detailRevenueTable, PremiumPaymentInstallment, RevenueDetail } from '../../models/revenue';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RevenueService } from '../services/revenue.service';
+import { detailRevenueTable, RevenueDetail } from '../models/revenue';
 
 @Component({
   selector: 'app-collection-details',

@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SellService } from '../../services/sell.service';
-import { detailSaleTable, SaleDetails } from '../../models/sale';
+import { SellService } from '../services/sell.service';
+import { detailSaleTable, SaleDetails } from '../models/sale';
+
 
 @Component({
   selector: 'app-sell-details',

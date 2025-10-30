@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { IpAuthService } from '../../invopay/services/ip-auth.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { IpProfileService } from '../../invopay/services/ip-profile.service';
+
 import { filter, Observable } from 'rxjs';
-import IpUserProfile from '../../invopay/interface/ip-user-profile';
+import { IpProfileService } from '../../../invopay/services/ip-profile.service';
+import { IpAuthService } from '../../../invopay/services/ip-auth.service';
+import IpUserProfile from '../../../invopay/interface/ip-user-profile';
+
 
 @Component({
   selector: 'app-navbar-home',

@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { sale, SaleDetails } from '../models/sale';
-import { IpAuthService } from '../invopay/services/ip-auth.service';
 import { Observable } from 'rxjs';
 
 @Injectable({

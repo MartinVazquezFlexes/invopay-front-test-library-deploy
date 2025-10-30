@@ -23,7 +23,7 @@ import { DecryptionInterceptor } from './services/decryption.interceptor';
 import { DecryptionService } from './services/decryption.service';
 import { TokenInterceptor } from './services/token.interceptor';
 import { HomeComponent } from './views/home/home.component';
-import { NavbarHomeComponent } from '../components/navbar-home/navbar-home.component';
+import { NavbarHomeComponent } from '../components/navbar/navbar-home/navbar-home.component';
 
 
 @NgModule({

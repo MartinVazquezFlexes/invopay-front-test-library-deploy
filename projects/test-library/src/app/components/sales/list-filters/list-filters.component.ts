@@ -1,9 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  SaleFilters,
-  SellFiltersService,
-} from '../../services/sellFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { SaleFilters, SellFiltersService } from '../services/sellFilters.service';
 
 @Component({
   selector: 'app-list-filters',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProvidersService } from '../../services/providers.service';
-import { PaymentEntity } from '../../models/payment-entities';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ProvidersService } from '../services/providers.service';
+import { PaymentEntity } from '../models/payment-entities';
 
 @Component({
   selector: 'app-providers',

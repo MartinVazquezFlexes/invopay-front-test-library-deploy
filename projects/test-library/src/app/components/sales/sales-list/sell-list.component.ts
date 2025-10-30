@@ -1,13 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  SaleFilters,
-  SellFiltersService,
-} from '../../services/sellFilters.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { sale } from '../../models/sale';
-import { SellService } from '../../services/sell.service';
+
 import { Subscription } from 'rxjs';
+import { SaleFilters, SellFiltersService } from '../services/sellFilters.service';
+import { SellService } from '../services/sell.service';
+import { sale } from '../models/sale';
 
 @Component({
   selector: 'app-sell-list',

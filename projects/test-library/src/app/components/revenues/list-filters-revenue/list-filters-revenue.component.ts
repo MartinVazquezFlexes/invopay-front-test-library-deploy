@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { RevenueFilters, RevenueFiltersService } from '../../services/revenueFilters.service';
+import { RevenueFilters, RevenueFiltersService } from '../services/revenueFilters.service';
 
 @Component({
   selector: 'app-list-filters-revenue',
