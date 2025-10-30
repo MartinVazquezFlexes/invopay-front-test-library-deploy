@@ -70,7 +70,7 @@ export class ProvidersComponent implements OnInit {
 
         this.tableData = response.content.map((paymentEntity: PaymentEntity) => ({
           ...paymentEntity,
-          logoUrl: 'assets/icons/images.jpg', //PASAR UN ICON DEFAULT//
+          logoUrl: paymentEntity.logoUrl,
           isPaymentEntityActive: paymentEntity.isActive ? 'Si' : 'No', //mostrar si/no segun isActive
 
         })) as any; //cambiar a any porque deja de ser number
