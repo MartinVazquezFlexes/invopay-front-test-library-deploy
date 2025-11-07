@@ -1,3 +1,7 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
+
 body {
   background: #f5f5f5;
   height: 100vh;
@@ -6,7 +10,7 @@ body {
   align-items: center;
 }
 
-.sales {
+.revenue {
   background: #f5f5f5;
   width: 100%;
   min-height: 100vh;
@@ -17,14 +21,14 @@ body {
   box-sizing: border-box;
 }
 
-.sales__title {
+.revenue__title {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @include mainTitleText();
   padding-left: 40px;
   margin: 0;
 }
 
-.sales__card {
+.revenue__card {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -34,7 +38,7 @@ body {
   box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
 }
 
-.sales__header {
+.revenue__header {
   background-color: #ffffff;
   border-radius: 15px;
   width: 100%;
@@ -44,64 +48,54 @@ body {
   box-shadow: 0 5px 10px rgba(5, 5, 5, 0.1);
 }
 
-.sales__filters {
+.revenue__filters {
   display: flex;
   justify-content: flex-end;
 }
 
-.sales__form {
+.revenue__form {
   display: flex;
   flex-wrap: wrap;
 }
 
-.sales__input-date {
+.revenue__input-date {
   position: relative;
   width: 200px;
   margin: 10px;
 }
 
-.sales__label {
+.revenue__label {
   position: absolute;
   top: 12px;
   left: 12px;
-  font-size: 12px;
-  color: #999999;
-  font-weight: 500;
-  background: #ffffff;
-  padding: 0 6px;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  border-radius: 20px;
+  @include textLabel();
 }
 
-.sales__input[type="date"] {
+.revenue__input[type="date"] {
   width: 100%;
   padding: 12px 12px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
-  font-size: 14px;
-  background-color: #fff;
-  font-family: "Segoe UI", sans-serif;
+  @include textLabel();
   box-sizing: border-box;
 }
 
-.sales__input[type="date"]:focus {
+.revenue__input[type="date"]:focus {
   outline: none;
   border-color: #0071ce;
   box-shadow: 0 0 0 3px rgba(0, 113, 206, 0.1);
 }
 
-.sales__input[type="date"]:focus + .sales__label,
-.sales__input[type="date"]:valid + .sales__label {
+.revenue__input[type="date"]:focus + .revenue__label,
+.revenue__input[type="date"]:valid + .revenue__label {
   top: -8px;
   left: 8px;
-  font-size: 11px;
-  color: #6e7174;
+  @include labelGeneralText();
   background: #ffffff;
   padding: 2px 8px;
 }
 
-.sales__buttons {
+.revenue__buttons {
   align-items: center;
   text-align: center;
   display: flex;
@@ -109,27 +103,12 @@ body {
   padding-right: 20px;
 }
 
-.sales__card--filters {
-  display: block;
+.revenue__buttons img{
+  width: 20px;
+  height: 20px;
 }
 
-.sales__table-view {
-  display: block;
-}
-
-.sales__card-view {
-  display: none;
-}
-
-.sales__filter-button--mobile {
-  display: none;
-}
-
-.sales__modal-header {
-  display: none;
-}
-
-.sales__pagination {
+.revenue__pagination {
   display: flex;
   width: 100%;
   align-items: center;
@@ -137,53 +116,135 @@ body {
   gap: 20px;
   box-sizing: border-box;
   min-height: 50px;
+  padding-top: 10px;
+
+  ::ng-deep {
+    app-paginator {
+      display: flex;
+      align-items: center;
+      height: auto;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .ip-paginator {
+      height: 2.5rem; // misma altura que el select
+      padding: 0 1.06rem;
+      align-items: center; //centrar verticalmente
+      justify-content: flex-end;
+    }
+  }
 }
 
-.sales__pagination-center {
+.revenue__pagination-center {
   margin-top: 0;
   display: flex;
   align-items: center;
   padding-left: 40px;
 }
+.revenue__pagination-center {
+  ::ng-deep {
+    //ajustar el contenedor
+    .ip-select-input {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0 !important;
+      
+      @media (max-width: 768px) {
+        height: 2rem;
+      }
+    }
 
-.sales__select {
-  padding: 8px 12px;
-  border-radius: 15px;
-  border: 1px solid;
-  height: 40px;
-  display: flex;
-  align-items: center;
+    .mat-mdc-form-field-infix {
+      padding: 0 !important;
+      border: 0 !important;
+      min-height: auto !important;
+      display: flex;
+      align-items: center;
+    }
+
+    //centro el select
+    .mat-mdc-select {
+      display: flex;
+      align-items: center;
+      padding: 0 0.50rem;
+      height: 100%;
+    }
+
+    .mat-mdc-select-value {
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .mat-mdc-select-value-text {
+      display: flex;
+      align-items: center;
+    }
+
+    //saco elementos que ocupan espacio y no ayudan
+    .mat-mdc-form-field-underline,
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+
+    //acomodo flecha
+    .mat-mdc-select-arrow-wrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    //oculto el espacio del label
+    .ip-select-label-floating {
+      display: none;
+    }
+  }
 }
 
-.sales app-paginator {
-  display: flex;
-  align-items: center;
-  height: 5vh;
-  padding-bottom: 20px;
+.revenue__card--filters {
+  display: block;
+}
+
+.revenue__table-view {
+  display: block;
+}
+
+.revenue__card-view {
+  display: none;
+}
+
+.revenue__filter-button--mobile {
+  display: none;
+}
+
+.revenue__modal-header {
+  display: none;
 }
 
 /* RESPONSIVE: MOBILE */
-@media (max-width: 768px) {
-
-  .sales__filter-button--mobile {
+@include sm {
+  .revenue__filter-button--mobile {
     display: block;
     width: 100%;
     text-align: end;
     padding-right: 20px;
   }
 
-  .sales__search-icon--mobile {
+  .revenue__search-icon--mobile {
     width: 14px;
     height: 11px;
     padding-right: 5px;
   }
 
-  .sales__filter-text--mobile {
-    font-size: 12px;
-    font-family: "Poppins", Loos, Arial, sans-serif;
+  .revenue__filter-text--mobile {
+    @include btnGeneralText();
+    color: #ffffff;
   }
 
-  .sales__card--filters {
+  .revenue__card--filters {
     position: fixed;
     bottom: -20px;
     left: 0;
@@ -198,13 +259,13 @@ body {
     display: none;
   }
 
-  ::ng-deep app-list-filters {
+  ::ng-deep app-list-filters-revenue {
     position: fixed;
     z-index: 1100 !important;
     inset: 0;
   }
 
-  .sales__filters-overlay {
+  .revenue__filters-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
@@ -214,26 +275,26 @@ body {
     transition: opacity 0.3s ease-in-out;
   }
 
-  .sales__card--show-mobile {
+  .revenue__card--show-mobile {
     display: block;
     transform: translateY(0);
   }
 
-  .sales__filters-overlay--show {
+  .revenue__filters-overlay--show {
     opacity: 1;
     pointer-events: all;
   }
 
-  .sales__filters {
+  .revenue__filters {
     flex-direction: column;
     gap: 16px;
   }
 
-  .sales__input-date {
+  .revenue__input-date {
     width: 100%;
   }
 
-  .sales__header {
+  .revenue__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -246,17 +307,15 @@ body {
     box-shadow: none;
   }
 
-  .sales__title {
+  .revenue__title {
     padding-left: 20px;
     text-align: start;
     width: 100%;
     margin: 0;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
+    
   }
 
-  ::ng-deep .sales__filter-button--mobile app-ip-button-modal button.ip-button {
+  ::ng-deep .revenue__filter-button--mobile app-ip-button-modal button.ip-button {
     width: 96px !important;
     height: 32px !important;
     padding-left: 16px !important;
@@ -265,11 +324,11 @@ body {
     min-height: 32px !important;
   }
 
-  .sales__pagination-center {
+  .revenue__pagination-center {
     padding-left: 0px;
   }
 
-  .sales__modal-header {
+  .revenue__modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -279,13 +338,13 @@ body {
     padding-left: 20px;
   }
 
-  .sales__modal-header h4 {
+  .revenue__modal-header h4 {
     margin: 0;
     color: rgb(62, 62, 62);
-    font-size: 16px;
+    @include subTitleText();
   }
 
-  .sales__modal-close {
+  .revenue__modal-close {
     background: rgb(245, 245, 245);
     border-radius: 15px;
     border: 0px;
@@ -295,7 +354,7 @@ body {
     justify-content: center;
   }
 
-  .sales__modal-close img {
+  .revenue__modal-close img {
     width: 15px;
     height: 15px;
   }
@@ -311,12 +370,11 @@ body {
     }
   }
 
-  /* Mobile Cards */
-  .sales__table-view {
+  .revenue__table-view {
     display: none;
   }
 
-  .sales__card-view {
+  .revenue__card-view {
     display: block;
     background: #ffffff;
     border-radius: 12px;
@@ -327,7 +385,7 @@ body {
     position: relative;
   }
 
-  .sales__card-header {
+  .revenue__card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -335,17 +393,16 @@ body {
     border-bottom: 1px solid #0071ce;
   }
 
-  .sales__card-id {
+  .revenue__card-id {
+    @include cardText();
     color: #0071ce;
-    font-weight: 600;
-    font-size: 14px;
   }
 
-  .sales__menu {
+  .revenue__menu {
     position: relative;
   }
 
-  .sales__menu-button {
+  .revenue__menu-button {
     background: none;
     border: none;
     font-size: 24px;
@@ -355,7 +412,7 @@ body {
     line-height: 1;
   }
 
-  .sales__menu-dropdown {
+  .revenue__menu-dropdown {
     position: absolute;
     right: 0;
     top: 100%;
@@ -367,47 +424,49 @@ body {
     margin-top: 4px;
   }
 
-  .sales__menu-item {
+  .revenue__menu-item {
     width: 100%;
     padding: 12px 16px;
     border: none;
     background: none;
     text-align: left;
     cursor: pointer;
-    font-size: 14px;
+    @include itemsText();
     color: rgb(132, 129, 138);
   }
 
-  .sales__menu-item:hover {
+  .revenue__menu-item:hover {
     background: #f5f5f5;
   }
 
-  .sales__card-row {
+  .revenue__card-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
   }
 
-  .sales__card-label {
+  .revenue__card-label {
+    @include sidenavTextLabel();
     color: #0071CE;
-    font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  .sales__card-value {
+  .revenue__card-value {
+    @include sidenavTextLabel();
     color: #333;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
+    font-weight: 600;
+    text-align: end;
   }
 
-  .sales__card-value--date {
+  .revenue__card-value--date {
+    @include sidenavTextLabel();
     color: #666;
-    font-size: 13px;
+    font-weight: 600;
   }
 
-  .sales__card-value--amount {
+  .revenue__card-value--amount {
+    @include sidenavTextLabel();
     color: #0071ce;
     font-weight: 600;
   }
@@ -417,7 +476,7 @@ body {
     width: 100vw;
   }
 
-  .sales {
+  .revenue {
     padding: 2px;
     width: 100%;
     max-width: 100vw;
@@ -425,7 +484,7 @@ body {
     box-sizing: border-box;
   }
 
-  .sales__card {
+  .revenue__card {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -436,27 +495,23 @@ body {
     box-shadow: 0 0px 0px rgb(255, 255, 255);
   }
 
-  .sales__input-date {
+  .revenue__input-date {
     width: 100%;
     min-width: 100%;
   }
 
-  .sales__label {
-    margin-bottom: 10px;
-  }
-
-  .sales__input[type="date"] {
-    font-size: 16px;
+  .revenue__input[type="date"] {
+    @include textLabel();
     padding: 14px 12px;
   }
 
-  .sales__filters {
+  .revenue__filters {
     flex-direction: column;
     align-items: stretch !important;
     gap: 10px;
   }
 
-  .sales__buttons {
+  .revenue__buttons {
     justify-content: end !important;
     width: 95%;
     margin-top: 10px;
@@ -464,7 +519,7 @@ body {
     order: 2;
   }
 
-  .sales__form {
+  .revenue__form {
     order: 1;
     width: 95%;
   }
@@ -476,12 +531,12 @@ body {
     padding: 12px 16px;
   }
 
-  .sales__pagination {
+  .revenue__pagination {
     flex-direction: column;
-    gap: 15px;
+    width: 100%;
   }
 
-  .sales__select {
+  .revenue__select {
     width: 100%;
   }
 }

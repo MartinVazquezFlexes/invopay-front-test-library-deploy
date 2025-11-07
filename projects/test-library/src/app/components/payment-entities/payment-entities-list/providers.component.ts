@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProvidersService } from '../services/providers.service';
 import { PaymentEntity } from '../models/payment-entities';
+import { FormControl } from '@angular/forms';
+import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
-  styleUrls: ['./providers.component.css'],
+  styleUrls: ['./providers.component.scss'], 
 })
 export class ProvidersComponent implements OnInit {
   constructor(private providerService: ProvidersService, private sanitizer: DomSanitizer) {}
@@ -104,8 +106,17 @@ export class ProvidersComponent implements OnInit {
     this.pagedData = this.tableData.slice(startIndex, endIndex);
   }
 
+  itemsPerPageControl = new FormControl('15');
+  pageOptions: IpSelectInputOption[] = [
+    { value: '10', label: '10' },
+    { value: '15', label: '15' },
+    { value: '20', label: '20' },
+    { value: '25', label: '25' },
+  ];
   onItemsPerPageChange(newValue: any) {
+    console.log(newValue);
     this.itemsPerPage = Number(newValue);
+    this.itemsPerPageControl.setValue(newValue); //sincroniza el control
     this.currentPage = 1;
     this.updatePage();
   }

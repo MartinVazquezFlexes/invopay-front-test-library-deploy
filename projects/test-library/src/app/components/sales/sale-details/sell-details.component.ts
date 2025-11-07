@@ -8,7 +8,7 @@ import { detailSaleTable, SaleDetails } from '../models/sale';
 @Component({
   selector: 'app-sell-details',
   templateUrl: './sell-details.component.html',
-  styleUrls: ['./sell-details.component.css'],
+  styleUrls: ['./sell-details.component.scss'],
 })
 export class SellDetailsComponent implements OnInit {
   constructor(private saleService: SellService) {}

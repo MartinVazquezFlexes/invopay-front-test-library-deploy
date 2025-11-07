@@ -9,6 +9,10 @@ import { SellDetailsComponent } from './components/sales/sale-details/sell-detai
 import { CollectionsListComponent } from './components/revenues/revenues-list/collections-list.component';
 import { CollectionDetailsComponent } from './components/revenues/revenue-details/collection-details.component';
 import { ProvidersComponent } from './components/payment-entities/payment-entities-list/providers.component';
+import { NotificationsListComponent } from './shared/components/notifications-list/notifications-list.component';
+import { InsurerNotificationsListComponent } from './components/notifications/insurers/insurer-notifications-list/insurer-notifications-list.component';
+import { BrokerNotificationsListComponent } from './components/notifications/brokers/broker-notifications-list/broker-notifications-list.component';
+import { SchemesListComponent } from './components/broker/schemes-list/schemes-list.component';
 
 
 const routes: Routes = [
@@ -37,6 +41,9 @@ const routes: Routes = [
       { path: 'invopay/revenues-list', component: CollectionsListComponent },
       { path: 'invopay/revenue-details', component: CollectionDetailsComponent },
       { path: 'invopay/payment-entities', component: ProvidersComponent },
+      { path: 'invopay/schemes-list', component: SchemesListComponent },
+      //{ path: 'invopay/insurer/notification-list', component: InsurerNotificationsListComponent },
+      //{ path: 'invopay/broker/notification-list', component: BrokerNotificationsListComponent }
     ],
   },
   {

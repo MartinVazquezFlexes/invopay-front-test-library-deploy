@@ -1,3 +1,7 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
+
 body {
   background: #f5f5f5;
   min-height: 100vh;
@@ -19,21 +23,20 @@ body {
 }
 
 .sale-details__title {
+  @include mainTitleText();
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 20px;
-  margin: 0;
+  padding-top: 3px;
 }
 
 .sale-details__subtitle {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @include mainTabText();
   margin-bottom: 15px;
 }
 
 .sale-details__subtitle--card {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @include mainTabText();
   margin-bottom: 15px;
   padding: 0px 20px;
 }
@@ -117,7 +120,7 @@ body {
   background: #ffffff;
   color: black;
   padding: 0 5px;
-  font-size: 14px;
+  @include textLabel();
 }
 
 .sale-details__input-wrapper app-ip-input {
@@ -165,7 +168,7 @@ body {
 }
 
 /* RESPONSIVE: TABLET */
-@media (max-width: 768px) {
+@include md {
   .sale-details__card,
   .sale-details__card-row {
     width: 100%;
@@ -174,7 +177,6 @@ body {
 
   .sale-details__header h2 {
     margin: 0;
-    font-size: 18px;
   }
 
   .sale-details__header {
@@ -195,14 +197,6 @@ body {
     margin: 0;
   }
 
-  ::ng-deep .sale-details__btn-white button.ip-button {
-    background: #f5f5f5 !important;
-    border: 0px solid #f5f5f5 !important;
-  }
-
-  ::ng-deep .sale-details__btn-white button.ip-button:hover:enabled {
-    background: #e6e6e6 !important;
-  }
 
   .sale-details__row {
     flex-direction: column;
@@ -217,10 +211,23 @@ body {
   .sale-details__input-wrapper {
     max-width: 100%;
   }
+
 }
 
+
+
 /* RESPONSIVE: MOBILE */
-@media (max-width: 492px) {
+@include sm {
+
+  ::ng-deep .sale-details__btn-white button.ip-button:hover:enabled {
+    background: #e6e6e6 !important;
+  }
+
+  ::ng-deep .sale-details__btn-white button.ip-button {
+    background-color: #f5f5f5 !important;
+    border: 0px solid #f5f5f5 !important;
+  }
+
   .sale-details__table-view {
     display: none;
   }
@@ -246,9 +253,8 @@ body {
   }
 
   .sale-details__card-id {
+    @include cardText();
     color: #0071ce;
-    font-weight: 600;
-    font-size: 14px;
   }
 
   .sale-details__card-row-mobile {
@@ -259,24 +265,26 @@ body {
   }
 
   .sale-details__card-label {
-    color: #0071ce;
-    font-size: 14px;
-    font-weight: 500;
+    @include sidenavTextLabel();
+    color: #0071CE;
+    font-weight: 600;
   }
 
   .sale-details__card-value {
+    @include sidenavTextLabel();
     color: #333;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
+    font-weight: 600;
+    text-align: end;
   }
 
   .sale-details__card-value--date {
+    @include sidenavTextLabel();
     color: #666;
-    font-size: 13px;
+    font-weight: 600;
   }
 
   .sale-details__card-value--amount {
+    @include sidenavTextLabel();
     color: #0071ce;
     font-weight: 600;
   }
@@ -305,7 +313,6 @@ body {
 
   .sale-details__header h2 {
     margin: 0;
-    font-size: 18px;
   }
 
   .sale-details__card {
@@ -320,7 +327,6 @@ body {
   }
 
   .sale-details__card-row h3 {
-    font-size: 18px;
     margin-bottom: 15px;
   }
 
@@ -329,9 +335,6 @@ body {
     width: 100%;
     margin: 0;
     padding-top: 0px;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
   .sale-details__form {
@@ -354,12 +357,7 @@ body {
   }
 
   .sale-details__input-wrapper input {
-    font-size: 16px;
     padding: 14px 12px;
-  }
-
-  .sale-details__label {
-    font-size: 13px;
   }
 
   button {
@@ -378,4 +376,6 @@ body {
   .sale-details__pagination-center select {
     width: 100%;
   }
+
+
 }

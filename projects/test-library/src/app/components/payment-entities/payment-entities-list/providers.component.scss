@@ -1,3 +1,7 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
+
 body {
   background: #f5f5f5;
   height: 100vh;
@@ -18,8 +22,8 @@ body {
 }
 
 .supplier__title {
+  @include mainTitleText();
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 40px;
   margin: 0;
 }
@@ -52,6 +56,24 @@ body {
   gap: 20px;
   box-sizing: border-box;
   min-height: 50px;
+  padding-top: 10px;
+
+  ::ng-deep {
+    app-paginator {
+      display: flex;
+      align-items: center;
+      height: auto;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .ip-paginator {
+      height: 2.5rem; // misma altura que el select
+      padding: 0 1.06rem;
+      align-items: center; //centrar verticalmente
+      justify-content: flex-end;
+    }
+  }
 }
 
 .supplier__pagination-center {
@@ -60,21 +82,66 @@ body {
   align-items: center;
   padding-left: 40px;
 }
+.supplier__pagination-center {
+  ::ng-deep {
+    //ajustar el contenedor
+    .ip-select-input {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0 !important;
+      
+      @media (max-width: 768px) {
+        height: 2rem;
+      }
+    }
 
-.supplier__select {
-  padding: 8px 12px;
-  border-radius: 15px;
-  border: 1px solid;
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
+    .mat-mdc-form-field-infix {
+      padding: 0 !important;
+      border: 0 !important;
+      min-height: auto !important;
+      display: flex;
+      align-items: center;
+    }
 
-.supplier app-paginator {
-  display: flex;
-  align-items: center;
-  height: 5vh;
-  padding-bottom: 20px;
+    //centro el select
+    .mat-mdc-select {
+      display: flex;
+      align-items: center;
+      padding: 0 0.50rem;
+      height: 100%;
+    }
+
+    .mat-mdc-select-value {
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .mat-mdc-select-value-text {
+      display: flex;
+      align-items: center;
+    }
+
+    //saco elementos que ocupan espacio y no ayudan
+    .mat-mdc-form-field-underline,
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+
+    //acomodo flecha
+    .mat-mdc-select-arrow-wrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    //oculto el espacio del label
+    .ip-select-label-floating {
+      display: none;
+    }
+  }
 }
 
 .supplier__table-view {
@@ -86,7 +153,7 @@ body {
 }
 
 /* RESPONSIVE: MOBILE */
-@media (max-width: 492px) {
+@include sm {
   .supplier__table-view {
     display: none;
   }
@@ -112,9 +179,8 @@ body {
   }
 
   .supplier__card-id {
+    @include cardText();
     color: #0071ce;
-    font-weight: 600;
-    font-size: 14px;
   }
 
   .supplier__image-container {
@@ -129,24 +195,26 @@ body {
   }
 
   .supplier__card-label {
+    @include sidenavTextLabel();
     color: #0071CE;
-    font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .supplier__card-value {
+    @include sidenavTextLabel();
     color: #333;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
+    font-weight: 600;
+    text-align: end;
   }
 
   .supplier__card-value--date {
+    @include sidenavTextLabel();
     color: #666;
-    font-size: 13px;
+    font-weight: 600;
   }
 
   .supplier__card-value--amount {
+    @include sidenavTextLabel();
     color: #0071ce;
     font-weight: 600;
   }
@@ -193,9 +261,6 @@ body {
     text-align: start;
     width: 100%;
     margin: 0;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
   .supplier__pagination-center {
@@ -219,9 +284,8 @@ body {
   }
 
   .supplier__payment-channel {
+    @include sidenavTextLabel();
     color: #333;
-    font-size: 13px;
     font-weight: 500;
-    text-align: right;
   }
 }

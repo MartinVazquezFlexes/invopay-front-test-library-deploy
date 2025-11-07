@@ -159,19 +159,11 @@
 
     <div class="revenue__pagination">
       <div class="revenue__pagination-center">
-        <select
-          name="selectPages"
-          id="pages"
-          class="revenue__select"
-          [(ngModel)]="itemsPerPage"
-          (ngModelChange)="onItemsPerPageChange($event)"
-        >
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-        </select>
+        <app-ip-select-input
+          [control]="itemsPerPageControl"
+          [options]="pageOptions"
+          (selectEmitter)="onItemsPerPageChange($event)"
+        ></app-ip-select-input>
       </div>
       <app-paginator
         [totalItems]="filteredRevenues.length"

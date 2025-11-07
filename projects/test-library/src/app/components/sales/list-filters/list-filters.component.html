@@ -1,36 +1,47 @@
 <div class="modal" (click)="close.emit()"></div>
 <div class="modal__content">
   <div class="modal__header">
-    <h4>{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FILTER_TITLE' | translate }}</h4>
+    <h4>
+      {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FILTER_TITLE" | translate }}
+    </h4>
     <button (click)="close.emit()">
       <img src="assets/new-styles/icons/buttons/close-icon.svg" />
     </button>
   </div>
   <form [formGroup]="filtersModalForm">
     <div class="modal__body">
-      <input
-        type="text"
-        placeholder="Id Producto"
-        formControlName="productId"
-      /> 
-      <input type="text" placeholder="Producto" formControlName="productName" />
-      <select name="brokerSelect" id="brokers" formControlName="broker">
-        <option value="" disabled selected hidden>{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</option>
-        <option value="Juan Pérez">Juan Pérez</option>
-        <option value="Sofía Gómez">Sofía Gómez</option>
-        <option value="María Rodríguez">María Rodríguez</option>
-      </select>
-    </div>
+      <div class="input-wrapper">
+        <input type="text" id="productId" formControlName="productId" />
+        <label for="productId">Id Producto</label>
+      </div>
 
-    <!--
-            <app-ip-input
-              inputId="productId"
-              [control]="getControl('productId')"
-              label=""
-              placeholder="Id Producto"
-              type="text"
-      ></app-ip-input>
-      -->
+      <div class="input-wrapper">
+        <input type="text" id="productName" formControlName="productName" />
+        <label for="productName">Producto</label>
+      </div>
+      <!--<div class="modal__input-wrapper">
+        <app-ip-input
+          inputId="productId"
+          [control]="getControl('productId')"
+          placeholder="Id Producto"
+          type="text"
+        ></app-ip-input>
+      </div>
+
+      <app-ip-input
+        inputId="productName"
+        [control]="getControl('productName')"
+        placeholder="Producto"
+        type="text"
+      ></app-ip-input>-->
+
+      <app-ip-select-input
+        [label]="'Broker'"
+        [control]="getControl('broker')"
+        [options]="selectOptions"
+        (selectEmitter)="onChangeSelected($event)"
+      ></app-ip-select-input>
+    </div>
 
     <div class="modal__buttons">
       <app-ip-button-modal
@@ -39,7 +50,7 @@
         size="normal"
         (clicked)="cleanFilters()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER" | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -48,7 +59,7 @@
         size="normal"
         (clicked)="close.emit()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE" | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -57,7 +68,7 @@
         size="normal"
         (clicked)="applyFilters()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY" | translate }}
       </app-ip-button-modal>
     </div>
   </form>

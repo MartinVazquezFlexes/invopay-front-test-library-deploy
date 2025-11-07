@@ -3,14 +3,18 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
-import { SaleFilters, SellFiltersService } from '../services/sellFilters.service';
+import {
+  SaleFilters,
+  SellFiltersService,
+} from '../services/sellFilters.service';
 import { SellService } from '../services/sell.service';
 import { sale } from '../models/sale';
+import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 
 @Component({
   selector: 'app-sell-list',
   templateUrl: './sell-list.component.html',
-  styleUrls: ['./sell-list.component.css'],
+  styleUrls: ['./sell-list.component.scss'],
 })
 export class SellListComponent implements OnInit, OnDestroy {
   //
@@ -57,8 +61,6 @@ export class SellListComponent implements OnInit, OnDestroy {
       history.state?.keepFilters ||
       false;
 
-
-
     //Los inicializo y obtengo los filtros
     let filters: SaleFilters;
 
@@ -70,7 +72,6 @@ export class SellListComponent implements OnInit, OnDestroy {
       //navegando a otras pantallas
       window.history.replaceState({}, '');
       //console.log('State limpiado');
-
     } else {
       //si no es del detalle = neuvos filtros(restart todo)
       filters = {
@@ -78,7 +79,7 @@ export class SellListComponent implements OnInit, OnDestroy {
         endDateFilter: this.today.toLocaleDateString('en-CA'),
         productFilter: undefined,
         brokerFilter: undefined,
-        productIdFilter: undefined 
+        productIdFilter: undefined,
       };
 
       //reseteamos filtros
@@ -137,7 +138,9 @@ export class SellListComponent implements OnInit, OnDestroy {
         this.tableData = response.content.map((sale: sale) => ({
           ...sale,
           saleDateToOrder: sale.saleDate,
-          amount: `${sale.currency} ${Math.round(sale.amount).toLocaleString()}`,
+          amount: `${sale.currency} ${Math.round(
+            sale.amount
+          ).toLocaleString()}`,
           policyAmount: `${sale.currency} ${Math.round(
             sale.policyAmount
           ).toLocaleString()}`,
@@ -215,13 +218,12 @@ export class SellListComponent implements OnInit, OnDestroy {
   showFiltersOnMobile = false;
 
   toggleFilters() {
-  this.showFiltersOnMobile = !this.showFiltersOnMobile;
-}
+    this.showFiltersOnMobile = !this.showFiltersOnMobile;
+  }
 
   //MOBILE
 
-
-  toDetails(id:number){
+  toDetails(id: number) {
     this.router.navigate(['/invopay/sale-details'], {
       state: { data: id }, //objetoId seleccionado para mostrar en el detalle
     });
@@ -282,15 +284,17 @@ export class SellListComponent implements OnInit, OnDestroy {
 
     if (window.innerWidth <= 768) {
       this.showFiltersOnMobile = false;
-    } 
+    }
   }
 
-
   applyFilters(filters?: SaleFilters) {
-    const appliedFilters: SaleFilters = filters ?? this.filtersService.getFilters();
+    const appliedFilters: SaleFilters =
+      filters ?? this.filtersService.getFilters();
 
     //parsear fechas correctamente
-    const parseDate = (dateValue: string | Date | null | undefined): Date | null => {
+    const parseDate = (
+      dateValue: string | Date | null | undefined
+    ): Date | null => {
       if (!dateValue) return null;
 
       let date: Date;
@@ -300,7 +304,7 @@ export class SellListComponent implements OnInit, OnDestroy {
       } else {
         //Es un string
         const dateStr = dateValue.toString().trim();
-        
+
         //Si tiene T (formato ISO), extraer solo la parte YYYY-MM-DD
         if (dateStr.includes('T')) {
           //"2025-09-23T00:00:00" -> "2025-09-23"
@@ -376,45 +380,54 @@ export class SellListComponent implements OnInit, OnDestroy {
     this.pagedData = this.filteredSales.slice(startIndex, endIndex);
   }
 
-  onItemsPerPageChange(newValue: number) {
-    this.itemsPerPage = newValue;
+  itemsPerPageControl = new FormControl('15');
+  pageOptions: IpSelectInputOption[] = [
+    { value: '10', label: '10' },
+    { value: '15', label: '15' },
+    { value: '20', label: '20' },
+    { value: '25', label: '25' },
+  ];
+  onItemsPerPageChange(newValue: any) {
+    console.log(newValue);
+    this.itemsPerPage = Number(newValue);
+    this.itemsPerPageControl.setValue(newValue); //sincroniza el control
     this.currentPage = 1;
     this.updatePage();
   }
 
   onSort(event: any) {
-  const sortKey = event.key; //revenueDateDisplay
-  const sortEvent = event.event; //'asc', 'desc' o 'clean'
+    const sortKey = event.key; //revenueDateDisplay
+    const sortEvent = event.event; //'asc', 'desc' o 'clean'
 
-  //mapear al original
-  const sortFieldMap: { [key: string]: string } = {
-    'saleDate': 'saleDateToOrder'
-  };
+    //mapear al original
+    const sortFieldMap: { [key: string]: string } = {
+      saleDate: 'saleDateToOrder',
+    };
 
-  const actualSortField = sortFieldMap[sortKey] || sortKey;
+    const actualSortField = sortFieldMap[sortKey] || sortKey;
 
-  if (sortEvent === 'clean') {
-    this.applyFilters();
-  } else {
-    this.filteredSales.sort((a, b) => {
-      let aValue = (a as any)[actualSortField];
-      let bValue = (b as any)[actualSortField];
+    if (sortEvent === 'clean') {
+      this.applyFilters();
+    } else {
+      this.filteredSales.sort((a, b) => {
+        let aValue = (a as any)[actualSortField];
+        let bValue = (b as any)[actualSortField];
 
-      //convertir a fecha para sort
-      if (actualSortField === 'saleDateToOrder') {
-        aValue = new Date(aValue).getTime();
-        bValue = new Date(bValue).getTime();
-      }
+        //convertir a fecha para sort
+        if (actualSortField === 'saleDateToOrder') {
+          aValue = new Date(aValue).getTime();
+          bValue = new Date(bValue).getTime();
+        }
 
-      if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
-      if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
-      return 0;
-    });
+        if (aValue < bValue) return sortEvent === 'asc' ? -1 : 1;
+        if (aValue > bValue) return sortEvent === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+
+    this.currentPage = 1;
+    this.updatePage();
   }
-
-  this.currentPage = 1;
-  this.updatePage();
-}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

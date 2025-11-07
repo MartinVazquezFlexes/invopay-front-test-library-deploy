@@ -8,7 +8,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { TransformDataTablePipe } from '../../Utils/transform-data-table.pipe';
+import { TransformDataTablePipe } from '../../Utils/transform-data-table.pipe'; //Import añadido
 import { ActionActive, TableEvent } from './Itable';
 
 @Component({
@@ -44,7 +44,7 @@ export class TableComponent implements OnInit, OnChanges {
 
   constructor(
     private translate: TranslateService,
-    private transformDataTablePipe: TransformDataTablePipe
+    private transformDataTablePipe: TransformDataTablePipe //Añadido
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {
@@ -166,8 +166,9 @@ sortableFields: String[] = [
   'enterprise',
   'businessName',
   'costCenterName',
-  'revenueDateDisplay',
-  'saleDate',
+  'revenueDateDisplay',//Añadido
+  'saleDate',//Añadido
+  'notificationDate'//Añadido
 ];
 
   isSortable(key: string): boolean {
@@ -204,6 +205,7 @@ sortableFields: String[] = [
     return false;
   }
 
+  //Añadido
   generateTooltip(data: any, key: string, keyTranslate: string) {
     const transformedData = this.transformDataTablePipe.transform(
       data,

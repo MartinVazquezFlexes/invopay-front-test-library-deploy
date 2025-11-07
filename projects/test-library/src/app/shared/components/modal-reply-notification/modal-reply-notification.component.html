@@ -1,0 +1,46 @@
+<div class="modal" (click)="closeReply.emit()"></div>
+<div class="modal__content">
+  <div class="modal__header">
+    <h4>{{ "IP.NOTIFICATIONS.RESPONSE" | translate }}</h4>
+    <button (click)="closeReply.emit()">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+    </button>
+  </div>
+
+  <form [formGroup]="detailedInfoForm">
+    <div class="modal__body">
+
+      <div class="modal__inputs">
+          <div class="modal__input-wrapper modal__input-wrapper--full">
+            <label class="modal__label" for="consultation">{{
+              "IP.NOTIFICATIONS.CONFIRMATION" | translate
+            }}</label>
+            <app-ip-text-area-input
+              inputId="consultation"
+              [control]="getControl('consultation')"
+            ></app-ip-text-area-input>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal__buttons">
+      <app-ip-button-modal
+        class="btn--close"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="closeReply.emit()"
+      >
+        {{ "IP.ACCOUNTABILITY-DETAILS.CANCEL" | translate }}
+      </app-ip-button-modal>
+      
+      <app-ip-button-modal
+        class="btn--reply"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="sendReply()"
+      >
+        {{ "IP.LOGIN.RESTORE.SUBMIT-BUTTON" | translate }}
+      </app-ip-button-modal>
+    </div>
+  </form>
+</div>

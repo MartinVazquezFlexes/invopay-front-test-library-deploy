@@ -2,12 +2,16 @@
   <ng-container *ngTemplateOutlet="table"></ng-container>
 </div>
 <div *ngIf="scroll">  
+
+  <!--Cambios con respecto a master-->
   <div class="table-scroll">
     <app-ip-drag-scroll>
       <ng-container *ngTemplateOutlet="table"></ng-container>
     </app-ip-drag-scroll>
   </div>
 </div>
+<!--Cambios con respecto a master-->
+
 <ng-template #table>
 <table class="table" *ngIf="data" >
   <!-- headers -->
@@ -90,7 +94,8 @@
             src="../../../../assets/new-styles/img/card-master.png"
             class="table__body-row-item-mastercard"
           />
-          <span
+          <!--Se añaden los tooltips-->
+          <span 
             [matTooltip]="generateTooltip(dataField[key], key, keyTranslate)"
             [matTooltipDisabled]="
               !generateTooltip(dataField[key], key, keyTranslate)
@@ -108,8 +113,9 @@
             *ngIf="dataField[key] !== true && dataField[key] !== false && key !== 'logoUrl'"
           >
             {{ dataField[key] | transformDataTable : key : keyTranslate }}
-          </span>
+          </span><!--Cambios añadidos por mi en el ngIf logoUrl e interpolacion-->
 
+          <!--Cambios añadidos por mi-->
           <img 
             *ngIf="key === 'logoUrl' && dataField[key]"
             [src]="dataField[key]"
@@ -117,6 +123,7 @@
             width="30px"
             style="max-height: 50px; object-fit: contain;"
           />
+          <!--Cambios añadidos por mi-->
 
           <span *ngIf="dataField[key] === true || dataField[key] === false">
             <ng-container *ngIf="key === 'isActive' && dataField.contractId">
@@ -176,7 +183,7 @@
                   'pointer-events': this.checkAction(dataField, action)
                     .pointerEvents
                 }"
-              ></span>
+              ></span> <!--se añadio el tooltip con respecto a master-->
             </ng-container>
           </ul>
         </td>
@@ -184,6 +191,9 @@
     </ng-container>
   </tbody>
 </table>
+<!--se comento la linea de abajo porque 
+  genera un espacio entre tabla
+ y paginador con respecto a master-->
 <!--<div *ngIf="initTable" class="table__init">...</div>-->
 </ng-template>
 <!-- sort icon -->

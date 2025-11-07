@@ -1,3 +1,6 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
 
 .layout {
   display: flex;
@@ -67,8 +70,7 @@
 .layout__menu-link--active .layout__menu-text {
   white-space: nowrap;
   color: #0071CE;
-  font-size: 14px;
-  font-weight: 500;
+  @include sidenavActiveTextLabel();
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -93,7 +95,7 @@
 .layout__menu-text {
   white-space: nowrap;
   color: #0071CE;
-  font-size: 14px;
+  @include sidenavTextLabel();
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -171,7 +173,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 12px;
+  @include textLabel();
 }
 
 .layout__user--desktop-only {
@@ -188,12 +190,12 @@
 .layout__user-role {
   font-weight: bold;
   color: #333;
-  font-size: 16px;
+  @include generalInputText();
 }
 
 .layout__user-name {
   color: #666;
-  font-size: 14px;
+  @include generalInputText();
 }
 
 .layout__icon {
@@ -248,7 +250,7 @@
 }
 
 /* RESPONSIVE: TABLET Y MOBILE */
-@media (max-width: 768px) {
+@include sm {
 
   .layout__sidebar-header .layout__logo {
     display: block;
@@ -358,7 +360,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@include sm {
   .layout__main-section {
     padding: 10px;
   }

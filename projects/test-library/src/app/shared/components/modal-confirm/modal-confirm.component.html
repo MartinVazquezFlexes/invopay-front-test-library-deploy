@@ -1,0 +1,23 @@
+<div class="modal" (click)="closeConfirm.emit()"></div>
+<div class="modal__content">
+  <div class="modal__header">
+    <h4>{{ "IP.NOTIFICATIONS.CONFIRMATION" | translate }}</h4>
+    <button (click)="closeConfirm.emit()">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+    </button>
+  </div>
+    <div class="modal__body">
+      <p>{{'IP.NOTIFICATIONS.MESSAGE_CONFIRM' | translate}}</p>
+    </div>
+
+    <div class="modal__buttons">
+      <app-ip-button-modal
+        class="btn--close"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="closeConfirmModal()"
+      >
+        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE' | translate }}
+      </app-ip-button-modal>
+    </div>
+</div>

@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SaleFilters, SellFiltersService } from '../services/sellFilters.service';
+import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 
 @Component({
   selector: 'app-list-filters',
   templateUrl: './list-filters.component.html',
-  styleUrls: ['./list-filters.component.css'],
+  styleUrls: ['./list-filters.component.scss'],
 })
 export class ListFiltersComponent implements OnInit {
   constructor(private filtersService: SellFiltersService) {}
@@ -36,6 +37,15 @@ export class ListFiltersComponent implements OnInit {
   }
 
   //Filtros
+
+  selectOptions: IpSelectInputOption[] = [
+      { value: 'Juan Pérez', label: 'Juan Pérez' },
+      { value: 'Sofía Gómez', label: 'Sofía Gómez' },
+      { value: 'María Rodríguez', label: 'María Rodríguez' },
+    ];
+    onChangeSelected(newValue: any) {
+      this.getControl('broker').setValue(newValue); //sincroniza el control
+    }
 
   cleanFilters() {
     const today = new Date();

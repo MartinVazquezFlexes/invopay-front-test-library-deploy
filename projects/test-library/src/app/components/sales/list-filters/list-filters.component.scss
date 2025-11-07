@@ -1,0 +1,259 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
+
+.modal {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.modal__content {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 1001;
+  min-width: 860px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #e0e0e0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.modal__header h4 {
+  margin: 0;
+  color: rgb(62, 62, 62);
+  @include subTitleText();
+}
+
+.modal__header button {
+  background: #ffffff;
+  border-radius: 15px;
+  border: 1px solid white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__header button img {
+  width: 15px;
+  height: 15px;
+}
+
+.modal__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+}
+
+.modal__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 10px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 42px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 12px 10px;
+  border: 1px solid #E0E0E0;
+  @include labelGeneralText();
+  box-sizing: border-box;
+}
+
+.input-wrapper label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.87);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  @include labelGeneralText();
+  background: white;
+  padding: 0 4px;
+}
+
+.input-wrapper input:focus + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #999;
+}
+
+.input-wrapper input.ng-valid:not(.ng-pristine) + label,
+.input-wrapper input.ng-dirty + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #999;
+}
+
+.modal__body {
+  ::ng-deep {
+    //ajustar el contenedor
+    .ip-select-input {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0 !important;
+      width: 250px;
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 0 !important;
+      border: 0 !important;
+      min-height: auto !important;
+      display: flex;
+      align-items: center;
+    }
+
+    //centro el select
+    .mat-mdc-select {
+      display: flex;
+      align-items: center;
+      padding: 0 0.50rem;
+      height: 100%;
+    }
+
+    .mat-mdc-select-value {
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+
+    .mat-mdc-select-value-text {
+      display: flex;
+      align-items: center;
+    }
+
+    //saco elementos que ocupan espacio y no ayudan
+    .mat-mdc-form-field-underline,
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+
+    //acomodo flecha
+    .mat-mdc-select-arrow-wrapper {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 2000 !important;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+::ng-deep .modal__buttons .btn--clean button.ip-button,
+::ng-deep .modal__buttons .btn--close button.ip-button {
+  background: rgb(238, 235, 235) !important;
+  color: #333 !important;
+}
+
+::ng-deep .modal__buttons .btn--clean button.ip-button:hover:enabled,
+::ng-deep .modal__buttons .btn--close button.ip-button:hover:enabled {
+  background: rgb(220, 217, 217) !important;
+}
+
+
+/*mobile*/
+@include sm {
+  .modal__content {
+    width: 90%;
+    max-width: 90%;
+    min-width: 300px;
+    padding: 20px 15px;
+  }
+
+  .modal__body {
+    flex-direction: column;
+    padding: 15px 0;
+    gap: 12px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .input-wrapper input {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .modal__body {
+    ::ng-deep {
+      //ajustar el contenedor
+      .ip-select-input {
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0 !important;
+        width: 100%;
+      }
+    }
+  }
+
+  .modal__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+
+}
+
+@include sm {
+  .modal__content {
+    width: 95%;
+    min-width: 300px;
+    padding: 15px;
+  }
+
+  .modal__body {
+    padding: 10px 0;
+  }
+
+  .modal__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

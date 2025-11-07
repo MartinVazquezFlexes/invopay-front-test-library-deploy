@@ -37,6 +37,31 @@
         </a>
       </li>
 
+      <!--Lista de esquemas(Corredor)-->
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/schemes-list" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/status-transitions.svg" alt="Listado Esquemas" /></span>
+          <span class="layout__menu-text">{{ 'IP.SCHEMES.TITLE' | translate }}</span>
+        </a>
+      </li>
+
+      <!-- No se usa
+      ACA HAY QUE REVISAR EL USUARIO QUE ESTA LOGUEADO
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/insurer/notification-list" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/sidebar/notifications.svg" alt="Proveedores" /></span>
+          <span class="layout__menu-text">{{ 'IP.NOTIFICATIONS.TITLE' | translate }}</span>
+        </a>
+      </li>
+      
+      ACA HAY QUE REVISAR EL USUARIO QUE ESTA LOGUEADO
+      <li class="layout__menu-item">
+        <a class="layout__menu-link" routerLink="/invopay/broker/notification-list" routerLinkActive="layout__menu-link--active" (click)="closeSidebarOnMobile()">
+          <span class="layout__menu-icon"><img src="assets/new-styles/icons/sidebar/notifications.svg" alt="Proveedores" /></span>
+          <span class="layout__menu-text">{{ 'IP.NOTIFICATIONS.TITLE' | translate }}</span>
+        </a>
+      </li>-->
+
       <!-- Opciones mobile (solo visible en mobile) -->
       <li class="layout__menu-item layout__menu-item--mobile-only">
         <a class="layout__menu-link" (click)="closeSidebarOnMobile()">

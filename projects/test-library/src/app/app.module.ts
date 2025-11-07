@@ -23,7 +23,15 @@ import { CollectionDetailsComponent } from './components/revenues/revenue-detail
 import { CollectionsListComponent } from './components/revenues/revenues-list/collections-list.component';
 import { ProvidersComponent } from './components/payment-entities/payment-entities-list/providers.component';
 import { ListFiltersRevenueComponent } from './components/revenues/list-filters-revenue/list-filters-revenue.component';
-
+import { NotificationsListComponent } from './shared/components/notifications-list/notifications-list.component';
+import { ModalNotificationDetailsComponent } from './shared/components/modal-notification-details/modal-notification-details.component';
+import { ModalReplyNotificationComponent } from './shared/components/modal-reply-notification/modal-reply-notification.component';
+import { ModalConfirmComponent } from './shared/components/modal-confirm/modal-confirm.component';
+import { InsurerNotificationsListComponent } from './components/notifications/insurers/insurer-notifications-list/insurer-notifications-list.component';
+import { BrokerNotificationsListComponent } from './components/notifications/brokers/broker-notifications-list/broker-notifications-list.component';
+import { SchemesListComponent } from './components/broker/schemes-list/schemes-list.component';
+import { ModalSchemaComponent } from './shared/components/modal-schema/modal-schema.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,12 +49,21 @@ export function HttpLoaderFactory(http: HttpClient) {
     CollectionsListComponent, 
     ProvidersComponent, 
     ListFiltersRevenueComponent,
+    NotificationsListComponent,
+    ModalNotificationDetailsComponent,
+    ModalReplyNotificationComponent,
+    ModalConfirmComponent,
+    InsurerNotificationsListComponent,
+    BrokerNotificationsListComponent,
+    SchemesListComponent,
+    ModalSchemaComponent
     //NavbarHomeComponent
   ],
   imports: [
     //BaseModule,
     //ComponentsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     //CommonModule,
     //FormsModule,

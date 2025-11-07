@@ -1,3 +1,7 @@
+@import "../../../shared/mixins/generalText.scss";
+@import "../../../shared/mixins/sizes.scss";
+@import "../../../shared/mixins/utils.scss";
+
 body {
   background: #f5f5f5;
   height: 100vh;
@@ -20,14 +24,14 @@ body {
 
 .revenue-details__title {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 20px;
+  @include mainTitleText();
+  padding-top: 23px;
   margin: 0;
 }
 
 .revenue-details__policy-title {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @include mainTabText();
   margin: 22px 0px;
   padding-left: 20px;
 }
@@ -42,7 +46,7 @@ body {
 
 .revenue-details__section-title {
   color: #0071ce;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  @include mainTabText();
   margin: 5px;
   cursor: pointer;
   margin-bottom: 20px;
@@ -126,7 +130,7 @@ body {
   background: #ffffff;
   color: black;
   padding: 0 5px;
-  font-size: 14px;
+  @include textLabel();
 }
 
 .revenue-details__input-wrapper app-ip-input {
@@ -185,7 +189,7 @@ button:hover {
 }
 
 /* RESPONSIVE: TABLETS */
-@media (max-width: 1023px) and (min-width: 769px) {
+@include md {
   .revenue-details__card {
     width: 100%;
     padding: 20px;
@@ -193,7 +197,6 @@ button:hover {
 
   .revenue-details__header h2 {
     margin: 0;
-    font-size: 18px;
   }
 
   .revenue-details__title {
@@ -201,9 +204,7 @@ button:hover {
     width: 100%;
     margin: 0;
     padding-top: 0px;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
+    
   }
 
   .revenue-details__header {
@@ -255,7 +256,7 @@ button:hover {
 }
 
 /* RESPONSIVE: MOBILE LARGE */
-@media (max-width: 768px) and (min-width: 481px) {
+@include md {
   .revenue-details__table-view {
     display: none;
   }
@@ -290,9 +291,8 @@ button:hover {
   }
 
   .revenue-details__card-id {
+    @include cardText();
     color: #0071ce;
-    font-weight: 600;
-    font-size: 14px;
   }
 
   .revenue-details__card-row-mobile {
@@ -301,30 +301,30 @@ button:hover {
     align-items: center;
     padding: 8px 0;
   }
-
   .revenue-details__card-label {
-    color: #0071ce;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .revenue-details__card-value {
-    color: #333;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
-  }
-
-  .revenue-details__card-value--date {
-    color: #666;
-    font-size: 13px;
-  }
-
-  .revenue-details__card-value--amount {
-    color: #0071ce;
+    @include sidenavTextLabel();
+    color: #0071CE;
     font-weight: 600;
   }
 
+  .revenue-details__card-value {
+    @include sidenavTextLabel();
+    color: #333;
+    font-weight: 600;
+    text-align: end;
+  }
+
+  .revenue-details__card-value--date {
+    @include sidenavTextLabel();
+    color: #666;
+    font-weight: 600;
+  }
+
+  .revenue-details__card-value--amount {
+    @include sidenavTextLabel();
+    color: #0071ce;
+    font-weight: 600;
+  }
   .revenue-details {
     padding: 2px;
   }
@@ -356,7 +356,7 @@ button:hover {
 
   .revenue-details__header h2 {
     margin: 0;
-    font-size: 18px;
+    @include generalInputText();
   }
 
   .revenue-details__title {
@@ -364,9 +364,6 @@ button:hover {
     width: 100%;
     margin: 0;
     padding-top: 0px;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
   }
 
   .revenue-details__sections-titles {
@@ -374,9 +371,9 @@ button:hover {
     margin-bottom: 15px;
   }
 
-  .revenue-details__section-title {
-    font-size: 14px;
-  }
+  /*.revenue-details__section-title {
+
+  }*/
 
   .revenue-details__inputs {
     grid-template-columns: 1fr;
@@ -389,18 +386,16 @@ button:hover {
   }
 
   .revenue-details__input-wrapper input {
-    font-size: 16px;
+    
     padding: 12px 10px;
   }
 
   .revenue-details__input-wrapper textarea {
-    font-size: 16px;
+    
     padding: 12px 10px;
   }
 
-  .revenue-details__label {
-    font-size: 13px;
-  }
+ 
 
   .revenue-details__input-wrapper--full {
     grid-column: span 1;
@@ -417,7 +412,7 @@ button:hover {
 }
 
 /* RESPONSIVE: MOBILE SMALL */
-@media (max-width: 480px) {
+@include sm {
   .revenue-details__table-view {
     display: none;
   }
@@ -452,9 +447,8 @@ button:hover {
   }
 
   .revenue-details__card-id {
+    @include cardText();
     color: #0071ce;
-    font-weight: 600;
-    font-size: 14px;
   }
 
   .revenue-details__card-row-mobile {
@@ -465,24 +459,26 @@ button:hover {
   }
 
   .revenue-details__card-label {
-    color: #0071ce;
-    font-size: 14px;
-    font-weight: 500;
+    @include sidenavTextLabel();
+    color: #0071CE;
+    font-weight: 600;
   }
 
   .revenue-details__card-value {
+    @include sidenavTextLabel();
     color: #333;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: right;
+    font-weight: 600;
+    text-align: end;
   }
 
   .revenue-details__card-value--date {
+    @include sidenavTextLabel();
     color: #666;
-    font-size: 13px;
+    font-weight: 600;
   }
 
   .revenue-details__card-value--amount {
+    @include sidenavTextLabel();
     color: #0071ce;
     font-weight: 600;
   }
@@ -511,7 +507,6 @@ button:hover {
 
   .revenue-details__header h2 {
     margin: 0;
-    font-size: 18px;
   }
 
   .revenue-details__card {
@@ -526,9 +521,7 @@ button:hover {
     width: 100%;
     margin: 0;
     padding-top: 0px;
-    font-size: 19.2px;
-    line-height: 19.2px;
-    font-family: Poppins, Loos, Arial, sans-serif;
+
   }
 
   .revenue-details__form {
@@ -540,9 +533,9 @@ button:hover {
     margin-bottom: 10px;
   }
 
-  .revenue-details__section-title {
+  /*.revenue-details__section-title {
     font-size: 12px;
-  }
+  }*/
 
   .revenue-details__inputs {
     grid-template-columns: 1fr;
@@ -555,19 +548,16 @@ button:hover {
   }
 
   .revenue-details__input-wrapper input {
-    font-size: 16px;
     padding: 12px;
     border-radius: 12px;
   }
 
   .revenue-details__input-wrapper textarea {
-    font-size: 16px;
     padding: 12px;
     border-radius: 12px;
   }
 
   .revenue-details__label {
-    font-size: 12px;
     padding: 0 4px;
   }
 

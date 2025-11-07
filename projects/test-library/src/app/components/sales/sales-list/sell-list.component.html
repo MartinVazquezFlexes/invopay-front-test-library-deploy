@@ -141,18 +141,11 @@
 
     <div class="sales__pagination">
       <div class="sales__pagination-center">
-        <select
-          name="selectPages"
-          id="pages"
-          class="sales__select"
-          [(ngModel)]="itemsPerPage"
-          (ngModelChange)="onItemsPerPageChange($event)"
-        >
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-          <option value="25">25</option>
-        </select>
+        <app-ip-select-input
+          [control]="itemsPerPageControl"
+          [options]="pageOptions"
+          (selectEmitter)="onItemsPerPageChange($event)"
+        ></app-ip-select-input>
       </div>
 
       <app-paginator

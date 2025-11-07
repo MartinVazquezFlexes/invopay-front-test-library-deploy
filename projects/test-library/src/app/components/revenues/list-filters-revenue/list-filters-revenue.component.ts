@@ -1,14 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { RevenueFilters, RevenueFiltersService } from '../services/revenueFilters.service';
+import {
+  RevenueFilters,
+  RevenueFiltersService,
+} from '../services/revenueFilters.service';
+import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 
 @Component({
   selector: 'app-list-filters-revenue',
   templateUrl: './list-filters-revenue.component.html',
-  styleUrls: ['./list-filters-revenue.component.css']
+  styleUrls: ['./list-filters-revenue.component.scss'],
 })
 export class ListFiltersRevenueComponent implements OnInit {
-
   constructor(private filtersService: RevenueFiltersService) {}
 
   //Creo los controls
@@ -20,19 +23,29 @@ export class ListFiltersRevenueComponent implements OnInit {
     //Los inicializo y obtengo los filtros
     const filters = this.filtersService.getFilters();
     this.filtersModalForm = new FormGroup({
-      paymentChannel: new FormControl(filters.paymentChannelFilter || '')
+      paymentChannel: new FormControl(filters.paymentChannelFilter || ''),
     });
   }
 
   @Output() close = new EventEmitter<void>();
 
-
-      // getter para acceder a cualquier control
+  // getter para acceder a cualquier control
   getControl(controlName: string): FormControl {
     return this.filtersModalForm.get(controlName) as FormControl;
   }
 
   //Filtros
+  selectOptions: IpSelectInputOption[] = [
+    { value: 'Todos', label: 'Todos' },
+    { value: 'Transferencia', label: 'Transferencia' },
+    { value: 'Tarjeta', label: 'Tarjeta' },
+    { value: 'Boleto', label: 'Boleto' },
+    { value: 'Efectivo', label: 'Efectivo' },
+    { value: 'Cheque', label: 'Cheque' },
+  ];
+  onChangeSelected(newValue: any) {
+    this.getControl('paymentChannel').setValue(newValue); //sincroniza el control
+  }
 
   cleanFilters() {
     const today = new Date();
@@ -48,7 +61,7 @@ export class ListFiltersRevenueComponent implements OnInit {
     this.filtersService.setFilters({
       startDateFilter: oneMonthAgo.toLocaleDateString('en-CA'),
       endDateFilter: today.toLocaleDateString('en-CA'),
-      paymentChannelFilter: ''
+      paymentChannelFilter: '',
     });
 
     this.close.emit();
@@ -73,7 +86,4 @@ export class ListFiltersRevenueComponent implements OnInit {
 
     this.close.emit();
   }
-
-                    
-
 }

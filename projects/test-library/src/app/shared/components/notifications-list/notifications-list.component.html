@@ -1,0 +1,238 @@
+<div class="insurers">
+  <div class="insurers__header">
+    <!-- Título dinámico según contexto -->
+    <h2 class="insurers__title">{{ pageTitle | translate }}</h2>
+
+    <div class="insurers__filter-button insurers__filter-button--mobile">
+      <app-ip-button-modal
+        typeBtn="submit"
+        size="normal"
+        (clicked)="toggleFilters()"
+      >
+        <img
+          src="assets/new-styles/icons/buttons/search-icon-white.svg"
+          class="insurers__search-icon insurers__search-icon--mobile"
+        />
+        <span class="insurers__filter-text insurers__filter-text--mobile">{{
+          "IP.FILTERS_MODAL.FILTER" | translate
+        }}</span>
+      </app-ip-button-modal>
+    </div>
+  </div>
+
+  <!-- MODALES -->
+  <app-modal-notification-details 
+    *ngIf="showModalDetail" 
+    (closeDetail)="closeModalDetail()"
+    (replySend)="showConfirmReplySend()"
+    [idNotification]="detailId"
+    [context]="context"
+  >
+  </app-modal-notification-details>
+
+  <app-modal-reply-notification 
+    *ngIf="showModalResponse" 
+    (closeReply)="closeModalResponse()"
+    (replySend)="showConfirmReplySend()"
+    [idNotification]="replyId"
+    [context]="context"
+  >
+  </app-modal-reply-notification>
+
+  <app-modal-confirm 
+    *ngIf="showReplySended" 
+    (closeConfirm)="closeConfirmReplySend()">
+  </app-modal-confirm>
+
+  <div
+    class="insurers__filters-overlay"
+    [class.insurers__filters-overlay--show]="showFiltersOnMobile"
+    (click)="toggleFilters()"
+  ></div>
+
+  <!-- FILTROS -->
+  <div
+    class="insurers__card insurers__card--filters"
+    [class.insurers__card--show-mobile]="showFiltersOnMobile"
+  >
+    <div class="insurers__modal-header">
+      <h4>{{ "IP.NOTIFICATIONS.FILTERS" | translate }}</h4>
+      <button class="insurers__modal-close" (click)="toggleFilters()">
+        <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+      </button>
+    </div>
+    <div class="insurers__filters">
+      <form class="insurers__form" [formGroup]="filtersForm">
+        <div class="insurers__input-text">
+          <select class="insurers__input" id="state" formControlName="state">
+            <option value="" disabled selected hidden>
+              {{ "IP.ADMIN_TABLE.HASRESPONSE" | translate }}
+            </option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+          </select>
+          <label class="insurers__label" for="state">{{
+            "IP.ASSIGN-PROJECTS.STATUS" | translate
+          }}</label>
+        </div>
+
+        <div class="insurers__input-text">
+          <input
+            class="insurers__input"
+            type="text"
+            id="entity"
+            formControlName="entity"
+          />
+          <label class="insurers__label" for="entity">{{
+            "IP.NOTIFICATIONS.ENTITY" | translate
+          }}</label>
+        </div>
+
+        <div class="insurers__input-text">
+          <input
+            class="insurers__input"
+            type="text"
+            id="name"
+            formControlName="name"
+          />
+          <!-- Etiqueta dinámica según contexto -->
+          <label class="insurers__label" for="name">{{
+            nameFieldLabel | translate
+          }}</label>
+        </div>
+      </form>
+
+      <div class="insurers__buttons">
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="applyNotificationsFilters()"
+        >
+          <img src="assets/new-styles/icons/buttons/search-icon-white.svg" />
+        </app-ip-button-modal>
+
+        <app-ip-button-modal
+          typeBtn="submit"
+          size="small"
+          (clicked)="cleanFilters()"
+        >
+          <img src="assets/new-styles/icons/buttons/cleaning.svg" />
+        </app-ip-button-modal>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="insurers__card">
+    <div class="insurers__table-view">
+      <app-table
+        *ngIf="pagedData.length > 0"
+        [propertyOrder]="propertyOrder"
+        [data]="pagedData"
+        [keyTranslate]="keyTranslate"
+        [tableStyle]="'invopay'"
+        [actions]="actions"
+        [actionsIf]="actionsIf"
+        [initTable]="initTable"
+        [scroll]="scroll"
+        (sort)="onSort($event)"
+        (action)="onAction($event)"
+        (selectedItemsChange)="onSelectedItemsChange($event)"
+      >
+      </app-table>
+    </div>
+
+    <!-- VISTA MOBILE -->
+    <div class="insurers__card-view" *ngFor="let item of pagedData">
+      <div class="insurers__card-header">
+        <span class="insurers__card-id">#{{ item.id }}</span>
+        <div class="insurers__menu">
+          <button class="insurers__menu-button" (click)="toggleMenu(item.id)">
+            ⋮
+          </button>
+          <div class="insurers__menu-dropdown" *ngIf="openMenuId === item.id">
+            <button
+              class="insurers__menu-item"
+              (click)="openModalDetail(item.id)"
+            >
+              {{ "IP.NOTIFICATIONS.SEE" | translate }}
+            </button>
+            <button
+              class="insurers__menu-item"
+              (click)="openModalResponse(item.id)"
+            >
+              {{ "IP.NOTIFICATIONS.RESPONSE" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="insurers__card-row">
+        <label class="insurers__card-label">{{
+          "IP.ADMIN_TABLE.NOTIFICATIONDATE" | translate
+        }}</label>
+        <span class="insurers__card-value insurers__card-value--date">{{
+          item.notificationDate | date : "dd/MM/yyyy"
+        }}</span>
+      </div>
+
+      <div class="insurers__card-row">
+        <label class="insurers__card-label">{{
+          "IP.ADMIN_TABLE.ENTITY" | translate
+        }}</label>
+        <span class="insurers__card-value">{{ item.entity }}</span>
+      </div>
+
+      <div class="insurers__card-row">
+        <!-- Etiqueta dinámica según contexto -->
+        <label class="insurers__card-label">{{
+          nameFieldLabel | translate
+        }}</label>
+        <!-- Valor dinámico según contexto -->
+        <span class="insurers__card-value">{{ 
+          context === 'insurer' ? item.brokerName : item.userName 
+        }}</span>
+      </div>
+
+      <div class="insurers__card-row">
+        <label class="insurers__card-label">{{
+          "IP.ADMIN_TABLE.MESSAGE" | translate
+        }}</label>
+        <span class="insurers__card-value">{{ item.message }}</span>
+      </div>
+
+      <div class="insurers__card-row">
+        <label class="insurers__card-label">{{
+          "IP.ADMIN_TABLE.HASRESPONSE" | translate
+        }}</label>
+        <span class="insurers__card-value">{{ item.hasResponse }}</span>
+      </div>
+    </div>
+
+    <!-- PAGINADOR -->
+    <div class="insurers__pagination">
+      <div class="insurers__pagination-center">
+        <select
+          name="selectPages"
+          id="pages"
+          class="insurers__select"
+          [(ngModel)]="itemsPerPage"
+          (ngModelChange)="onItemsPerPageChange($event)"
+        >
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+        </select>
+      </div>
+
+      <app-paginator
+        [totalItems]="filteredNotifications.length"
+        [itemsPerPage]="itemsPerPage"
+        [currentPages]="currentPage"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </div>
+  </div>
+</div>

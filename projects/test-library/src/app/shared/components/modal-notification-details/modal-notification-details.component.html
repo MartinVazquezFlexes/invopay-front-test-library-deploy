@@ -1,0 +1,160 @@
+<div class="modal" (click)="closeDetail.emit()"></div>
+
+<app-modal-reply-notification
+  *ngIf="showModalResponse"
+  (closeReply)="closeModalResponse()"
+  (replySend)="showConfirmReplySend()"
+  [idNotification]="replyId"
+>
+</app-modal-reply-notification>
+
+<div class="modal__content">
+  <div class="modal__header">
+    <h4>{{ "IP.NOTIFICATIONS.MODAL_DETAIL" | translate }}</h4>
+    <button (click)="closeDetail.emit()">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg" />
+    </button>
+  </div>
+
+  <form [formGroup]="detailedInfoForm">
+    <div class="modal__body">
+      <div class="modal__sections-titles">
+        <!--se ve siempre que se abre la pagina-->
+        <h3
+          class="modal__section-title"
+          [class.modal__section-title--active]="activeSection === 'detail'"
+          (click)="showDetailSection()"
+        >
+          {{ "IP.PAY-INVOICES.STEP-3" | translate }}
+        </h3>
+        <!--se ven solo cuando la recaudacion esta consolidada-->
+        <h3
+          *ngIf="hasReplies"
+          class="modal__section-title"
+          [class.modal__section-title--active]="activeSection === 'replies'"
+          (click)="showRepliesSection()"
+        >
+          {{ "IP.NOTIFICATIONS.REPLIES" | translate }}
+        </h3>
+      </div>
+
+      <div class="modal__section" *ngIf="showDetail">
+        <div class="modal__inputs">
+          <div class="modal__input-wrapper">
+            <label class="modal__label" for="notificationDate">{{
+              "IP.ADMIN_TABLE.NOTIFICATIONDATE" | translate
+            }}</label>
+            <app-ip-input
+              inputId="notificationDate"
+              [control]="getControl('notificationDate')"
+              label=""
+              type="text"
+            ></app-ip-input>
+          </div>
+
+          <div class="modal__input-wrapper">
+            <label class="modal__label" for="entity">{{
+              "IP.ADMIN_TABLE.ENTITY" | translate
+            }}</label>
+            <app-ip-input
+              inputId="entity"
+              [control]="getControl('entity')"
+              type="text"
+            ></app-ip-input>
+          </div>
+
+          <div class="modal__input-wrapper">
+            <label class="modal__label" for="brokerName">{{
+              "IP.NOTIFICATIONS.NAME" | translate
+            }}</label>
+            <app-ip-input
+              inputId="brokerName"
+              [control]="getControl('brokerName')"
+              type="text"
+            ></app-ip-input>
+          </div>
+
+          <div class="modal__input-wrapper modal__input-wrapper--full">
+            <label class="modal__label" for="consultation">{{
+              "IP.NOTIFICATIONS.CONSULTATION" | translate
+            }}</label>
+            <app-ip-text-area-input
+              inputId="consultation"
+              [control]="getControl('consultation')"
+            ></app-ip-text-area-input>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__section" *ngIf="showReplies">
+        <div class="modal__table-view">
+          <!--cambiar data y ngIf por pagedData-->
+          <app-table
+            *ngIf="tableData.length > 0"
+            [propertyOrder]="propertyOrder"
+            [data]="tableData"
+            [keyTranslate]="keyTranslate"
+            [tableStyle]="'invopay'"
+            [actions]="actions"
+            [actionsIf]="actionsIf"
+            [initTable]="initTable"
+            [scroll]="scroll"
+            (sort)="onSort($event)"
+            (action)="onAction($event)"
+            (selectedItemsChange)="onSelectedItemsChange($event)"
+          >
+          </app-table>
+        </div>
+
+        <div class="modal__card-view" *ngFor="let item of tableDataTest">
+          <div class="modal__card-header">
+            <span class="modal__card-id">#{{ item.id }}</span>
+          </div>
+
+          <div class="modal__card-row">
+            <label class="modal__card-label">{{
+              "IP.ADMIN_TABLE.REPLYDATE" | translate
+            }}</label>
+            <span class="modal__card-value modal__card-value--date">{{
+              item.replyDate | date : "dd/MM/yyyy"
+            }}</span>
+          </div>
+
+          <div class="modal__card-row">
+            <label class="modal__card-label">{{
+              "IP.ADMIN_TABLE.REPLYTEXT" | translate
+            }}</label>
+            <span class="modal__card-value">{{ item.replyText }}</span>
+          </div>
+
+          <div class="modal__card-row">
+            <label class="modal__card-label">{{
+              "IP.ADMIN_TABLE.RESPONDEDUSER" | translate
+            }}</label>
+            <span class="modal__card-value">{{ item.respondedUser }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal__buttons">
+      <app-ip-button-modal
+        class="btn--close"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="closeDetail.emit()"
+      >
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE" | translate }}
+      </app-ip-button-modal>
+
+      <app-ip-button-modal
+        class="btn--reply"
+        typeBtn="submit"
+        size="normal"
+        (clicked)="openModalResponse()"
+      >
+        {{ "IP.NOTIFICATIONS.RESPONSE" | translate }}
+      </app-ip-button-modal>
+    </div>
+  </form>
+</div>

@@ -1,30 +1,20 @@
 <div class="modal" (click)="close.emit()"></div>
 <div class="modal__content">
   <div class="modal__header">
-    <h4>{{ 'IP.REVENUE_LIST.FILTER' | translate }}</h4>
+    <h4>{{ "IP.REVENUE_LIST.FILTER" | translate }}</h4>
     <button (click)="close.emit()">
-      <img src="assets/new-styles/icons/buttons/close-icon.svg">
+      <img src="assets/new-styles/icons/buttons/close-icon.svg" />
     </button>
   </div>
   <form [formGroup]="filtersModalForm">
-
-  
-  <div class="modal__body">
-
-          <select
-            name="inputPayMethod"
-            id="inputPayMethod"
-            formControlName="paymentChannel"
-          >
-            <option value="" disabled selected hidden>{{ 'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate }}</option>
-            <option value="Todos">Todos</option>
-            <option value="TRANSFERENCIA">Transferencia</option>
-            <option value="TARJETA">Tarjeta</option>
-            <option value="BOLETO">Boleto</option>
-            <option value="EFECTIVO">Efectivo</option>
-            <option value="CHEQUE">Cheque</option>
-          </select>
-  </div>
+    <div class="modal__body">
+      <app-ip-select-input
+        [label]="'Canal de Pago'"
+        [control]="getControl('paymentChannel')"
+        [options]="selectOptions"
+        (selectEmitter)="onChangeSelected($event)"
+      ></app-ip-select-input>
+    </div>
 
     <div class="modal__buttons">
       <app-ip-button-modal
@@ -33,7 +23,7 @@
         size="normal"
         (clicked)="cleanFilters()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLEAN_FILTER" | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -42,7 +32,7 @@
         size="normal"
         (clicked)="close.emit()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.CLOSE" | translate }}
       </app-ip-button-modal>
 
       <app-ip-button-modal
@@ -51,7 +41,7 @@
         size="normal"
         (clicked)="applyFilters()"
       >
-        {{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY' | translate }}
+        {{ "IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.APPLY" | translate }}
       </app-ip-button-modal>
     </div>
   </form>

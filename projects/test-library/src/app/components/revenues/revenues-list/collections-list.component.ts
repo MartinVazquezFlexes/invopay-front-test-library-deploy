@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { RevenueService } from '../services/revenue.service';
 import { RevenueFilters, RevenueFiltersService } from '../services/revenueFilters.service';
 import { revenueDetails } from '../models/revenue';
+import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 
 @Component({
   selector: 'app-collections-list',
   templateUrl: './collections-list.component.html',
-  styleUrls: ['./collections-list.component.css'],
+  styleUrls: ['./collections-list.component.scss'],
 })
 export class CollectionsListComponent implements OnInit, OnDestroy {
   constructor(
@@ -377,8 +378,18 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.pagedData = this.filteredRevenues.slice(startIndex, endIndex);
   }
 
+  itemsPerPageControl = new FormControl('50');
+  pageOptions: IpSelectInputOption[] = [
+    { value: '10', label: '10' },
+    { value: '15', label: '15' },
+    { value: '20', label: '20' },
+    { value: '25', label: '25' },
+    { value: '50', label: '50' },
+  ];
   onItemsPerPageChange(newValue: any) {
+    console.log(newValue);
     this.itemsPerPage = Number(newValue);
+    this.itemsPerPageControl.setValue(newValue); //sincroniza el control
     this.currentPage = 1;
     this.updatePage();
   }
