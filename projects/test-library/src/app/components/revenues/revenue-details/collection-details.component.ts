@@ -146,7 +146,7 @@ tableData: detailRevenueTable[] = [];
   actionsIf: any[] = [];
 
   //Inicializar la tabla
-  initTable = true;
+  initTable = false;
 
   //Si queremos scroll o no
   scroll = true;

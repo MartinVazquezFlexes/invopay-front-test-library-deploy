@@ -118,61 +118,110 @@
 }
 
 .modal__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  
   ::ng-deep {
-    //ajustar el contenedor
-    .ip-select-input {
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      margin-bottom: 0 !important;
-      width: 250px;
-    }
+    app-ip-select-input {
+      flex: 1;
+      min-width: 200px;
+      position: relative;//mover el label
+      
+      //contenedor principal del select
+      .form-floating {
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        margin-bottom: 0;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        position: relative; //para el label
+        
+        &:focus-within {
+          border-color: #0071ce;
+        }
+      }
+      
+      .mat-mdc-form-field-infix {
+        padding: 0 !important;
+        border: 0 !important;
+        min-height: auto !important;
+        display: flex;
+        align-items: center;
+      }
 
-    .mat-mdc-form-field-infix {
-      padding: 0 !important;
-      border: 0 !important;
-      min-height: auto !important;
-      display: flex;
-      align-items: center;
-    }
+      //centrar el select
+      .mat-mdc-select {
+        display: flex;
+        align-items: center;
+        padding: 0 0.50rem;
+        height: 100%;
+      }
 
-    //centro el select
-    .mat-mdc-select {
-      display: flex;
-      align-items: center;
-      padding: 0 0.50rem;
-      height: 100%;
-    }
+      .mat-mdc-select-value {
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
 
-    .mat-mdc-select-value {
-      line-height: normal;
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-    }
+      .mat-mdc-select-value-text {
+        display: flex;
+        align-items: center;
+      }
 
-    .mat-mdc-select-value-text {
-      display: flex;
-      align-items: center;
-    }
+      //eliminar elementos extra que no se usan
+      .mat-mdc-form-field-underline,
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+      }
 
-    //saco elementos que ocupan espacio y no ayudan
-    .mat-mdc-form-field-underline,
-    .mat-mdc-form-field-subscript-wrapper {
-      display: none !important;
-    }
+      //flecha acomodada
+      .mat-mdc-select-trigger {
+        display: flex !important;
+        align-items: center !important;
+        height: 42px !important;
+      }
 
-    //acomodo flecha
-    .mat-mdc-select-arrow-wrapper {
-      height: 100%;
-      display: flex;
-      align-items: center;
+      .mat-mdc-select-arrow-wrapper {
+        height: 42px !important;
+        display: flex !important;
+        align-items: center !important;
+        transform: none !important;
+      }
+      
+      .mat-mdc-select-arrow {
+        margin: 0;
+        padding: 0;
+      }
+
+      //corrige el label flotante
+      .ip-select-label-floating {
+        position: absolute !important;
+        top: 0 !important;
+        left: 16px !important;
+        transform: translateY(-50%) !important;
+        padding: 0 4px !important;
+        @include labelGeneralText();
+        color: #999;
+        white-space: nowrap;
+        z-index: 1;
+        line-height: normal;
+      }
     }
   }
 }
 
+//asegurar que no haya scroll
 ::ng-deep .cdk-overlay-container {
   z-index: 2000 !important;
+}
+
+//panel del dropdown
+::ng-deep .mat-mdc-select-panel {
+  max-height: 256px;
 }
 
 .modal__buttons {

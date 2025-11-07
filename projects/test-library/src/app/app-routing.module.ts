@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BaseComponent } from 'base';
 import { HomeComponent } from './invopay/views/home/home.component';
 import { AuthGuardProtectedRoutes } from './guards/auth-routes.guard';
 import { NavbarHomeComponent } from './components/navbar/navbar-home/navbar-home.component';
@@ -13,6 +12,7 @@ import { NotificationsListComponent } from './shared/components/notifications-li
 import { InsurerNotificationsListComponent } from './components/notifications/insurers/insurer-notifications-list/insurer-notifications-list.component';
 import { BrokerNotificationsListComponent } from './components/notifications/brokers/broker-notifications-list/broker-notifications-list.component';
 import { SchemesListComponent } from './components/broker/schemes-list/schemes-list.component';
+import { BaseComponent } from 'base';
 
 
 const routes: Routes = [
@@ -55,7 +55,6 @@ const routes: Routes = [
       },
     ],
   },
-
 
 ];
 

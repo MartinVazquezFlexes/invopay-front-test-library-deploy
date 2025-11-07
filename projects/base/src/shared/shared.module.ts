@@ -84,6 +84,7 @@ import { TruncatePipe } from './Utils/truncate.pipe';
     TruncatePipe,
     //IpDragScrollComponent,
     InnerLoaderComponent,
+    DatePipe,
     //IpFiltersTableInvoicesComponent,
     //IpSelectInputComponent
     TransformDataTablePipe

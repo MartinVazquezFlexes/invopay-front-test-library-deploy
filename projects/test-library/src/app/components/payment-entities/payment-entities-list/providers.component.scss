@@ -84,66 +84,18 @@ body {
 }
 .supplier__pagination-center {
   ::ng-deep {
-    //ajustar el contenedor
-    .ip-select-input {
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      margin-bottom: 0 !important;
-      
-      @media (max-width: 768px) {
-        height: 2rem;
+    app-ip-select-input {
+      .form-floating {
+        padding-right: 6px;
+        border: 1px solid #d1d1d1;
+        
+        &:focus-within {
+          border-color: #0071ce;
+        }
       }
-    }
-
-    .mat-mdc-form-field-infix {
-      padding: 0 !important;
-      border: 0 !important;
-      min-height: auto !important;
-      display: flex;
-      align-items: center;
-    }
-
-    //centro el select
-    .mat-mdc-select {
-      display: flex;
-      align-items: center;
-      padding: 0 0.50rem;
-      height: 100%;
-    }
-
-    .mat-mdc-select-value {
-      line-height: normal;
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-    }
-
-    .mat-mdc-select-value-text {
-      display: flex;
-      align-items: center;
-    }
-
-    //saco elementos que ocupan espacio y no ayudan
-    .mat-mdc-form-field-underline,
-    .mat-mdc-form-field-subscript-wrapper {
-      display: none !important;
-    }
-
-    //acomodo flecha
-    .mat-mdc-select-arrow-wrapper {
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-
-    //oculto el espacio del label
-    .ip-select-label-floating {
-      display: none;
     }
   }
 }
-
 .supplier__table-view {
   display: block;
 }

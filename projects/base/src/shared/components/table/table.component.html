@@ -1,4 +1,4 @@
-<div *ngIf="!scroll">
+<div>
   <ng-container *ngTemplateOutlet="table"></ng-container>
 </div>
 <div *ngIf="scroll">  
@@ -11,6 +11,7 @@
   </div>
 </div>
 <!--Cambios con respecto a master-->
+
 
 <ng-template #table>
 <table class="table" *ngIf="data" >
@@ -94,12 +95,7 @@
             src="../../../../assets/new-styles/img/card-master.png"
             class="table__body-row-item-mastercard"
           />
-          <!--Se añaden los tooltips-->
-          <span 
-            [matTooltip]="generateTooltip(dataField[key], key, keyTranslate)"
-            [matTooltipDisabled]="
-              !generateTooltip(dataField[key], key, keyTranslate)
-            "
+          <span
             [style.word-break]="
               key.includes('amount') || key.includes('Amount')
                 ? 'normal'
@@ -177,7 +173,6 @@
               <span
                 class="table__body-row-actions-list-item"
                 (click)="onAction(action, dataField)"
-                [matTooltip]="getTooltipText(action, dataField)"
                 [ngStyle]="{
                   'background-image': this.checkAction(dataField, action).icon,
                   'pointer-events': this.checkAction(dataField, action)

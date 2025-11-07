@@ -130,7 +130,8 @@ body {
   background: #ffffff;
   color: black;
   padding: 0 5px;
-  @include textLabel();
+  @include labelGeneralText();
+  color: #999;
 }
 
 .revenue-details__input-wrapper app-ip-input {

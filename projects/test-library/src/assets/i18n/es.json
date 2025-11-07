@@ -1760,6 +1760,7 @@
       "INACTIVE": "Inactivo",
       "ACTIVE2": "Activa",
       "INACTIVE2": "Inactiva",
+      "ACTIONS": "Acciones",
       "DASHBOARD": {
         "ACTIONS": "ACCIONES",
         "AMOUNT": "MONTO",
@@ -2439,6 +2440,18 @@
         "TEXT4": "Tenga visibilidad de todos los procesos del backoffice financiero en tiempo real para todos los participantes.",
         "TITLE5": "Métricas de negocio",
         "TEXT5": "Vea y monitoree todos los indicadores de la perfomance de su negocio."
+      }
+    },
+    "REVENUES": {
+      "TITLE": "Recaudaciones",
+      "TABLE": {
+        "REVENUEDATE": "Fecha",
+        "REVENUEAMOUNT": "Monto",
+        "PAYMENTCHANNEL": "Canal de pago",
+        "POLICYNUMBER": "Número de póliza",
+        "PRODUCTNAME": "Producto",
+        "PREMIUMAMOUNT": "Monto prima",
+        "BROKERNAME": "Agente de ventas"
       }
     }
   }

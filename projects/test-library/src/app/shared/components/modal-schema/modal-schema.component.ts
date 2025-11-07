@@ -1,18 +1,27 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SchemeService } from '../../../components/broker/services/scheme.service';
+import {
+  Scheme,
+  SchemeParameters,
+} from '../../../components/broker/models/scheme';
 
 export type SchemaContext = 'detail' | 'status';
 
 @Component({
   selector: 'app-modal-schema',
   templateUrl: './modal-schema.component.html',
-  styleUrls: ['./modal-schema.component.scss']
+  styleUrls: ['./modal-schema.component.scss'],
 })
-
 export class ModalSchemaComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   private readonly schemeService = inject(SchemeService);
 
@@ -50,10 +59,23 @@ export class ModalSchemaComponent implements OnInit {
   }
 
   //schemaDetail = {};
-  schemaDetails:any;
-  
+  schemeParameters: SchemeParameters = {
+    percentage: 0,
+  };
+  schemaDetails: Scheme = {
+    id: 0,
+    name: '',
+    description: '',
+    longDescription: '',
+    enterpriseId: 0,
+    externalId: '',
+    isActive: false,
+    parameters: this.schemeParameters,
+    schemaType: '',
+  };
+
   //Mockeado
-  schemaDetail = {
+  /*schemaDetail = {
     id: 1,
     schemeName: 'Cuadrado',
     shortDescription: 'Este esquema explica como funciona',
@@ -61,22 +83,21 @@ export class ModalSchemaComponent implements OnInit {
       'Este esquema explica como funciona el elemento del esquema que esta planteado con el objetivo',
     isSchemaActive: 'Si',
     schemaStatus: 'Activo' //Activo / Inactivo
-  };
+  };*/
 
   getSchemaDetail() {
     //Obtener el detalle del back
     //usar el id this.schemaId
     //GetById
-    console.log("Id: ",this.schemaId);
+    console.log('Id: ', this.schemaId);
     this.schemeService.getSchemeById(this.schemaId).subscribe({
-        next: (response) => {
-          this.schemaDetails = response;
-          console.log('Detalle Esquema: ', this.schemaDetails);
-  
-        },
-      });
+      next: (response) => {
+        this.schemaDetails = response;
+        console.log('Detalle Esquema: ', this.schemaDetails);
 
-    this.setFormValues();
+        this.setFormValues();
+      },
+    });
   }
 
   setFormValues() {
@@ -84,12 +105,19 @@ export class ModalSchemaComponent implements OnInit {
 
     this.detailedInfoForm.patchValue({
       //transaccion
-      schemeName: this.schemaDetail.schemeName || '',
-      shortDescription: this.schemaDetail.shortDescription || '',
-      fullDescription: this.schemaDetail.fullDescription || '',
-      isSchemaActive: this.schemaDetail.isSchemaActive || '',
-      schemaStatus: this.schemaDetail.schemaStatus || '',
+      schemeName: this.schemaDetails.name || '',
+      shortDescription: this.schemaDetails.description || '',
+      fullDescription: this.schemaDetails.longDescription || '',
+      isSchemaActive: this.schemaDetails.isActive || '',
+      schemaStatus: this.getStatusText(this.schemaDetails.isActive),
     });
+  }
+
+  private getStatusText(isActive: boolean | null | undefined): string {
+    if (isActive === null || isActive === undefined) {
+      return 'Sin definir';
+    }
+    return isActive ? 'Activo' : 'Inactivo';
   }
 
   getControl(controlName: string): FormControl {
@@ -97,22 +125,23 @@ export class ModalSchemaComponent implements OnInit {
   }
 
   responseUpdate: any;
-  updateStatus(){
-    //UpdateStatus
-    console.log("Id: ",this.schemaId);
-      this.schemeService.patchScheme(this.schemaId).subscribe({
-        next: (response) => {
-          this.responseUpdate = response;
-          console.log('Estado actualizado: ', this.responseUpdate);
-        },
-      });
-      //Actualizo la tabla al cerrar
-      this.updateTable.emit();
-      this.close.emit();
+  updateStatus() {
+    console.log('Id: ', this.schemaId);
+    this.schemeService.patchScheme(this.schemaId).subscribe({
+      next: (response) => {
+        this.responseUpdate = response;
+        console.log('Estado actualizado: ', this.responseUpdate);
+
+        //despues de la actualizacion
+        this.updateTable.emit();
+      },
+      error: (error) => {
+        console.error('Error al actualizar:', error);
+      },
+    });
   }
 
   closeModal() {
     this.close.emit();
   }
-
 }

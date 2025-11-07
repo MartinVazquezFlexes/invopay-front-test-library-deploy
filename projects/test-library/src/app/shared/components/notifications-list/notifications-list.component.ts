@@ -196,7 +196,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   keyTranslate = 'IP.ADMIN_TABLE';
   actions: string[] = ['search', 'comment'];
   actionsIf: any[] = [];
-  initTable = true;
+  initTable = false;
   scroll = true;
 
   detailId: number = 0;

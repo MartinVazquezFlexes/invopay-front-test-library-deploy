@@ -1,13 +1,44 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
-import { DecryptionService } from "./decryption.service";
-import { IpAuthService } from "./ip-auth.service";
+import { IpAuthService } from "../../invopay/services/ip-auth.service";
+import { DecryptionService } from "../services/decryption.service";
 
 @Injectable()
 export class DecryptionInterceptor implements HttpInterceptor {
   constructor(private decryptionService: DecryptionService, private authService: IpAuthService) { }
 
+  //  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //    return next.handle(req).pipe(
+  //      filter((event: HttpEvent<any>): event is HttpResponse<any> => event instanceof HttpResponse),
+  //      map((event: HttpResponse<any>) => {
+  //          let decryptedBody;
+  //          let token;
+  //          let body=event.body?.response ?? '';          
+  //          if (req.url.includes('/auth/authenticate') 
+  //            || req.url.includes('/invopay/users/signIn')) {
+  //            token = body.split('/')[0];
+  //            body = body.substring(body.indexOf('/') + 1);
+  //          } else {
+  //            token = this.authService.getToken();
+  //          }
+  //          if (token && body) {
+  //            try {
+  //              decryptedBody = this.decryptionService.decrypt(body, token);
+  //              try {                
+  //                return event.clone({ body: JSON.parse(decryptedBody) });
+  //              } catch (error) {
+  //                return event.clone({ body: decryptedBody });                
+  //              }              
+  //            } catch (error) {
+  //              console.error('Error al descifrar la respuesta:', error);
+  //              throw new Error('Error en el proceso de descifrado.');
+  //            }
+  //          }
+  //        return event;
+  //      })
+  //    );
+  //  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(

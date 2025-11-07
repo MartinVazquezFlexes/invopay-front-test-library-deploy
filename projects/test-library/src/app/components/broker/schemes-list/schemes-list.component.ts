@@ -28,7 +28,7 @@ export class SchemesListComponent implements OnInit {
   //Acciones de condicion
   actionsIf: any[] = [];
   //Inicializar la tabla
-  initTable = true;
+  initTable = false;
   //Si queremos scroll o no
   scroll = true;
 
@@ -44,11 +44,11 @@ export class SchemesListComponent implements OnInit {
     console.log('Items seleccionados:', items);
   }
 
-  tableDataReal: Scheme[] = [];
-  tableData: any[]=[];
+  tableData: Scheme[] = [];
+  //tableData: any[]=[];
   getSchemas() {
     //MOCKEADO PORQUE NO ANDA LOS ENDPOINTS
-        this.tableData = [
+     /*   this.tableData = [
       {
         id: 1,
         schemeName: 'Cuadrado',
@@ -76,15 +76,16 @@ export class SchemesListComponent implements OnInit {
     ];
 
     this.currentPage = 1;
-    this.updatePage();
+    this.updatePage();*/
 
     //GetAll
     this.schemeService.getSchemes().subscribe({
         next: (response) => {
-          this.tableDataReal = response.content;
-          console.log('Esquemas: ', this.tableDataReal);
+          this.tableData = response.content;
+          console.log('Esquemas: ', this.tableData);
+          console.log('Endpoint: ', response);
   
-            this.tableDataReal = response.content.map((scheme: Scheme) => ({
+            this.tableData = response.content.map((scheme: Scheme) => ({
             ...scheme,
             schemeName: scheme.name,
             isSchemaActive: scheme.isActive ? 'Si' : 'No',
@@ -113,6 +114,11 @@ export class SchemesListComponent implements OnInit {
   }
 
   closeModal() {
+    this.showModal = false;
+  }
+
+  updateTable(){
+    this.getSchemas();
     this.showModal = false;
   }
 

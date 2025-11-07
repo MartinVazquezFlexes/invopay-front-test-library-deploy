@@ -207,15 +207,15 @@ sortableFields: String[] = [
 
   //Añadido
   generateTooltip(data: any, key: string, keyTranslate: string) {
-    const transformedData = this.transformDataTablePipe.transform(
-      data,
-      key,
-      keyTranslate
-    ) as string;
+    //const transformedData = this.transformDataTablePipe.transform(
+    //  data,
+    //  key,
+    //  keyTranslate
+    //) as string;
     
-    if (transformedData.toString().includes('...')) {
-      return data;
-    }
+    //if (transformedData.toString().includes('...')) {
+    //  return data;
+    //}
     return '';
   }
 

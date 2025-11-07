@@ -158,7 +158,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
   actionsIf: any[] = [];
 
   //Inicializar la tabla
-  initTable = true;
+  initTable = false;
 
   //Si queremos scroll o no
   scroll = true;
