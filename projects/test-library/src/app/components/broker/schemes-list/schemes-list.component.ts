@@ -108,7 +108,7 @@ export class SchemesListComponent implements OnInit {
     */
   pagedData: any[] = [];
   currentPage = 1;
-  itemsPerPage = 15;
+  itemsPerPage = 10;
 
 
   onPageChange(page: number) {
@@ -123,7 +123,7 @@ export class SchemesListComponent implements OnInit {
     this.pagedData = this.tableData.slice(startIndex, endIndex);
   }
 
-  itemsPerPageControl = new FormControl('15');
+  itemsPerPageControl = new FormControl('10');
   pageOptions: IpSelectInputOption[] = [
     { value: '10', label: '10' },
     { value: '15', label: '15' },
