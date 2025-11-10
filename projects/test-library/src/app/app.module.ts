@@ -30,7 +30,7 @@ import { ModalConfirmComponent } from './shared/components/modal-confirm/modal-c
 import { InsurerNotificationsListComponent } from './components/notifications/insurers/insurer-notifications-list/insurer-notifications-list.component';
 import { BrokerNotificationsListComponent } from './components/notifications/brokers/broker-notifications-list/broker-notifications-list.component';
 import { SchemesListComponent } from './components/broker/schemes-list/schemes-list.component';
-import { ModalSchemaComponent } from './shared/components/modal-schema/modal-schema.component';
+import { ModalSchemaComponent } from './components/broker/modal-schema/modal-schema.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

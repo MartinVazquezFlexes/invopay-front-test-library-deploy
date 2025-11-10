@@ -121,8 +121,7 @@ p {
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   width: 100%;
-  padding: 0px;
-  height: 20vh;
+  padding-bottom: 10px;
 }
 
 .modal__inputs--status {
@@ -291,10 +290,12 @@ p{
   .modal__body {
     padding: 15px 0;
     margin: 0;
+    height: 25vh;
   }
   .modal__body--status{
     padding-top: 15px;
     padding-bottom: 5px;
+    height: auto;
   }
   p{
     padding-top: 10px;

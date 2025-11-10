@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SchemaContext } from '../../../shared/components/modal-schema/modal-schema.component';
+import { SchemaContext } from '../modal-schema/modal-schema.component';
 import { SchemeService } from '../services/scheme.service';
 import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 import { FormControl } from '@angular/forms';
@@ -19,6 +19,7 @@ export class SchemesListComponent implements OnInit {
     this.getSchemas();
   }
 
+  optPages: boolean = false;
   //Encabezados
   propertyOrder = ['schemeName', 'description', 'isSchemaActive'];
   //Por si queres traducir el encabezado
@@ -45,38 +46,7 @@ export class SchemesListComponent implements OnInit {
   }
 
   tableData: Scheme[] = [];
-  //tableData: any[]=[];
   getSchemas() {
-    //MOCKEADO PORQUE NO ANDA LOS ENDPOINTS
-     /*   this.tableData = [
-      {
-        id: 1,
-        schemeName: 'Cuadrado',
-        description: 'Este esquema explica como funciona',
-        isSchemaActive: 'Si',
-      },
-      {
-        id: 2,
-        schemeName: 'Liquido',
-        description: 'Este esquema explica como funciona',
-        isSchemaActive: 'No',
-      },
-      {
-        id: 3,
-        schemeName: 'Diagramado',
-        description: 'Este esquema explica como funciona',
-        isSchemaActive: 'No',
-      },
-      {
-        id: 4,
-        schemeName: 'Jerarquizado',
-        description: 'Este esquema explica como funciona',
-        isSchemaActive: 'Si',
-      },
-    ];
-
-    this.currentPage = 1;
-    this.updatePage();*/
 
     //GetAll
     this.schemeService.getSchemes().subscribe({

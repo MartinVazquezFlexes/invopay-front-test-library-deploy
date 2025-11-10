@@ -7,11 +7,11 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SchemeService } from '../../../components/broker/services/scheme.service';
+import { SchemeService } from '../services/scheme.service';
 import {
   Scheme,
   SchemeParameters,
-} from '../../../components/broker/models/scheme';
+} from '../models/scheme';
 
 export type SchemaContext = 'detail' | 'status';
 

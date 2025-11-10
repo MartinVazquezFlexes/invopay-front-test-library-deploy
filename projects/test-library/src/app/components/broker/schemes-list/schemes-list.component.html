@@ -92,7 +92,7 @@
     </div>
 
     <div class="schemes__pagination">
-      <div class="schemes__pagination-center">
+      <div class="schemes__pagination-center" *ngIf="optPages">
         <app-ip-select-input
           [control]="itemsPerPageControl"
           [options]="pageOptions"
