@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SellService } from '../services/sell.service';
 import { detailSaleTable, SaleDetails } from '../models/sale';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { detailSaleTable, SaleDetails } from '../models/sale';
   styleUrls: ['./sell-details.component.scss'],
 })
 export class SellDetailsComponent implements OnInit {
-  constructor(private saleService: SellService) {}
+  constructor(private saleService: SellService, public loadingService : LoadingService) {}
 
   private readonly router = inject(Router);
 
@@ -174,6 +175,7 @@ export class SellDetailsComponent implements OnInit {
 
 
   getSaleToShow(id: number) {
+    this.loadingService.setLoadingState(true);
     this.saleService.getSaleById(id).subscribe({
       next: (response) => {
         this.saleDetails = response;
@@ -208,10 +210,11 @@ export class SellDetailsComponent implements OnInit {
 
         this.setFormValues();
         this.setTableData();
-        
+        this.loadingService.setLoadingState(false);
       },
       error: (error) => {
         console.error(error);
+        this.loadingService.setLoadingState(false);
       },
     });
   }

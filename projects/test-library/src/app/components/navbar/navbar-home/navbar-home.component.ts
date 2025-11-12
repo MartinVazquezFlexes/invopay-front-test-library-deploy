@@ -5,6 +5,7 @@ import { filter, Observable } from 'rxjs';
 import { IpProfileService } from '../../../invopay/services/ip-profile.service';
 import { IpAuthService } from '../../../invopay/services/ip-auth.service';
 import IpUserProfile from '../../../invopay/interface/ip-user-profile';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 
 @Component({
@@ -13,13 +14,14 @@ import IpUserProfile from '../../../invopay/interface/ip-user-profile';
   styleUrls: ['./navbar-home.component.scss'],
 })
 export class NavbarHomeComponent implements OnInit {
-  constructor(private loginService: IpAuthService, private router: Router) {}
+  constructor(private loginService: IpAuthService, private router: Router, public loadingService: LoadingService) {}
 
   private ipProfileService: IpProfileService = inject(IpProfileService);
   userProfile: Observable<IpUserProfile> = new Observable<IpUserProfile>();
   showProfile: boolean = true;
 
   ngOnInit(): void {
+    this.loadingService.setLoadingState(false);
     // Inicializar showProfile según la ruta actual
     this.showProfile = this.router.url === '/home';
 

@@ -1,4 +1,4 @@
-<div class="sales">
+<div class="sales" *ngIf="!(loadingService.isLoading$ | async)">
   <div class="sales__header">
     <h2 class="sales__title">{{ 'IP.SIDENAV.OPTIONS.SALES' | translate }}</h2>
     
@@ -29,31 +29,27 @@
       </button>
     </div>
     <div class="sales__filters">
-      <form class="sales__form" [formGroup]="filtersForm">
-        <div class="sales__input-date">
-          <input
-            class="sales__input"
-            type="date"
-            id="start"
-            formControlName="startDate"
-            [min]="startDateMin"
-            [max]="startDateMax"
-          />
-          <label class="sales__label" for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
-        </div>
+            <form class="sales__form" [formGroup]="filtersForm">
+  <div class="sales__input-date">
+    <app-ip-date-input
+      inputId="start"
+      [control]="startDateControl"
+      [label]="'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate"
+      [min]="startDateMin"
+      [max]="startDateMax"
+    ></app-ip-date-input>
+  </div>
 
-        <div class="sales__input-date">
-          <input
-            class="sales__input"
-            type="date"
-            id="end"
-            formControlName="endDate"
-            [min]="endDateMin"
-            [max]="endDateMax"
-          />
-          <label class="sales__label" for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
-        </div>
-      </form>
+  <div class="sales__input-date">
+    <app-ip-date-input
+      inputId="end"
+      [control]="endDateControl"
+      [label]="'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate"
+      [min]="endDateMin"
+      [max]="endDateMax"
+    ></app-ip-date-input>
+  </div>
+</form>
 
       <div class="sales__buttons">
         <app-ip-button-modal

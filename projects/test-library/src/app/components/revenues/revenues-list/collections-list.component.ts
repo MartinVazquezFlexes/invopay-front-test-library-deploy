@@ -6,6 +6,7 @@ import { RevenueService } from '../services/revenue.service';
 import { RevenueFilters, RevenueFiltersService } from '../services/revenueFilters.service';
 import { revenueDetails } from '../models/revenue';
 import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 @Component({
   selector: 'app-collections-list',
@@ -15,7 +16,8 @@ import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option
 export class CollectionsListComponent implements OnInit, OnDestroy {
   constructor(
     private filtersService: RevenueFiltersService,
-    private revenueService: RevenueService
+    private revenueService: RevenueService,
+    public loadingService: LoadingService
   ) {}
 
   private readonly router = inject(Router);
@@ -120,6 +122,14 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
     this.getRevenues();
   }
 
+  get startDateControl(): FormControl {
+  return this.filtersForm.get('startDate') as FormControl;
+}
+
+get endDateControl(): FormControl {
+  return this.filtersForm.get('endDate') as FormControl;
+}
+
   //Recibir la info de los filtros y guardarla en observable para no perderla al navegar
 
   //Encabezados
@@ -217,6 +227,7 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
   tableData: revenueDetails[] = [];
   filteredRevenues: revenueDetails[] = [];
   getRevenues() {
+    this.loadingService.setLoadingState(true);
     this.revenueService.getRevenues().subscribe({
       next: (response) => {
         //convertir de number a string "ARS 13.000"
@@ -243,11 +254,12 @@ export class CollectionsListComponent implements OnInit, OnDestroy {
         //Al cargar le aplico los filtros que existan para la tabla
         const existingFilters = this.filtersService.getFilters();
         this.applyFilters(existingFilters);
-
+        this.loadingService.setLoadingState(false);
         //this.updatePage();
       },
       error: (error) => {
         console.error(error);
+        this.loadingService.setLoadingState(false);
       },
     });
   }

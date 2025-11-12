@@ -1,4 +1,4 @@
-<div class="revenue-details">
+<div class="revenue-details" *ngIf="!(loadingService.isLoading$ | async)">
   <div class="revenue-details__header">
     <div class="revenue-details__button-back">
       <app-ip-button-modal
@@ -47,51 +47,46 @@
       <div class="revenue-details__section" *ngIf="showTransaction">
         <div class="revenue-details__inputs">
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="revenueDate">{{ 'IP.REVENUE_DETAILS.REVENUE_DATE' | translate }}</label>
             <app-ip-input
               inputId="revenueDate"
               [control]="getControl('revenueDate')"
-              label=""
+              [label]="'IP.REVENUE_DETAILS.REVENUE_DATE' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="amountRevenue">{{ 'IP.ACCOUNTABILITY-DETAILS.AMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountRevenue"
               [control]="getControl('amountRevenue')"
-              label=""
+              [label]="'IP.ACCOUNTABILITY-DETAILS.AMOUNT' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="paymentChannel">{{ 'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate }}</label>
             <app-ip-input
               inputId="paymentChannel"
               [control]="getControl('paymentChannel')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="paymentEntity">{{ 'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate }}</label>
             <app-ip-input
               inputId="paymentEntity"
               [control]="getControl('paymentEntity')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper revenue-details__input-wrapper--full">
-            <label class="revenue-details__label" for="transactionObservations">{{ 'IP.BILL_DETAILS.COMMENTS' | translate }}</label>
             <app-ip-text-area-input
               inputId="transactionObservations"
               [control]="getControl('transactionObservations')"
-              label=""
+              [label]="'IP.BILL_DETAILS.COMMENTS' | translate"
             ></app-ip-text-area-input>
           </div>
         </div>
@@ -101,71 +96,64 @@
       <div class="revenue-details__section" *ngIf="showConciliation">
         <div class="revenue-details__inputs">
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="isConsolidated">{{ 'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate }}</label>
             <app-ip-input
               inputId="isConsolidated"
               [control]="getControl('isConsolidated')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="productName">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
             <app-ip-input
               inputId="productName"
               [control]="getControl('productName')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.PRODUCTNAME' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="policyNumber">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
             <app-ip-input
               inputId="policyNumber"
               [control]="getControl('policyNumber')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.POLICYNUMBER' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="amountPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountPolicy"
               [control]="getControl('amountPolicy')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.POLICYAMOUNT' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="brokerName">{{ 'IP.ADMIN_TABLE.BROKERNAME' | translate }}</label>
             <app-ip-input
               inputId="brokerName"
               [control]="getControl('brokerName')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.BROKERNAME' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="payNumber">{{ 'IP.REVENUE_DETAILS.PAY_NUMBER' | translate }}</label>
             <app-ip-input
               inputId="payNumber"
               [control]="getControl('payNumber')"
-              label=""
+              [label]="'IP.REVENUE_DETAILS.PAY_NUMBER' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="payAmount">{{ 'IP.REVENUE_DETAILS.PAY_VALUE' | translate }}</label>
             <app-ip-input
               inputId="payAmount"
               [control]="getControl('payAmount')"
-              label=""
+              [label]="'IP.REVENUE_DETAILS.PAY_VALUE' | translate"
               type="text"
             ></app-ip-input>
           </div>
@@ -176,51 +164,46 @@
       <div class="revenue-details__section" *ngIf="showPolicy">
         <div class="revenue-details__inputs">
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="productNamePolicy">{{ 'IP.ADMIN_TABLE.PRODUCTNAME' | translate }}</label>
             <app-ip-input
               inputId="productNamePolicy"
               [control]="getControl('productNamePolicy')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.PRODUCTNAME' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="policyNumberPolicy">{{ 'IP.ADMIN_TABLE.POLICYNUMBER' | translate }}</label>
             <app-ip-input
               inputId="policyNumberPolicy"
               [control]="getControl('policyNumberPolicy')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.POLICYNUMBER' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="amountPolicyPolicy">{{ 'IP.ADMIN_TABLE.POLICYAMOUNT' | translate }}</label>
             <app-ip-input
               inputId="amountPolicyPolicy"
               [control]="getControl('amountPolicyPolicy')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.POLICYAMOUNT' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="saleDate">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
             <app-ip-input
               inputId="saleDate"
               [control]="getControl('saleDate')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.SALEDATE' | translate"
               type="text"
             ></app-ip-input>
           </div>
 
           <div class="revenue-details__input-wrapper">
-            <label class="revenue-details__label" for="premiumAmount">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
             <app-ip-input
               inputId="premiumAmount"
               [control]="getControl('premiumAmount')"
-              label=""
+              [label]="'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate"
               type="text"
             ></app-ip-input>
           </div>

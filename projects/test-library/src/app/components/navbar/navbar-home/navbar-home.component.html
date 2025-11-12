@@ -1,3 +1,4 @@
+<app-loader *ngIf="loadingService.isLoading$ | async"></app-loader>
 <div class="layout">
   <!-- Sidebar -->
   <aside class="layout__sidebar" [class.layout__sidebar--closed]="!sidebarOpen">

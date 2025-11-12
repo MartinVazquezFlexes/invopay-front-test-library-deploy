@@ -178,8 +178,10 @@
       "SHORTDESCRIPTION":"Descripción Breve",
       "ACTIVE": "Activar",
       "DEACTIVED":"Desactivar",
-      "MESSAGE":"¿Desea cambiar el estado de este esquema de comisiones?",
-      "ACTUALSTATUS":"Estado Actual"
+      "MESSAGEPARTONE":"¿Desea cambiar el estado a ",
+      "MESSAGEPARTTWO":" del esquema ",
+      "ACTUALSTATUS":"Estado Actual",
+      "SEE":"Ver"
     },
     "ADMIN_TABLE_ENTERPRISE": {
       "ACTIONS": "ACCIONES",

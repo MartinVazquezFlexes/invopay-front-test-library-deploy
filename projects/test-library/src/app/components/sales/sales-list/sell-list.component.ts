@@ -10,6 +10,7 @@ import {
 import { SellService } from '../services/sell.service';
 import { sale } from '../models/sale';
 import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 @Component({
   selector: 'app-sell-list',
@@ -20,7 +21,8 @@ export class SellListComponent implements OnInit, OnDestroy {
   //
   constructor(
     private filtersService: SellFiltersService,
-    private saleService: SellService
+    private saleService: SellService,
+    public loadingService: LoadingService
   ) {}
 
   private readonly router = inject(Router);
@@ -132,6 +134,7 @@ export class SellListComponent implements OnInit, OnDestroy {
   tableData: sale[] = [];
   filteredSales: sale[] = [];
   getSales() {
+    this.loadingService.setLoadingState(true);
     this.saleService.getSales().subscribe({
       next: (response) => {
         //convertir de number a string "ARS 13.000"
@@ -154,14 +157,25 @@ export class SellListComponent implements OnInit, OnDestroy {
         //Al cargar le aplico los filtros que existan para la tabla
         const existingFilters = this.filtersService.getFilters();
         this.applyFilters(existingFilters);
+        this.loadingService.setLoadingState(false);
 
         //this.updatePage();
       },
       error: (error) => {
         console.error(error);
+        this.loadingService.setLoadingState(false);
       },
     });
   }
+
+  
+  get startDateControl(): FormControl {
+  return this.filtersForm.get('startDate') as FormControl;
+}
+
+get endDateControl(): FormControl {
+  return this.filtersForm.get('endDate') as FormControl;
+}
 
   //Encabezados
   propertyOrder = [

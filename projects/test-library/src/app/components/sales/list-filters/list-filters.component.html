@@ -10,20 +10,11 @@
   </div>
   <form [formGroup]="filtersModalForm">
     <div class="modal__body">
-      <div class="input-wrapper">
-        <input type="text" id="productId" formControlName="productId" />
-        <label for="productId">Id Producto</label>
-      </div>
-
-      <div class="input-wrapper">
-        <input type="text" id="productName" formControlName="productName" />
-        <label for="productName">Producto</label>
-      </div>
-      <!--<div class="modal__input-wrapper">
+      <div class="modal__input-wrapper">
         <app-ip-input
           inputId="productId"
           [control]="getControl('productId')"
-          placeholder="Id Producto"
+          [label]="'IP.ADMIN_TABLE.PRODUCTNAME' | translate"
           type="text"
         ></app-ip-input>
       </div>
@@ -31,9 +22,9 @@
       <app-ip-input
         inputId="productName"
         [control]="getControl('productName')"
-        placeholder="Producto"
+        [label]="'IP.SETTLEMENTS.DETAILS.ID_PRODUCT' | translate"
         type="text"
-      ></app-ip-input>-->
+      ></app-ip-input>
 
       <app-ip-select-input
         [label]="'Broker'"

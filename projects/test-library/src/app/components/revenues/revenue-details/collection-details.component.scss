@@ -49,7 +49,7 @@ body {
   @include mainTabText();
   margin: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .revenue-details__section-title:hover {
@@ -61,7 +61,7 @@ body {
   color: #0071ce;
   background: #f0f7ff;
   padding: 8px 16px;
-  margin: 0;
+  margin-bottom: 10px;
   border-bottom: 2px solid #0071ce;
 }
 
@@ -116,7 +116,7 @@ body {
   padding: 0px 20px;
 }
 
-.revenue-details__input-wrapper {
+/*.revenue-details__input-wrapper {
   position: relative;
   margin: 0;
   width: 100%;
@@ -151,6 +151,13 @@ body {
 
 ::ng-deep app-ip-input .ip-input-wrapper {
   width: 100% !important;
+}*/
+
+.revenue-details__input-wrapper {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .revenue-details__input-wrapper--full {
@@ -158,9 +165,17 @@ body {
   width: 100%;
 }
 
-::ng-deep app-ip-text-area-input textarea {
-  width: 100%;
-  box-sizing: border-box;
+::ng-deep .revenue-details__input-wrapper--full app-ip-text-area-input textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 10px !important;
+  min-height: 80px !important;
+  resize: none !important;
+}
+
+::ng-deep .revenue-details__input-wrapper--full app-ip-text-area-input .ip-input-wrapper {
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 button {

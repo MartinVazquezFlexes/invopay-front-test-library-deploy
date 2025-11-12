@@ -1,4 +1,4 @@
-<div class="supplier">
+<div class="supplier" *ngIf="!(loadingService.isLoading$ | async)">
   <div class="supplier__header">
     <h2 class="supplier__title">{{ 'IP.LOGIN.SUPPLIER' | translate }}</h2>
   </div>

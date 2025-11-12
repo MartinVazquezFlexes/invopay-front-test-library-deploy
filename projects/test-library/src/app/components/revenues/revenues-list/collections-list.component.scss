@@ -97,11 +97,12 @@ body {
 }
 
 .revenue__buttons {
-  align-items: center;
+  align-items: start;
   text-align: center;
   display: flex;
   gap: 5px;
   padding-right: 20px;
+  padding-top: 10px;
 }
 
 .revenue__buttons img{
@@ -143,7 +144,7 @@ body {
   align-items: center;
   padding-left: 40px;
 }
-.revenue__pagination-center {
+/*.revenue__pagination-center {
     ::ng-deep {
     app-ip-select-input {
       .form-floating {
@@ -156,7 +157,7 @@ body {
       }
     }
 }
-}
+}*/
 
 .revenue__card--filters {
   display: block;

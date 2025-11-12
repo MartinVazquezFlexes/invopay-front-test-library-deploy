@@ -97,11 +97,12 @@ body {
 }
 
 .sales__buttons {
-  align-items: center;
+  align-items: start;
   text-align: center;
   display: flex;
   gap: 5px;
   padding-right: 20px;
+  padding-top: 10px;
 }
 
 .sales__buttons img{
@@ -163,7 +164,7 @@ body {
   align-items: center;
   padding-left: 40px;
 }
-.sales__pagination-center {
+/*.sales__pagination-center {
   ::ng-deep {
     app-ip-select-input {
       .form-floating {
@@ -176,7 +177,7 @@ body {
       }
     }
 }
-}
+}*/
 
 /* RESPONSIVE: MOBILE */
 @include sm {

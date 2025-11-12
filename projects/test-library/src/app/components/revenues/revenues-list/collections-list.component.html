@@ -1,6 +1,6 @@
-<div class="revenue">
+<div class="revenue" *ngIf="!(loadingService.isLoading$ | async)">
   <div class="revenue__header">
-    <h2 class="revenue__title">{{ 'IP.REVENUE_LIST.TITLE' | translate }}</h2>
+    <h2 class="revenue__title">{{ "IP.REVENUE_LIST.TITLE" | translate }}</h2>
     <!--Botón para mostrar filtros en mobile-->
     <div class="revenue__filter-button revenue__filter-button--mobile">
       <app-ip-button-modal
@@ -8,8 +8,13 @@
         size="normal"
         (clicked)="toggleFilters()"
       >
-        <img src="assets/new-styles/icons/buttons/search-icon-white.svg" class="revenue__search-icon revenue__search-icon--mobile" /> 
-        <span class="revenue__filter-text revenue__filter-text--mobile">{{ 'IP.FILTERS_MODAL.FILTER' | translate }}</span>
+        <img
+          src="assets/new-styles/icons/buttons/search-icon-white.svg"
+          class="revenue__search-icon revenue__search-icon--mobile"
+        />
+        <span class="revenue__filter-text revenue__filter-text--mobile">{{
+          "IP.FILTERS_MODAL.FILTER" | translate
+        }}</span>
       </app-ip-button-modal>
     </div>
   </div>
@@ -17,11 +22,18 @@
   <app-list-filters-revenue *ngIf="showModal" (close)="closeModal()">
   </app-list-filters-revenue>
 
-  <div class="revenue__filters-overlay" [class.revenue__filters-overlay--show]="showFiltersOnMobile" (click)="toggleFilters()"></div>
+  <div
+    class="revenue__filters-overlay"
+    [class.revenue__filters-overlay--show]="showFiltersOnMobile"
+    (click)="toggleFilters()"
+  ></div>
 
-  <div class="revenue__card revenue__card--filters" [class.revenue__card--show-mobile]="showFiltersOnMobile">
+  <div
+    class="revenue__card revenue__card--filters"
+    [class.revenue__card--show-mobile]="showFiltersOnMobile"
+  >
     <div class="revenue__modal-header">
-      <h4>{{ 'IP.REVENUE_LIST.FILTER' | translate }}</h4>
+      <h4>{{ "IP.REVENUE_LIST.FILTER" | translate }}</h4>
       <button class="revenue__modal-close" (click)="toggleFilters()">
         <img src="assets/new-styles/icons/buttons/close-icon.svg" />
       </button>
@@ -29,28 +41,23 @@
     <div class="revenue__filters">
       <form class="revenue__form" [formGroup]="filtersForm">
         <div class="revenue__input-date">
-          <input
-            class="revenue__input"
-            type="date"
-            id="start"
-            formControlName="startDate"
+          <app-ip-date-input
+            inputId="start"
+            [control]="startDateControl"
+            [label]="'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate"
             [min]="startDateMin"
             [max]="startDateMax"
-          />
-          <label class="revenue__label" for="start">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.FROM' | translate }}</label>
+          ></app-ip-date-input>
         </div>
 
         <div class="revenue__input-date">
-          <input
-            class="revenue__input"
-            type="date"
-            id="end"
-            formControlName="endDate"
+          <app-ip-date-input
+            inputId="end"
+            [control]="endDateControl"
+            [label]="'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate"
             [min]="endDateMin"
             [max]="endDateMax"
-          />
-          <label class="revenue__label" for="end">{{ 'IP.SETTLEMENTS.SALE-PAYMENT.FILTERS.TO' | translate }}</label>
-          <!--<app-ip-date-input></app-ip-date-input>-->
+          ></app-ip-date-input>
         </div>
       </form>
 
@@ -94,7 +101,6 @@
       >
       </app-table>
     </div>
-  
 
     <!--Mostrar si es mobile-->
     <!--Hacer card la info para mobile-->
@@ -102,57 +108,83 @@
       <div class="revenue__card-header">
         <span class="revenue__card-id">#{{ item.id }}</span>
         <div class="revenue__menu">
-          <button class="revenue__menu-button" (click)="toggleMenu(item.id)">⋮</button>
+          <button class="revenue__menu-button" (click)="toggleMenu(item.id)">
+            ⋮
+          </button>
           <div class="revenue__menu-dropdown" *ngIf="openMenuId === item.id">
-            <button class="revenue__menu-item" (click)="toDetails(item.id)">{{'IP.ACTIONS_TOOLTIP.SEARCH' | translate}}</button>
+            <button class="revenue__menu-item" (click)="toDetails(item.id)">
+              {{ "IP.ACTIONS_TOOLTIP.SEARCH" | translate }}
+            </button>
           </div>
         </div>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.SALEDATE' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.SALEDATE" | translate
+        }}</label>
         <span class="revenue__card-value revenue__card-value--date">{{
           item.revenueDate | date : "dd/MM/yyyy"
         }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.REVENUEAMOUNT' | translate}}</label>
-        <span class="revenue__card-value revenue__card-value--amount">{{ item.revenueAmount }}</span>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.REVENUEAMOUNT" | translate
+        }}</label>
+        <span class="revenue__card-value revenue__card-value--amount">{{
+          item.revenueAmount
+        }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PAYMENTPROVIDER' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.PAYMENTPROVIDER" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.paymentProvider }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PAYMENTCHANNEL' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.PAYMENTCHANNEL" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.paymentChannel }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.ISCONSOLIDATED' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.ISCONSOLIDATED" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.isConsolidated }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.POLICYNUMBER' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.POLICYNUMBER" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.policyNumber }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PRODUCTNAME' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.PRODUCTNAME" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.productName }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.PREMIUMAMOUNT' | translate}}</label>
-        <span class="revenue__card-value revenue__card-value--amount">{{ item.premiumAmount }}</span>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.PREMIUMAMOUNT" | translate
+        }}</label>
+        <span class="revenue__card-value revenue__card-value--amount">{{
+          item.premiumAmount
+        }}</span>
       </div>
 
       <div class="revenue__card-row">
-        <label class="revenue__card-label">{{'IP.ADMIN_TABLE.BROKERNAME' | translate}}</label>
+        <label class="revenue__card-label">{{
+          "IP.ADMIN_TABLE.BROKERNAME" | translate
+        }}</label>
         <span class="revenue__card-value">{{ item.brokerName }}</span>
       </div>
     </div>

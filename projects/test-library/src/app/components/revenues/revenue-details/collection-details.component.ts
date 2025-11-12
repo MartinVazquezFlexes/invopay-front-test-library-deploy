@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RevenueService } from '../services/revenue.service';
 import { detailRevenueTable, RevenueDetail } from '../models/revenue';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 @Component({
   selector: 'app-collection-details',
@@ -12,7 +13,7 @@ import { detailRevenueTable, RevenueDetail } from '../models/revenue';
 })
 export class CollectionDetailsComponent implements OnInit {
 
-  constructor(private revenueService : RevenueService) { }
+  constructor(private revenueService : RevenueService, public loadingService: LoadingService) { }
 
   private readonly router = inject(Router)
 
@@ -175,6 +176,7 @@ tableData: detailRevenueTable[] = [];
 
 
   getRevenueToShow(id: number){
+    this.loadingService.setLoadingState(true);
     this.revenueService.getRevenuesById(id).subscribe({
       next: (response) => {
         this.revenueDetails = response;
@@ -239,7 +241,12 @@ tableData: detailRevenueTable[] = [];
       
         this.setFormValues();
         this.setTableData();
-      }
+        this.loadingService.setLoadingState(false);
+      },
+      error: (error) => {
+        console.error(error);
+        this.loadingService.setLoadingState(false);
+      },
     })
   }
 

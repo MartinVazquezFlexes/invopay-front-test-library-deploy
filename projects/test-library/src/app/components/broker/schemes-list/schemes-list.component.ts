@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SchemaContext } from '../modal-schema/modal-schema.component';
-import { SchemeService } from '../services/scheme.service';
 import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
 import { FormControl } from '@angular/forms';
+import { LoadingService } from '../../../shared/services/loading.service';
+import { SchemeService } from '../services/scheme.service';
 import { Scheme } from '../models/scheme';
+import { SchemaContext } from '../modal-schema/modal-schema.component';
+
 
 @Component({
   selector: 'app-schemes-list',
@@ -11,7 +13,7 @@ import { Scheme } from '../models/scheme';
   styleUrls: ['./schemes-list.component.scss'],
 })
 export class SchemesListComponent implements OnInit {
-  constructor() {}
+  constructor(public loadingService: LoadingService) {}
 
   private readonly schemeService = inject(SchemeService);
 
@@ -25,7 +27,7 @@ export class SchemesListComponent implements OnInit {
   //Por si queres traducir el encabezado
   keyTranslate = 'IP.ADMIN_TABLE';
   //Acciones de la tabla
-  actions: string[] = ['detail', 'status'];
+  actions: string[] = ['detail', 'edit'];
   //Acciones de condicion
   actionsIf: any[] = [];
   //Inicializar la tabla
@@ -37,7 +39,7 @@ export class SchemesListComponent implements OnInit {
   // dataField que tiene la informacion del objeto
   onAction(event: any) {
     console.log('Acción recibida:', event);
-    this.openModal(event.dataField.id, event.event);
+    this.openModal(event.dataField, event.event);
   }
 
   //Si seleccionamos items
@@ -48,6 +50,7 @@ export class SchemesListComponent implements OnInit {
   tableData: Scheme[] = [];
   getSchemas() {
 
+    this.loadingService.setLoadingState(true); //mostrar
     //GetAll
     this.schemeService.getSchemes().subscribe({
         next: (response) => {
@@ -61,22 +64,25 @@ export class SchemesListComponent implements OnInit {
             isSchemaActive: scheme.isActive ? 'Si' : 'No',
   
           })) as any;
-  
+          this.loadingService.setLoadingState(false);
           this.currentPage = 1; //cargo la pagina 1
           this.updatePage(); //actualizo los items de la pagina 1
         },
+        error: () => {
+        this.loadingService.setLoadingState(false); //ocultar
+      },
       });
   }
 
   showModal = false;
-  schemaId: number = 0;
+  schemaToDetail: number = 0;
   context: SchemaContext = 'detail';
-  openModal(id: number, type: string) {
-    this.schemaId = id;
+  openModal(schema: any, type: string) {
+    this.schemaToDetail = schema;
     if (type == 'detail') {
       this.context = type;
-    } else if (type == 'status') {
-      this.context = type;
+    } else if (type == 'edit') {
+      this.context = 'status';
     } else {
       console.log('type not exists');
     }

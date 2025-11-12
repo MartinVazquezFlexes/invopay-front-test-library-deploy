@@ -4,6 +4,7 @@ import { ProvidersService } from '../services/providers.service';
 import { PaymentEntity } from '../models/payment-entities';
 import { FormControl } from '@angular/forms';
 import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option';
+import { LoadingService } from '../../../shared/services/loading.service';
 
 @Component({
   selector: 'app-providers',
@@ -11,7 +12,9 @@ import IpSelectInputOption from 'dist/base/lib/interfaces/ip-select-input-option
   styleUrls: ['./providers.component.scss'], 
 })
 export class ProvidersComponent implements OnInit {
-  constructor(private providerService: ProvidersService, private sanitizer: DomSanitizer) {}
+  constructor(private providerService: ProvidersService, 
+    private sanitizer: DomSanitizer,
+    public loadingService: LoadingService) {}
 
   //Encabezados
   propertyOrder = [
@@ -65,6 +68,7 @@ export class ProvidersComponent implements OnInit {
   }
 
   getPaymentEntities() {
+    this.loadingService.setLoadingState(true);
     this.providerService.getPaymentEntities().subscribe({
       next: (response) => {
         this.tableData = response.content;
@@ -74,11 +78,14 @@ export class ProvidersComponent implements OnInit {
           ...paymentEntity,
           logoUrl: paymentEntity.logoUrl,
           isPaymentEntityActive: paymentEntity.isActive ? 'Si' : 'No', //mostrar si/no segun isActive
-
         })) as any; //cambiar a any porque deja de ser number
 
         this.currentPage = 1; //cargo la pagina 1
         this.updatePage(); //actualizo los items de la pagina 1
+        this.loadingService.setLoadingState(false);
+      },
+      error: () => {
+        this.loadingService.setLoadingState(false); //ocultar
       },
     });
   }
